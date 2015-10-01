@@ -26,7 +26,7 @@ public class RegisterController extends HttpServlet {
 		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/view/registerForm.jsp");
 		rd.forward(request, response);
 	}
-
+	//comment
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
 		
