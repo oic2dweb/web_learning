@@ -3,6 +3,9 @@ package app.controller.rest;
 import java.util.HashSet;
 import java.util.Set;
 
+import javax.ws.rs.ApplicationPath;
+import javax.ws.rs.core.Application;
+
 //サーバサイドのAJAX処理設定用クラス
 //test.kaku
 @ApplicationPath("/rest")
