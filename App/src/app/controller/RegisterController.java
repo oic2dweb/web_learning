@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import app.model.User;
 import app.service.UserService;
-//pushのテスト用コメント
+//pushのテスト
 /**
  * Servlet implementation class RegisterController
  */
