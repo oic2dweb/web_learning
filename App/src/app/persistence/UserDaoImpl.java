@@ -37,7 +37,7 @@ public class UserDaoImpl implements UserDao {
 			return true;
 		}
 	}
-
+	//random
 	@Override
 	public boolean create(User user) {
 			//DBとの接続
