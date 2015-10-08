@@ -50,8 +50,7 @@ public class RegisterController extends HttpServlet {
 
 		//登録できたかチェック
 		if(!flg){
-			request.setAttribute("messagesKey", "DATABASE_CONNECTION_FAILED");
-			request.getRequestDispatcher("/WEB-INF/view/registerForm.jsp").forward(request, response);
+			request.getRequestDispatcher("/WEB-INF/view/500error.jsp").forward(request, response);
 		}else{
 			response.sendRedirect("welcome");
 		}

@@ -4,15 +4,19 @@
 <!DOCTYPE html>
 <html>
 <head>
-
-<title>新規登録</title>
-
-<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-<link rel="stylesheet" type="text/css" href="${requestScope.contextPath}css/registerForm.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+<script src="${requestScope.contextPath}js/jquery.validationEngine.js"></script> 
+<script src="${requestScope.contextPath}js/jquery.validationEngine-ja.js"></script>
 <script src="${requestScope.contextPath}js/config.js"></script>
 <script src="${requestScope.contextPath}js/registerForm.js"></script>
+
+<link href="${requestScope.contextPath}css/bootstrap.min.css" rel="stylesheet">
+<link href="${requestScope.contextPath}css/bootstrap-responsive.min.css" rel="stylesheet">
+<link href="${requestScope.contextPath}css/title.css" rel="stylesheet">
+<link href="${requestScope.contextPath}css/registerForm.css" rel="stylesheet">
+<link href="${requestScope.contextPath}css/validationEngine.jquery.css" rel="stylesheet">
+
+<title>OIC基本情報技術者試験　午前対策サイト</title>
 
 </head>
 <body>
@@ -20,72 +24,92 @@
 <c:if test="${messagesKey != null}">
 <div id="messageBox" class="alert alert-warning">
 </div>
-<script>	
+<script>
+
 	$(document).ready(function(){
-		$('#messageBox').html('<strong>' + messages['${messagesKey}'] + '</strong>');
-	});	
+		$('#messageBox').html(messages['${messagesKey}']);
+	});
+
 </script>
+
 </c:if>
 
-<div>
-<form action="${requestScope.contextPath}register" method="POST">
-<table>
+<div id="main">
 
-<tr>
-<td>お名前</td>
-<td>
-<input type="text" name="name" id="name" class="form-control" maxlength="20">
-<input type="hidden" value="0" class="submitCount">
-</td>
-<td class="error"></td>
-</tr>
+  <h1 id="subtitle">
+  新規登録
+  </h1>
 
-<tr>
-<td>お名前（ひらがな）</td>
-<td>
-<input type="text" name="kana" id="kana" class="form-control" maxlength="20">
-<input type="hidden" value="0" class="submitCount">
-</td>
-<td class="error"></td>
-</tr>
+  <ul class="breadrumb">
+    <li><a href="${requestScope.contextPath}welcome">ログインメニュー</a><span class="divider"> > </span></li>
+    <li class="active"><a href="#">新規登録</a></li>
+  </ul>
 
-<tr>
-<td>ユーザーID</td>
-<td>
-<input type="text" name="username" id="username" class="form-control" maxlength="50">
-<input type="hidden" value="0" class="submitCount">
-</td>
-<td class="error"></td>
-</tr>
+  <form id="registerform" class="form-horizontal" method="post" action="<% request.getContextPath();%>register">
+      <div class="control-group">
+        <label class="control-label" for="name">お名前</label>
+        <div class="controls">
+          <input type="text" pattern="[^\x20-\x7E]*" name="name" id="name" class="validate[required,maxSize[20]] text-input form-control">
+          <input type="hidden" value="0" class="submitCount">
+          <p><span class="red">※必須</span>（全角文字）</p>
+        </div>
+      </div>
+      <div class="control-group">
+        <label class="control-label" for="name">お名前かな</label>
+        <div class="controls">
+          <input type="text" pattern="[\u3041-\u3096]*" name="kana" id="kana" class="validate[required,maxSize[20], checkUniqueness] text-input form-control">
+          <input type="hidden" value="0" class="submitCount">
+          <p><span class="red">※必須</span>（全角ひらがな）</p>
+        </div>
+      </div>
+      <div class="control-group">
+        <label class="control-label" for="username">ユーザーID</label>
+        <div class="controls">
+          <input type="text" name="username" id="username" class="validate[required,maxSize[50], funcCall[checkUniqueUsername]] text-input form-control">
+          <input type="hidden" value="0" class="submitCount">
+          <p><span class="red">※必須</span>（英数字と記号－各５０文字以内）</p>
+        </div>
+      </div>
+      <div class="control-group">
+        <label class="control-label" for="password">パスワード</label>
+        <div class="controls">
+          <input type="password" name="password" id="password" class="validate[required,minSize[4],maxSize[8]] text-input form-control">
+          <input type="hidden" value="0" class="submitCount">
+          <p><span class="red">※必須</span>（半角英数字と４文字以上８文字以内）</p>
+        </div>
+      </div>
+      <div class="control-group">
+        <label class="control-label" for="re-password">パスワード確認</label>
+        <div class="controls">
+          <input type="password" name="re-password" id="re-password" class="validate[required,equals[passwd]] text-input form-control">
+          <p><span class="red">※必須</span></p>
+        </div>
+      </div>
+      <div class="control-group">
+        <label class="control-label" for="email">連絡用メールアドレス</label>
+        <div class="controls">
+          <input type="email" pattern="^[0-9A-Za-z]+$" name="email" id="email" class="validate[required,maxSize[36],custom[email],funcCall[checkUniqueEmail]] text-input form-control">
+          <input type="hidden" value="0" class="submitCount">
+          <p><span class="red">※必須</span>（半角英数字）<span class="formcaption"><br>※ご利用されているメールアドレス等なるべく忘れにくいものを設定してください。</span></p>
+        </div>
+      </div>
+      <div class="control-group">
+        <label class="control-label" for="email">連絡用メールアドレス確認</label>
+        <div class="controls">
+          <input type="email" pattern="^[0-9A-Za-z]+$" name="re-email" id="re-email" class="validate[required,equals[email]] text-input form-control">
+          <p><span class="red">※必須</span></p>
+        </div>
+      </div>
+      <div class="controls">
+        <div id="messageBox"></div>
+        <span class="right">
+        <button type="submit" class="submit">登録</button>
 
-<tr>
-<td>パスワード</td>
-<td>
-<input type="password" name="password" id="password" class="form-control" maxlength="8">
-<input type="hidden" value="0" class="submitCount">
-</td>
-<td class="error"></td>
-</tr>
+        <button type="button" onclick="location.href='<% request.getContextPath();%>welcome'" class="cancel">キャンセル</button>
+        </span>
+      </div>
+    </form>
 
-<tr>
-<td>メール</td>
-<td>
-<input type="text" name="email" id="email" class="form-control" maxlength="36">
-<input type="hidden" value="0" class="submitCount">
-</td>
-<td class="error"></td>
-</tr>
-
-<tr>
-<td></td>
-<td><input type="submit" value="送信" class="btn btn-primary">
-<input type="reset" value="リセット" class="btn btn-warning">
-</td>
-<td></td>
-</tr>
-</table>
-
-</form>
 </div>
 
 </body>

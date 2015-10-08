@@ -1,4 +1,31 @@
-.error{
-	font-size: 14px;
+/*
+*registerFormの登録フォーム用CSS
+*/
+p{
+	margin: 0;
+	display: inline;
+}
+.red{
 	color: red;
+}
+.form-horizontal{
+	padding: 6px;
+}
+.formcaption{
+	font-size: small;
+}
+#name,#kana{
+	ime-mode: active;
+}
+#username,#password,#re-password,#email,#re-email{
+	ime-mode: inactive;
+}
+#name,#kana,#username,#password,#re-password{
+	width: 300px;
+}
+#email,#re-email{
+	width: 500px;
+}
+.right{
+	float: right;
 }

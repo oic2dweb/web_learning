@@ -1,0 +1,21 @@
+/*
+*welcomeのログインフォーム用CSS
+*/
+
+p{
+	margin: 0;
+	display: inline;
+}
+a{
+	margin: 0 18px;
+}
+.loginform{
+	margin: 20px auto;
+	width: 360px;
+}
+.form-vertical{
+	margin: 0 0 10px 0;
+	padding: 10px;
+	background-color: #ffffcc;
+	border: solid 3px #385d8a;
+}

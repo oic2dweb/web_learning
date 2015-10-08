@@ -1,0 +1,32 @@
+/*
+*タイトルと基本のレイアウト用CSS
+*/
+
+body,div,h1{
+	margin:0;
+	padding:0;
+}
+ul{
+	list-style-type: none;
+}
+li{
+	display:inline;
+}
+#main{
+	height: auto;
+}
+#maintitle{
+	margin: 20px auto;
+	padding: 6px;
+	width: 400px;
+	border: solid 3px #000000;
+	font-style; normal;
+	font-size: 20px;
+}
+#subtitle{
+	margin: 20px;
+	padding: 6px;
+	width: 400px;
+	font-style; normal;
+	font-size: 20px;
+}
