@@ -23,8 +23,8 @@
   OIC　基本情報技術者試験　午前対策サイト
   </h1>
 
-  <div class="loginform">
-    <form class="form-vertical">
+  <div class="loginformwrap">
+    <form id="loginform" class="form-vertical" method="post" action="${requestScope.contextPath}login">
     <p>ログイン</p>
       <div class="control-group">
         <label class="control-label" for="email">Emailアドレス</label>
@@ -43,7 +43,7 @@
       </div>
     </form>
     <a href="${requestScope.contextPath}register" id="register">新規登録</a>
-    <a href="#">お忘れの場合</a>
+    <a href="${requestScope.contextPath}forget" id="forget">お忘れの場合</a>
   </div>
 
 </div>

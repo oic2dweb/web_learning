@@ -8,7 +8,7 @@
 </head>
 <body>
 <script>
-	window.location="${requestScope.contextPath}welcome";
+window.location="${requestScope.contextPath}welcome";
 </script>
 
 </body>

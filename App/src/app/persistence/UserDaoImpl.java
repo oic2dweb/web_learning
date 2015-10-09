@@ -13,7 +13,7 @@ public class UserDaoImpl implements UserDao {
 	private DataSource dataSource = DataSourceFactory.getDataSource();
 	@Override
 	public boolean checkUniqueness(String attribute, String value) {
-		
+
 		int flag = 0;
 			//DBとの接続
 		try(Connection conn = dataSource.getConnection();
@@ -54,11 +54,71 @@ public class UserDaoImpl implements UserDao {
 
 			//SQl文を実行
 			stmt.executeUpdate();
-			
+
 			return true;
 
 		}catch(Exception e) {
 			return false;
 		}
 	}
+
+
+	public boolean loginCheck(String email, String password) {
+
+		int flag = 0;
+
+			//Dbとの接続
+		try(Connection conn = dataSource.getConnection();
+			//SQL文を用意
+			PreparedStatement stmt = conn.prepareStatement("SELECT COUNT(*) FROM users WHERE email = ? and password = ?");){
+			//SQL文に値をセット
+			stmt.setString(1, email);
+			stmt.setString(2, password);
+			//実行結果の参照情報を格納するResultSet型の変数を用意する
+			ResultSet rs = stmt.executeQuery();
+			//もしレコード数が１以上だったら、trueを返す
+			if(rs.next()){
+				flag = rs.getInt(1);
+			}
+
+
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		//レコードがあればtrueを、なければfalseを返す
+		if(flag >= 1){
+			return true;
+		}else{
+			return false;
+		}
+
+	}
+
+
+	public boolean emailCheck(String value) {
+
+		int flag = 0;
+			//DBとの接続
+		try(Connection conn = dataSource.getConnection();
+			//SQL文を用意
+			PreparedStatement stmt = conn.prepareStatement("SELECT COUNT(*) FROM users WHERE email = ?");){
+			//SQL文に値をセット
+			stmt.setString(1, value);
+			//実行結果の参照情報を格納するResultSet型の変数を用意する
+			ResultSet rs = stmt.executeQuery();
+			//もしレコード数が１以上だったら、trueを返す
+			if(rs.next()){
+				flag = rs.getInt(1);
+			}
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		//レコードがあればtrueを、なければfalseを返す
+		if(flag >= 1){
+			return true;
+		}else{
+			return false;
+		}
+	}
+
 }
