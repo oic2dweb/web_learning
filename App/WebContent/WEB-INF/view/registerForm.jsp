@@ -5,7 +5,7 @@
 <html>
 <head>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-<script src="${requestScope.contextPath}js/jquery.validationEngine.js"></script> 
+<script src="${requestScope.contextPath}js/jquery.validationEngine.js"></script>
 <script src="${requestScope.contextPath}js/jquery.validationEngine-ja.js"></script>
 <script src="${requestScope.contextPath}js/config.js"></script>
 <script src="${requestScope.contextPath}js/registerForm.js"></script>
@@ -81,7 +81,7 @@
       <div class="control-group">
         <label class="control-label" for="re-password">パスワード確認</label>
         <div class="controls">
-          <input type="password" name="re-password" id="re-password" class="validate[required,equals[passwd]] text-input form-control">
+          <input type="password" name="re-password" id="re-password" class="validate[required,equals[password]] text-input form-control">
           <p><span class="red">※必須</span></p>
         </div>
       </div>
