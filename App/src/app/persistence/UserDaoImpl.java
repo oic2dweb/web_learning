@@ -43,7 +43,7 @@ public class UserDaoImpl implements UserDao {
 			//DBとの接続
 		try(Connection conn = dataSource.getConnection();
 			//SQL文を用意	　attributeはメールもしくはユーザーID
-			PreparedStatement stmt = conn.prepareStatement("INSERT INTO users (name,kana,username,password,email) VALUES(?,?,?,MD5(?),?)");){
+			PreparedStatement stmt = conn.prepareStatement("INSERT INTO users (name,kana,username,password,email) VALUES(?,?,?,?,?)");){
 
 			//SQL文に値をセット
 			stmt.setString(1, user.getName());
