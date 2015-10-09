@@ -88,7 +88,7 @@
       <div class="control-group">
         <label class="control-label" for="email">連絡用メールアドレス</label>
         <div class="controls">
-          <input type="email" pattern="^[0-9A-Za-z]+$" name="email" id="email" class="validate[required,maxSize[36],custom[email],funcCall[checkUniqueEmail]] text-input form-control">
+          <input type="email" pattern="^[a-zA-Z]{1}[0-9a-zA-Z]+[\w\.-]+@[\w\.-]+\.\w{2,}$" name="email" id="email" class="validate[required,maxSize[36],custom[email],funcCall[checkUniqueEmail]] text-input form-control">
           <input type="hidden" value="0" class="submitCount">
           <p><span class="red">※必須</span>（半角英数字）<span class="formcaption"><br>※ご利用されているメールアドレス等なるべく忘れにくいものを設定してください。</span></p>
         </div>
@@ -96,7 +96,7 @@
       <div class="control-group">
         <label class="control-label" for="email">連絡用メールアドレス確認</label>
         <div class="controls">
-          <input type="email" pattern="^[0-9A-Za-z]+$" name="re-email" id="re-email" class="validate[required,equals[email]] text-input form-control">
+          <input type="email" name="re-email" id="re-email" class="validate[required,equals[email]] text-input form-control">
           <p><span class="red">※必須</span></p>
         </div>
       </div>
