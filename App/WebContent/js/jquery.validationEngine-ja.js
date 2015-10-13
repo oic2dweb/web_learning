@@ -17,7 +17,7 @@
                     "alertTextCheckboxMultiple": "* 選択してください",
                     "alertTextCheckboxe": "* チェックボックスをチェックしてください"
                 },
-                "requiredInFunction": { 
+                "requiredInFunction": {
                     "func": function(field, rules, i, options){
                         return (field.val() == "test") ? true : false;
                     },
@@ -56,7 +56,7 @@
                     "regex": "none",
                     "alertText": "* ",
                     "alertText2": " より最近の日付にしてください"
-                },	
+                },
                 "maxCheckbox": {
                     "regex": "none",
                     "alertText": "* チェックしすぎです"
@@ -137,13 +137,25 @@
                 },
                 "validate2fields": {
                     "alertText": "* 『HELLO』と入力してください"
+                },
+                "zenkaku": {
+                    "regex": /^[０-９－ａ-ｚＡ-Ｚぁ-んァ-ー一-龠　]+$/,
+                    "alertText": "* 全角で入力してください"
+                },
+                "zkana": {
+                    "regex": /^[ぁ-んー　]+$/,
+                    "alertText": "* 全角かなで入力してください"
+                },
+                "idkigou": {
+                    "regex": /^[0-9a-zA-Z@\-_]+$/,
+                    "alertText": "* 指定された文字で入力して下さい"
                 }
             };
-            
+
         }
     };
     $.validationEngineLanguage.newLang();
 })(jQuery);
 
 
-    
+

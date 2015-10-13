@@ -6,9 +6,9 @@
 <head>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 
-<link href="<% request.getContextPath();%>css/bootstrap.min.css" rel="stylesheet">
-<link href="<% request.getContextPath();%>css/bootstrap-responsive.min.css" rel="stylesheet">
-<link href="<% request.getContextPath();%>css/title.css" rel="stylesheet">
+<link href="${pageContext.request.contextPath}/css/bootstrap.min.css" rel="stylesheet">
+<link href="${pageContext.request.contextPath}/css/bootstrap-responsive.min.css" rel="stylesheet">
+<link href="${pageContext.request.contextPath}/css/title.css" rel="stylesheet">
 
 <title>OIC基本情報技術者試験　午前対策サイト</title>
 
@@ -26,7 +26,7 @@
   </h1>
 
   <ul class="breadrumb">
-    <li><a href="${requestScope.contextPath}welcome">ログインメニュー</a><span class="divider"> > </span></li>
+    <li><a href="${pageContext.request.contextPath}/welcome">ログインメニュー</a><span class="divider"> > </span></li>
     <li class="active"><a href="#">メインメニュー</a></li>
   </ul>
 

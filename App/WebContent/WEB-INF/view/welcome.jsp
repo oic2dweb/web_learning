@@ -6,12 +6,12 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-<script src="${requestScope.contextPath}js/bootstrap.min.js"></script>
+<script src="${pageContext.request.contextPath}/js/bootstrap.min.js"></script>
 
-<link href="${requestScope.contextPath}css/bootstrap.min.css" rel="stylesheet">
-<link href="${requestScope.contextPath}css/bootstrap-responsive.min.css" rel="stylesheet">
-<link href="${requestScope.contextPath}css/title.css" rel="stylesheet">
-<link href="${requestScope.contextPath}css/loginForm.css" rel="stylesheet">
+<link href="${pageContext.request.contextPath}/css/bootstrap.min.css" rel="stylesheet">
+<link href="${pageContext.request.contextPath}/css/bootstrap-responsive.min.css" rel="stylesheet">
+<link href="${pageContext.request.contextPath}/css/title.css" rel="stylesheet">
+<link href="${pageContext.request.contextPath}/css/loginForm.css" rel="stylesheet">
 
 <title>OIC基本情報技術者試験　午前対策サイト</title>
 </head>
@@ -24,7 +24,7 @@
   </h1>
 
   <div class="loginformwrap">
-    <form id="loginform" class="form-vertical" method="post" action="${requestScope.contextPath}login">
+    <form id="loginform" class="form-vertical" method="post" action="${pageContext.request.contextPath}/login">
     <p>ログイン</p>
       <div class="control-group">
         <label class="control-label" for="email">Emailアドレス</label>
@@ -42,8 +42,8 @@
         <button type="submit" class="login">ログイン</button>
       </div>
     </form>
-    <a href="${requestScope.contextPath}register" id="register">新規登録</a>
-    <a href="${requestScope.contextPath}forget" id="forget">お忘れの場合</a>
+    <a href="${pageContext.request.contextPath}/register" id="register">新規登録</a>
+    <a href="${pageContext.request.contextPath}/forget" id="forget">お忘れの場合</a>
   </div>
 
 </div>
