@@ -9,7 +9,6 @@
 <link href="${pageContext.request.contextPath}/css/bootstrap.min.css" rel="stylesheet">
 <link href="${pageContext.request.contextPath}/css/bootstrap-responsive.min.css" rel="stylesheet">
 <link href="${pageContext.request.contextPath}/css/title.css" rel="stylesheet">
-<link href="${pageContext.request.contextPath}/css/mainMenu.css" rel="stylesheet">
 
 <title>OIC基本情報技術者試験　午前対策サイト</title>
 
@@ -21,31 +20,18 @@
 </script>
 
 <div id="main">
-  <div id="login">
-  	<p>ログイン</p>
-  	<p>ゲスト　さん <input type="submit" value="ログアウト" /></p>	
-  </div>
-  <h1 id="maintitle">
-  OIC　基本情報技術者試験　午前対策サイト
-  </h1><br><br>
-  
-  <ul class="breadcrumb">
+
+  <h1 id="subtitle">
+  メインメニュー
+  </h1>
+
+  <ul class="breadrumb">
     <li><a href="${pageContext.request.contextPath}/welcome">ログインメニュー</a><span class="divider"> > </span></li>
     <li class="active"><a href="#">メインメニュー</a></li>
   </ul>
-  <div id="sidebar">
-  <ul>
-   <li><a href="#">・分野別モード</a><br></li>
-   <li><a href="#">・模擬試験モード</a><br></li>
-   <li><a href="#">・年度別モード</a><br></li>
-   <li><a href="#">・学習履歴ステータス</a><br></li>
-   <li><a href="#">・質問掲示板</a><br></li>
-   </ul>
-   </div>
-  
-  
+
 </div>
 
-
+<a href="${pageContext.request.contextPath}/login/mogi">模擬試験モード</a>
 </body>
 </html>

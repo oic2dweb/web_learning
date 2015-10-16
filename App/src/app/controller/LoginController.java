@@ -28,7 +28,7 @@ public class LoginController extends HttpServlet {
 
 		//ログインできたかチェック
 		if(flg){
-			response.sendRedirect("mainmenu");
+			response.sendRedirect("login/mainmenu");
 		}else{
 			//request.setAttribute("messagesKey", "DATABASE_CONNECTION_FAILED");
 			response.sendRedirect("welcome");
