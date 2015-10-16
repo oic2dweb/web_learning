@@ -1,6 +1,6 @@
 //常用の変数やメッセージを用意
 
-CONTEXT_PATH = '/App5/';
+CONTEXT_PATH = '/App/';
 
 var messages = new Array();
 
