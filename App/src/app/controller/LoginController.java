@@ -7,6 +7,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import app.service.UserService;
 
@@ -28,9 +29,11 @@ public class LoginController extends HttpServlet {
 
 		//ログインできたかチェック
 		if(flg){
+			int id = userService.getId(email);
+			HttpSession session = request.getSession();
+			session.setAttribute("userid", id);
 			response.sendRedirect("login/mainmenu");
 		}else{
-			//request.setAttribute("messagesKey", "DATABASE_CONNECTION_FAILED");
 			response.sendRedirect("welcome");
 
 

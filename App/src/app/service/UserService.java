@@ -21,5 +21,8 @@ public class UserService {
 	public boolean loginCheck(String email, String password){
 		return userDao.loginCheck(email, password);
 	}
+	public int getId(String email){
+		return userDao.getId(email);
+	}
 
 }

@@ -15,10 +15,10 @@
 <span id="pagenumber"></span>/${question.count}問
 <input type="hidden" id="allque" value="${question.count}">
 <div id="question"></div><br><br>
-<label><input type="radio" name="ans"><span id="ans1"></span></label><br>
-<label><input type="radio" name="ans"><span id="ans2"></span></label><br>
-<label><input type="radio" name="ans"><span id="ans3"></span></label><br>
-<label><input type="radio" name="ans"><span id="ans4"></span></label><br><br>
+<label><input type="radio" name="ans">ア：<span id="ans1"></span></label><br>
+<label><input type="radio" name="ans">イ：<span id="ans2"></span></label><br>
+<label><input type="radio" name="ans">ウ：<span id="ans3"></span></label><br>
+<label><input type="radio" name="ans">エ：<span id="ans4"></span></label><br><br>
 <input type="button" id="back" value="前の問題へ">
 <input type="button" id="open" value="解説を表示">
 <input type="button" id="next" value="次の問題へ">
