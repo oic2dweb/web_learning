@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html>
 
 <html>
@@ -12,8 +13,8 @@
 <title>OIC基本情報技術者試験　午前対策サイト</title>
 </head>
 <body>
-<span id="pagenumber"></span>/${question.count}問
-<input type="hidden" id="allque" value="${question.count}">
+<span id="pagenumber"></span>/${fn:length(question)}問
+<input type="hidden" id="allque" value="${fn:length(question)}">
 <div id="question"></div><br><br>
 <label><input type="radio" name="ans">ア：<span id="ans1"></span></label><br>
 <label><input type="radio" name="ans">イ：<span id="ans2"></span></label><br>

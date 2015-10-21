@@ -1,6 +1,7 @@
 package app.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Map;
 
 import javax.servlet.ServletException;
@@ -43,7 +44,7 @@ public class MogiController extends HttpServlet {
 		String sql = "select * from question_fe where year_id = " + year;
 		System.out.println(sql);
 		QuestionDao quedao = new QuestionDaoImpl();
-		Question qes = quedao.getQustion(sql);
+		ArrayList<Question> qes = quedao.getQustion(sql);
 
 		HttpSession session = request.getSession();
 

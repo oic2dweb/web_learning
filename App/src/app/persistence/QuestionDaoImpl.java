@@ -10,49 +10,40 @@ import javax.sql.DataSource;
 import app.model.Question;
 
 public class QuestionDaoImpl implements QuestionDao{
-	
+
 	private DataSource dataSource = DataSourceFactory.getDataSource();
 
 	@Override
-	public Question getQustion(String sql) {
+	public ArrayList<Question> getQustion(String sql) {
 		Question qes = new Question();
-		ArrayList<String> question = new ArrayList<String>();
+		ArrayList<Question> question = new ArrayList<Question>();
 
-		ArrayList<String> ans1 = new ArrayList<String>();
-		ArrayList<String> ans2 = new ArrayList<String>();
-		ArrayList<String> ans3 = new ArrayList<String>();
-		ArrayList<String> ans4 = new ArrayList<String>();
-		ArrayList<Integer> sei = new ArrayList<Integer>();
-		ArrayList<String> kaisetu = new ArrayList<String>();
+
 		try(Connection conn = dataSource.getConnection();
 				//SQL文を用意
 				PreparedStatement stmt = conn.prepareStatement(sql);){
 				ResultSet rs = stmt.executeQuery();
-
+				 qes = new Question();
 				while(rs.next()){
-					question.add(rs.getString("question"));
-					ans1.add(rs.getString("ans1"));
-					ans2.add(rs.getString("ans2"));
-					ans3.add(rs.getString("ans3"));
-					ans4.add(rs.getString("ans4"));
-					sei.add(rs.getInt("sei"));
-					kaisetu.add(rs.getString("kaisetu"));
+					qes = new Question();
+					qes.setQuestion(rs.getString("question"));
+					qes.setRonten(rs.getString("ronten"));
+					qes.setAns1(rs.getString("ans1"));
+					qes.setAns2(rs.getString("ans2"));
+					qes.setAns3(rs.getString("ans3"));
+					qes.setAns4(rs.getString("ans4"));
+					qes.setSei(rs.getInt("sei"));
+					qes.setKaisetu(rs.getString("kaisetu"));
+					question.add(qes);
 				}
-				qes.setQuestion(question);
-				qes.setAns1(ans1);
-				qes.setAns2(ans2);
-				qes.setAns3(ans3);
-				qes.setAns4(ans4);
-				qes.setSei(sei);
-				qes.setKaisetu(kaisetu);
-				qes.setCount(question.size());
-				
+
+
 			}catch(Exception e){
 				e.printStackTrace();
 			}
-		return qes;
+		return question;
 	}
-	
-	
+
+
 
 }

@@ -31,7 +31,7 @@
   </ul>
 
 </div>
-
+<a href="${pageContext.request.contextPath}/login/nendobetu">年度別モード</a><br>
 <a href="${pageContext.request.contextPath}/login/mogi">模擬試験モード</a>
 </body>
 </html>

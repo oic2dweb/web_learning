@@ -2,6 +2,7 @@ package app.controller.rest;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import java.util.HashMap;
 
 import javax.servlet.ServletException;
@@ -42,7 +43,7 @@ public class MondaiAjax extends HttpServlet {
 
 		//セッションの取得
 		HttpSession session = request.getSession();
-		Question qes = (Question) session.getAttribute("question");
+		ArrayList<Question> qes = (ArrayList<Question>) session.getAttribute("question");
 		int i = (int)session.getAttribute("pagenumber");
 
 
@@ -56,15 +57,15 @@ public class MondaiAjax extends HttpServlet {
 
 		response.setContentType("application/json;charset=UTF-8");
 		PrintWriter out = response.getWriter();
-
+		Question que = qes.get(i);
 		HashMap<String,String> map = new HashMap<String,String>();
 		map.put("pagenumber", String.valueOf(i + 1));
-		map.put("question",qes.getQuestion(i));
-		map.put("ans1",qes.getAns1(i));
-		map.put("ans2",qes.getAns2(i));
-		map.put("ans3",qes.getAns3(i));
-		map.put("ans4",qes.getAns4(i));
-		map.put("kaisetu",qes.getKaisetu(i));
+		map.put("question",que.getQuestion());
+		map.put("ans1",que.getAns1());
+		map.put("ans2",que.getAns2());
+		map.put("ans3",que.getAns3());
+		map.put("ans4",que.getAns4());
+		map.put("kaisetu",que.getKaisetu());
 
 		Gson gson = new Gson();
 		 json = gson.toJson(map);
