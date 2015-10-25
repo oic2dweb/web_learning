@@ -11,6 +11,7 @@ $(document).ready(function(){
 		});
 		$("#open").click(function(){
 			$("#kaisetu").slideDown();
+			$("#sei").slideDown();
 		});
 
 		function getque(status){
@@ -29,6 +30,7 @@ $(document).ready(function(){
 					$("#ans3").html(data.ans3);
 					$("#ans4").html(data.ans4);
 					$("#kaisetu").html(data.kaisetu);
+					$("#sei").html("正解："+data.sei);
 					$("input[name=ans]").attr("checked",false);
 
 					if(data.pagenumber == "1"){
@@ -45,6 +47,7 @@ $(document).ready(function(){
 						$("#next").show();
 					}
 					$("#kaisetu").hide();
+					$("#sei").hide();
 
 
 				}

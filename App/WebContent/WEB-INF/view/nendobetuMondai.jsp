@@ -24,6 +24,7 @@
 <input type="button" id="open" value="解説を表示">
 <input type="button" id="next" value="次の問題へ">
 <br><br>
+<div id="sei"></div>
 <div id="kaisetu"></div><br><br>
 <input type="button" id="" value="メインメニューへ" onclick="window.location='${pageContext.request.contextPath}/login/mainmenu'">
 

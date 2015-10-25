@@ -12,9 +12,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import app.model.Question;
-
 import com.google.gson.Gson;
+
+import app.model.Question;
 
 /**
  * Servlet implementation class MondaiAjax
@@ -44,17 +44,20 @@ public class MondaiAjax extends HttpServlet {
 		//セッションの取得
 		HttpSession session = request.getSession();
 		ArrayList<Question> qes = (ArrayList<Question>) session.getAttribute("question");
+
+		//セッションから何問目かを取得
 		int i = (int)session.getAttribute("pagenumber");
 
-
+		//前の問題へをクリック時
 		if(str.equals("back")){
 			session.setAttribute("pagenumber", --i);
+		//次の問題へをクリック時
 		}else if(str.equals("next")){
 			session.setAttribute("pagenumber", ++i);
 		}
 
 
-
+		//JSONの文字コードセット
 		response.setContentType("application/json;charset=UTF-8");
 		PrintWriter out = response.getWriter();
 		Question que = qes.get(i);
@@ -66,6 +69,7 @@ public class MondaiAjax extends HttpServlet {
 		map.put("ans3",que.getAns3());
 		map.put("ans4",que.getAns4());
 		map.put("kaisetu",que.getKaisetu());
+		map.put("sei", que.getSei());
 
 		Gson gson = new Gson();
 		 json = gson.toJson(map);

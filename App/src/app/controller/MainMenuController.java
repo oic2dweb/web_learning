@@ -47,6 +47,6 @@ public class MainMenuController extends HttpServlet {
 
 		//セッションに問題情報をquestionという名前で保存
 		session.setAttribute("question", qes);
-		response.sendRedirect(request.getContextPath()+"/login/mondai");
+		response.sendRedirect(request.getContextPath()+"/login/bunmondai");
 	}
 }

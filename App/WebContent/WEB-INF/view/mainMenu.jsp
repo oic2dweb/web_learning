@@ -33,6 +33,7 @@
 <a href="${pageContext.request.contextPath}/login/mogi">模擬試験モード</a>
 <div id="message"></div>
 <form method="post" action="${pageContext.request.contextPath}/login/mainmenu" id="select_class">
+
 <table>
 	<tbody>
 		<tr>
@@ -44,29 +45,29 @@
 			<th>・技術要素</th>
 		</tr>
 		<tr>
-			<td><input type="checkbox" name="subid" value="1" class="tecno">基礎理論(${count[0]})</td>
-			<td><input type="checkbox" name="subid" value="3" class="tecno">コンピュータ構成要素(${count[2]})</td>
-		<td><input type="checkbox" name="subid" value="7" class="tecno">ヒューマンインターフェース基礎理論(${count[6]})</td>
+			<td><label><input type="checkbox" name="subid" value="1" class="tecno">基礎理論(${count[0]})</label></td>
+			<td><label><input type="checkbox" name="subid" value="3" class="tecno">コンピュータ構成要素(${count[2]})</label></td>
+			<td><label><input type="checkbox" name="subid" value="7" class="tecno">ヒューマンインターフェース基礎理論(${count[6]})</label></td>
 		</tr>
 		<tr>
-			<td><input type="checkbox" name="subid" value="2" class="tecno">アルゴリズムとプログラミング(${count[1]})</td>
-			<td><input type="checkbox" name="subid" value="4" class="tecno">システム構成要素(${count[3]})</td>
-			<td><input type="checkbox" name="subid" value="8" class="tecno">マルチメディア(${count[7]})</td>
-		</tr>
-		<tr>
-			<td></td>
-			<td><input type="checkbox" name="subid" value="5" class="tecno">ソフトウェア(${count[4]})</td>
-			<td><input type="checkbox" name="subid" value="9" class="tecno">データベース(${count[8]})</td>
+			<td><label><input type="checkbox" name="subid" value="2" class="tecno">アルゴリズムとプログラミング(${count[1]})</label></td>
+			<td><label><input type="checkbox" name="subid" value="4" class="tecno">システム構成要素(${count[3]})</label></td>
+			<td><label><input type="checkbox" name="subid" value="8" class="tecno">マルチメディア(${count[7]})</label></td>
 		</tr>
 		<tr>
 			<td></td>
-			<td><input type="checkbox" name="subid" value="6" class="tecno">ハードウェア(${count[5]})</td>
-			<td><input type="checkbox" name="subid" value="10" class="tecno">ネットワーク(${count[9]})</td>
+			<td><label><input type="checkbox" name="subid" value="5" class="tecno">ソフトウェア(${count[4]})</label></td>
+			<td><label><input type="checkbox" name="subid" value="9" class="tecno">データベース(${count[8]})</label></td>
+		</tr>
+		<tr>
+			<td></td>
+			<td><label><input type="checkbox" name="subid" value="6" class="tecno">ハードウェア(${count[5]})</label></td>
+			<td><label><input type="checkbox" name="subid" value="10" class="tecno">ネットワーク(${count[9]})</label></td>
 		</tr>
 		<tr>
 			<td></td>
 			<td></td>
-			<td><input type="checkbox" name="subid" value="11" class="tecno">セキュリティ(${count[10]})</td>
+			<td><label><input type="checkbox" name="subid" value="11" class="tecno">セキュリティ(${count[10]})</label></td>
 		</tr>
 
 
@@ -79,14 +80,14 @@
 			<th>・サービスマネジメント</th>
 		</tr>
 		<tr>
-			<td><input type="checkbox" name="subid" value="12" class="manege">システム開発技術(${count[11]})</td>
-			<td><input type="checkbox" name="subid" value="14" class="manege">プロジェクトマネジメント(${count[13]})</td>
-			<td><input type="checkbox" name="subid" value="15" class="manege">サービスマネジメント(${count[14]})</td>
+			<td><label><input type="checkbox" name="subid" value="12" class="manege">システム開発技術(${count[11]})</label></td>
+			<td><label><input type="checkbox" name="subid" value="14" class="manege">プロジェクトマネジメント(${count[13]})</label></td>
+			<td><label><input type="checkbox" name="subid" value="15" class="manege">サービスマネジメント(${count[14]})</label></td>
 		</tr>
 		<tr>
-			<td><input type="checkbox" name="subid" value="13" class="manege">ソフトウェア開発管理技術(${count[12]})</td>
+			<td><label><input type="checkbox" name="subid" value="13" class="manege">ソフトウェア開発管理技術(${count[12]})</label></td>
 			<td></td>
-			<td><input type="checkbox" name="subid" value="16" class="manege">システム監査(${count[15]})</td>
+			<td><label><input type="checkbox" name="subid" value="16" class="manege">システム監査(${count[15]})</label></td>
 		</tr>
 
 
@@ -99,14 +100,14 @@
 			<th>・システム戦略</th>
 		</tr>
 		<tr>
-			<td><input type="checkbox" name="subid" value="22" class="stora">企業活動(${count[21]})</td>
-			<td><input type="checkbox" name="subid" value="19" class="stora">経営戦略マネジメント(${count[18]})</td>
-			<td><input type="checkbox" name="subid" value="17" class="stora">システム戦略(${count[16]})</td>
+			<td><label><input type="checkbox" name="subid" value="22" class="stora">企業活動(${count[21]})</label></td>
+			<td><label><input type="checkbox" name="subid" value="19" class="stora">経営戦略マネジメント(${count[18]})</label></td>
+			<td><label><input type="checkbox" name="subid" value="17" class="stora">システム戦略(${count[16]})</label></td>
 		</tr>
 		<tr>
-			<td><input type="checkbox" name="subid" value="23" class="stora">法務(${count[22]})</td>
-			<td><input type="checkbox" name="subid" value="20" class="stora">技術戦略マネジメント(${count[19]})</td>
-			<td><input type="checkbox" name="subid" value="18" class="stora">システム企画(${count[17]})</td>
+			<td><label><input type="checkbox" name="subid" value="23" class="stora">法務(${count[22]})</label></td>
+			<td><label><input type="checkbox" name="subid" value="20" class="stora">技術戦略マネジメント(${count[19]})</label></td>
+			<td><label><input type="checkbox" name="subid" value="18" class="stora">システム企画(${count[17]})</label></td>
 		</tr>
 	</tbody>
 </table>

@@ -9,7 +9,7 @@ public class Question {
 	private String ans2;
 	private String ans3;
 	private String ans4;
-	private Integer uans = 0;
+	private String uans = "";
 	private String sei;
 	private String kaisetu;
 	public String getQuestion() {
@@ -48,10 +48,10 @@ public class Question {
 	public void setAns4(String ans4) {
 		this.ans4 = ans4;
 	}
-	public Integer getUans() {
+	public String getUans() {
 		return uans;
 	}
-	public void setUans(Integer uans) {
+	public void setUans(String uans) {
 		this.uans = uans;
 	}
 	public String getSei() {
