@@ -12,10 +12,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import app.model.Question;
-import app.persistence.QuestionDao;
-import app.persistence.QuestionDaoImpl;
-import app.persistence.YearDao;
-import app.persistence.YearDaoImpl;
+import app.service.QuestionService;
+import app.service.YearService;
 
 /**
  * Servlet implementation class MogiController
@@ -23,13 +21,14 @@ import app.persistence.YearDaoImpl;
 @WebServlet("/login/mogi")
 public class MogiController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	private YearService yearService = new YearService();
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		YearDao yeardao = new YearDaoImpl();
-		Map<Integer,String> year = yeardao.getYear();
+
+		Map<Integer,String> year = yearService.getYear();
 		request.setAttribute("year", year);
 
 		request.getRequestDispatcher("/WEB-INF/view/mogi.jsp").forward(request, response);
@@ -42,9 +41,8 @@ public class MogiController extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		String year = request.getParameter("yeardata");
 		String sql = "select * from question_fe where year_id = " + year;
-		System.out.println(sql);
-		QuestionDao quedao = new QuestionDaoImpl();
-		ArrayList<Question> qes = quedao.getQustion(sql);
+		QuestionService questionService = new QuestionService();
+		ArrayList<Question> qes = questionService.getQuestion(sql);
 
 		HttpSession session = request.getSession();
 

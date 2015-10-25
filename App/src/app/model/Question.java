@@ -4,12 +4,13 @@ package app.model;
 public class Question {
 	private String question;
 	private String ronten;
+	private String subclass;
 	private String ans1;
 	private String ans2;
 	private String ans3;
 	private String ans4;
 	private Integer uans = 0;
-	private Integer sei;
+	private String sei;
 	private String kaisetu;
 	public String getQuestion() {
 		return question;
@@ -53,10 +54,10 @@ public class Question {
 	public void setUans(Integer uans) {
 		this.uans = uans;
 	}
-	public Integer getSei() {
+	public String getSei() {
 		return sei;
 	}
-	public void setSei(Integer sei) {
+	public void setSei(String sei) {
 		this.sei = sei;
 	}
 	public String getKaisetu() {
@@ -64,6 +65,12 @@ public class Question {
 	}
 	public void setKaisetu(String kaisetu) {
 		this.kaisetu = kaisetu;
+	}
+	public String getSubclass() {
+		return subclass;
+	}
+	public void setSubclass(String subclass) {
+		this.subclass = subclass;
 	}
 
 
