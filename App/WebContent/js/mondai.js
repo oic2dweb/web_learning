@@ -1,6 +1,9 @@
 $(document).ready(function(){
-		getque("");
 
+	var pagenumber;	//現在の問題番号を格納する変数
+	var answer = "　";	//ユーザーの解答を格納する変数
+
+		getque("");
 
 		$("#back").click(function(){
 			getque("back");
@@ -13,6 +16,13 @@ $(document).ready(function(){
 			$("#kaisetu").slideDown();
 		});
 
+		//ラジオボタンの選択を変えた時の処理
+		$('input[name="ans"]:radio').change(function(){
+			answer = $('input[name="ans"]:checked').val();
+			//セッションストレージにラジオボタンの値を保存
+			sessionStorage.setItem(pagenumber, answer);
+		});
+
 		function getque(status){
 			var data = {"status":status};
 			var request = $.ajax({
@@ -22,13 +32,24 @@ $(document).ready(function(){
 				data:data,
 				success: function(data){
 
-					$("#pagenumber").html(data.pagenumber );
+					pagenumber = data.pagenumber;
+					//セッションストレージに値がないとき初期化
+					var ans = sessionStorage.getItem(pagenumber);
+					if(ans == null){
+						sessionStorage.setItem(pagenumber, answer);
+					}else{
+						//セッションストレージから値を取得しラジオボタンにチェック
+						$('input[name="ans"]').val([ans]);
+					}
+
+					$("#pagenumber").html(data.pagenumber);
 					$("#question").html(data.question);
 					$("#ans1").html(data.ans1);
 					$("#ans2").html(data.ans2);
 					$("#ans3").html(data.ans3);
 					$("#ans4").html(data.ans4);
 					$("#kaisetu").html(data.kaisetu);
+					$("#kaisetu").append("正解：" + data.sei);
 					$("input[name=ans]").attr("checked",false);
 
 					if(data.pagenumber == "1"){
@@ -46,12 +67,8 @@ $(document).ready(function(){
 					}
 					$("#kaisetu").hide();
 
-
 				}
 				});
 		}
-
-
-
 
 });

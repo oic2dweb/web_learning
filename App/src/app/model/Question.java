@@ -2,6 +2,7 @@ package app.model;
 
 
 public class Question {
+	private int id;
 	private String question;
 	private String ronten;
 	private String subclass;
@@ -9,7 +10,7 @@ public class Question {
 	private String ans2;
 	private String ans3;
 	private String ans4;
-	private String uans = "";
+	private String uans = "　";
 	private String sei;
 	private String kaisetu;
 	public String getQuestion() {
@@ -71,6 +72,12 @@ public class Question {
 	}
 	public void setSubclass(String subclass) {
 		this.subclass = subclass;
+	}
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
 	}
 
 

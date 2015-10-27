@@ -12,9 +12,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.google.gson.Gson;
-
 import app.model.Question;
+
+import com.google.gson.Gson;
 
 /**
  * Servlet implementation class MondaiAjax
@@ -63,6 +63,7 @@ public class MondaiAjax extends HttpServlet {
 		Question que = qes.get(i);
 		HashMap<String,String> map = new HashMap<String,String>();
 		map.put("pagenumber", String.valueOf(i + 1));
+		map.put("id", String.valueOf(que.getId()));
 		map.put("question",que.getQuestion());
 		map.put("ans1",que.getAns1());
 		map.put("ans2",que.getAns2());

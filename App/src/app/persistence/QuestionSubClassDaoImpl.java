@@ -3,8 +3,6 @@ package app.persistence;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.util.HashMap;
-import java.util.Map;
 
 import javax.sql.DataSource;
 
@@ -26,6 +24,7 @@ public class QuestionSubClassDaoImpl implements QuestionSubClassDao{
 
 	}
 
+	/*
 	//Mapにsubclass_idをキー、subclass_nameを値として取得
 	public Map<Integer,String> getSubClass(int mainid){
 		Map<Integer,String> map = new HashMap<Integer,String>();
@@ -41,5 +40,5 @@ public class QuestionSubClassDaoImpl implements QuestionSubClassDao{
 		return map;
 
 	}
-
+	*/
 }
