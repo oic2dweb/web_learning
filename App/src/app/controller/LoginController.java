@@ -34,8 +34,8 @@ public class LoginController extends HttpServlet {
 			session.setAttribute("userid", id);
 			response.sendRedirect("login/mainmenu");
 		}else{
-			response.sendRedirect("welcome");
-
+			request.setAttribute("error", "<font color=\"red\">※Emeilアドレス　or　パスワードに誤りがございます。</font>");
+			request.getRequestDispatcher("/WEB-INF/view/welcome.jsp").forward(request, response);
 
 		}
 	}

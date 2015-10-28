@@ -44,8 +44,9 @@
     </form>
     <a href="${pageContext.request.contextPath}/register" id="register">新規登録</a>
     <a href="${pageContext.request.contextPath}/forget" id="forget">お忘れの場合</a>
+    <div>${error}</div>
   </div>
-
+	
 </div>
 
 </body>
