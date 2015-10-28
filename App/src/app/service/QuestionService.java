@@ -13,4 +13,7 @@ public class QuestionService {
 	public ArrayList<Question> getQuestion(String sql) {
 		return questionDao.getQustion(sql);
 	}
+	public ArrayList<Integer> getClassCount(String sql){
+		return questionDao.getClassCount(sql);
+	}
 }

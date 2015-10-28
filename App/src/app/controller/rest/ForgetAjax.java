@@ -33,11 +33,11 @@ public class ForgetAjax extends HttpServlet {
 
 
 		boolean flg = userDao.emailCheck(email);
-		String json ="{\"flg\":\"false\"}";
+		String json ="{\"flg\":\"true\"}";
 		if(flg){
 			String text ="あなたのパスワードは～です";
-			mail.send(email, text);
-			json = "{\"flg\":\"true\"}";
+			boolean sendflg = mail.send(email, text);
+			json = "{\"flg\":\""+sendflg+"\"}";
 		}
 		out.print(json);
 

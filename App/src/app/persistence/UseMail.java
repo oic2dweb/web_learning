@@ -60,11 +60,12 @@ public class UseMail {
 				t.sendMessage(msg, msg.getAllRecipients());
 				flg = true;
 			}catch(Exception e){
+				flg=false;
 			}finally{
 			t.close();
 			}
-			}catch(Exception e){
-			}
+		}catch(Exception e){
+		}
 		return flg;
 	}
 }
