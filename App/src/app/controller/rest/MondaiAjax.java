@@ -12,9 +12,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import app.model.Question;
-
 import com.google.gson.Gson;
+
+import app.model.Question;
 
 /**
  * Servlet implementation class MondaiAjax
@@ -43,6 +43,7 @@ public class MondaiAjax extends HttpServlet {
 
 		//セッションの取得
 		HttpSession session = request.getSession();
+		@SuppressWarnings("unchecked")
 		ArrayList<Question> qes = (ArrayList<Question>) session.getAttribute("question");
 
 		//セッションから何問目かを取得
