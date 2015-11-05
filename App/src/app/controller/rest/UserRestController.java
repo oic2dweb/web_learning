@@ -3,14 +3,18 @@ package app.controller.rest;
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
+import javax.ws.rs.Produces;
+import javax.ws.rs.core.Context;
 import javax.ws.rs.core.Response;
 
-import app.service.UserService;
-
 import com.google.gson.Gson;
+
+import app.model.User;
+import app.service.UserService;
 
 //ユーザー登録用のAJAX処理のコントローラー
 @Path("/user")
@@ -41,4 +45,15 @@ private UserService userService = new UserService();
 			return Response.ok("REGISTER_NOTUNIQUE").build();
 		}
 	}
+	
+	@POST
+	@Path("/userinfo")
+	@Produces("application/json")
+	public Response getUser(@Context HttpServletRequest request){
+		Integer id = (int)request.getSession().getAttribute("userid");
+		Long userid = id.longValue();
+		User user = userService.getUser(userid);
+		return Response.ok(user).build();
+	}
+	
 }

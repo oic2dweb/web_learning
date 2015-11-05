@@ -15,6 +15,7 @@ public class FrontRestController extends Application {
 	
 	public FrontRestController() {
 		singletons.add(new UserRestController());
+		singletons.add(new MyPageRestController());
 	}
 
 	@Override

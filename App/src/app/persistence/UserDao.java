@@ -8,4 +8,5 @@ public interface UserDao {
 	public boolean loginCheck(String email, String password);
 	public boolean emailCheck(String value);
 	public int getId(String email);
+	public User getUser(Long id);
 }

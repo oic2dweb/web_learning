@@ -135,5 +135,25 @@ public class UserDaoImpl implements UserDao {
 		}
 		return id;		
 	}
-
+	@Override
+	public User getUser(Long id) {
+		User user = new User();
+		try(Connection conn = dataSource.getConnection();
+			PreparedStatement stmt = conn.prepareStatement("SELECT * FROM users WHERE id = ?");){
+			stmt.setString(1, id.toString());
+			ResultSet rs = stmt.executeQuery();
+			if(rs.next()){
+				user.setId(rs.getLong(1));
+				user.setName(rs.getString(2));
+				user.setKana(rs.getString(3));
+				user.setUsername(rs.getString(4));
+				user.setPassword(rs.getString(5));
+				user.setEmail(rs.getString(6));
+				user.setAuthority(rs.getString(7));
+			}
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		return user;
+	}
 }

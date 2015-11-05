@@ -5,10 +5,12 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.sql.DataSource;
 
 import app.model.Question;
+import app.model.TestRecord;
 
 public class QuestionDaoImpl implements QuestionDao{
 
@@ -96,6 +98,37 @@ public class QuestionDaoImpl implements QuestionDao{
 
 			return question;
 		}
+		@Override
+		public List<TestRecord> getAllTestRecordsByUser(Long userId) {
+
+			List<TestRecord> list = new ArrayList<>();
+			String sql = "SELECT a.id, a.time, COUNT(b.id), "
+					   + "SUM(b.result), ROUND(SUM(b.result)/COUNT(b.id) *100) "
+					   + "FROM test_records a JOIN kaitou_status b "
+					   + "on (a.id = b.records_id) "
+					   + "WHERE a.user_id = ? "
+					   + "GROUP BY a.id, a.time "
+					   + "ORDER BY a.time";
+
+			try(Connection conn = dataSource.getConnection();
+				PreparedStatement stmt = conn.prepareStatement(sql);){
+					stmt.setString(1, userId.toString());
+					ResultSet rs = stmt.executeQuery();
+					while(rs.next()){
+						TestRecord testRecord = new TestRecord();
+						testRecord.setId(rs.getLong(1));
+						testRecord.setDate(rs.getTimestamp(2));
+						testRecord.setTotalCount(rs.getInt(3));
+						testRecord.setCorrectCount(rs.getInt(4));
+						testRecord.setPercentage(rs.getInt(5));
+						list.add(testRecord);
+					}
+				}catch(Exception e){
+					e.printStackTrace();
+				}
+			return list;
+		}
+
 
 
 }

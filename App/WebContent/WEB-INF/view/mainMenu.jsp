@@ -30,7 +30,8 @@
 
 </div>
 <a href="${pageContext.request.contextPath}/login/nendobetu">年度別モード</a><br>
-<a href="${pageContext.request.contextPath}/login/mogi">模擬試験モード</a>
+<a href="${pageContext.request.contextPath}/login/mogi">模擬試験モード</a><br>
+<a href="${pageContext.request.contextPath}/login/mypage">学習履歴/アカウント情報</a>
 <div id="message"></div>
 <form method="post" action="${pageContext.request.contextPath}/login/mainmenu" id="select_class">
 
