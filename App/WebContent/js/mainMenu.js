@@ -1,4 +1,7 @@
 $(document).ready(function(){
+	//セッションストレージのクリア
+	sessionStorage.clear();
+
 	$('#select_class').submit(function(){
 		var count = $('input[name="subid"]:checked').length;
 		if(0==count){

@@ -5,7 +5,7 @@
 <html>
 <head>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-<script src="${pageContext.request.contextPath}/js/meinMenu.js"></script>
+<script src="${pageContext.request.contextPath}/js/mainMenu.js"></script>
 
 
 <link href="${pageContext.request.contextPath}/css/bootstrap.min.css" rel="stylesheet">

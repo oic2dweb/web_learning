@@ -64,7 +64,6 @@ public class MondaiAjax extends HttpServlet {
 		Question que = qes.get(i);
 		HashMap<String,String> map = new HashMap<String,String>();
 		map.put("pagenumber", String.valueOf(i + 1));
-		map.put("id", String.valueOf(que.getId()));
 		map.put("question",que.getQuestion());
 		map.put("ans1",que.getAns1());
 		map.put("ans2",que.getAns2());
@@ -72,6 +71,7 @@ public class MondaiAjax extends HttpServlet {
 		map.put("ans4",que.getAns4());
 		map.put("kaisetu",que.getKaisetu());
 		map.put("sei", que.getSei());
+		map.put("id", String.valueOf(que.getId()));
 
 		Gson gson = new Gson();
 		 json = gson.toJson(map);

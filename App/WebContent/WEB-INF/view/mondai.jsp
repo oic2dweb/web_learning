@@ -13,11 +13,9 @@
 <title>OIC基本情報技術者試験　午前対策サイト</title>
 </head>
 <body>
-
-<span id="pagenumber"></span>/${fn:length(question)}問
-<input type="hidden" id="allque" value="${fn:length(question)}">
-<div id="question"></div><br><br>
-
+	<span id="pagenumber"></span>/${fn:length(question)}問
+	<input type="hidden" id="allque" value="${fn:length(question)}">
+	<div id="question"></div><br><br>
 	<label><input type="radio" name="ans" value="ア">ア：<span id="ans1"></span></label><br>
 	<label><input type="radio" name="ans" value="イ">イ：<span id="ans2"></span></label><br>
 	<label><input type="radio" name="ans" value="ウ">ウ：<span id="ans3"></span></label><br>
@@ -28,9 +26,8 @@
 	<input type="button" id="status" value="回答状況" onclick="window.location='${pageContext.request.contextPath}/login/kaitoustatus'">
 	<input type="button" id="result" value="回答結果へ" onclick="window.location='${pageContext.request.contextPath}/login/kaitouresult'">
 	<br><br>
-	<div id="kaisetu"></div>
-	<br><br>
+	<div id="sei"></div>
+	<div id="kaisetu"></div><br><br>
 	<input type="button" id="" value="メインメニューへ" onclick="window.location='${pageContext.request.contextPath}/login/mainmenu'">
-
 </body>
 </html>

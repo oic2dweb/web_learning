@@ -1,5 +1,13 @@
 package app.service;
 
-public class KaitouStatusService {
+import app.model.KaitouStatus;
+import app.persistence.KaitouStatusDao;
+import app.persistence.KaitouStatusDaoImpl;
 
+public class KaitouStatusService {
+	KaitouStatusDao ksDao = new KaitouStatusDaoImpl();
+
+	public boolean create(KaitouStatus status){
+		return ksDao.create(status);
+	}
 }

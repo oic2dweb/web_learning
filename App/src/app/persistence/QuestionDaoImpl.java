@@ -27,6 +27,7 @@ public class QuestionDaoImpl implements QuestionDao{
 
 				while(rs.next()){
 					qes = new Question();
+					qes.setId(rs.getInt("id"));
 					qes.setQuestion(rs.getString("question"));
 					qes.setRonten(rs.getString("ronten"));
 					qes.setAns1(rs.getString("ans1"));
