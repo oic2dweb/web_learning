@@ -2,7 +2,6 @@ package app.controller;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Map;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -13,7 +12,7 @@ import javax.servlet.http.HttpSession;
 
 import app.model.Question;
 import app.service.QuestionService;
-import app.service.YearService;
+
 
 /**
  * Servlet implementation class MogiController
@@ -21,15 +20,12 @@ import app.service.YearService;
 @WebServlet("/login/mogi")
 public class MogiController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	private YearService yearService = new YearService();
+
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-		Map<Integer,String> year = yearService.getYear();
-		request.setAttribute("year", year);
 
 		request.getRequestDispatcher("/WEB-INF/view/mogi.jsp").forward(request, response);
 	}

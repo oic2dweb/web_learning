@@ -1,6 +1,7 @@
 package app.listener;
 
 import java.util.ArrayList;
+import java.util.Map;
 
 import javax.servlet.ServletContext;
 import javax.servlet.ServletContextEvent;
@@ -9,6 +10,8 @@ import javax.servlet.annotation.WebListener;
 
 import app.service.QuestionService;
 import app.service.QuestionSubClassService;
+import app.service.YearService;
+
 
 /**
  * Application Lifecycle Listener implementation class BootListener
@@ -52,6 +55,11 @@ public class BootListener implements ServletContextListener {
         ArrayList<Integer> count = questionService.getClassCount(sql.toString());
         ServletContext app = arg0.getServletContext();
         app.setAttribute("count", count);
+
+        //年度選択プルダウンメニューの要素を取得
+        YearService yearService = new YearService();
+        Map<Integer,String> year = yearService.getYear();
+        app.setAttribute("year",year );
     }
 
 }
