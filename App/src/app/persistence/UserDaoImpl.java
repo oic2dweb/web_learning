@@ -43,7 +43,7 @@ public class UserDaoImpl implements UserDao {
 			//DBとの接続
 		try(Connection conn = dataSource.getConnection();
 			//SQL文を用意	　attributeはメールもしくはユーザーID
-			PreparedStatement stmt = conn.prepareStatement("INSERT INTO users (name,kana,username,password,email) VALUES(?,?,?,?,?)");){
+			PreparedStatement stmt = conn.prepareStatement("INSERT INTO users (name,kana,username,password,email) VALUES(?,?,?,md5(?),?)");){
 
 			//SQL文に値をセット
 			stmt.setString(1, user.getName());
@@ -70,7 +70,7 @@ public class UserDaoImpl implements UserDao {
 			//Dbとの接続
 		try(Connection conn = dataSource.getConnection();
 			//SQL文を用意
-			PreparedStatement stmt = conn.prepareStatement("SELECT COUNT(*) FROM users WHERE email = ? and password = ?");){
+			PreparedStatement stmt = conn.prepareStatement("SELECT COUNT(*) FROM users WHERE email = ? and password = md5(?)");){
 			//SQL文に値をセット
 			stmt.setString(1, email);
 			stmt.setString(2, password);
@@ -129,11 +129,11 @@ public class UserDaoImpl implements UserDao {
 			ResultSet result = stmt.executeQuery();
 			result.next();
 			id = result.getInt("id");
-			
+
 		}catch(Exception e){
 			e.printStackTrace();
 		}
-		return id;		
+		return id;
 	}
 	@Override
 	public User getUser(Long id) {

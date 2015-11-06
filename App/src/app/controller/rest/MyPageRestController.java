@@ -14,9 +14,9 @@ import app.service.MyPageService;
 
 @Path("/mypage")
 public class MyPageRestController {
-	
+
 	private MyPageService myPageService = new MyPageService();
-	
+
 	@GET
 	@Path("/testRecords/all")
 	@Produces("application/json")

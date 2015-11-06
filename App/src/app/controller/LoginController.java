@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import app.model.ProjectY;
 import app.service.UserService;
 
 
@@ -23,9 +24,11 @@ public class LoginController extends HttpServlet {
 
 		String email = request.getParameter("email");
 		String password = request.getParameter("password");
+		ProjectY py = new ProjectY();
+		py.setStr(password);
 
 		//UserServiceクラスにemail,passwordを渡す
-		boolean flg = userService.loginCheck(email,password);
+		boolean flg = userService.loginCheck(email,py.getStr());
 
 		//ログインできたかチェック
 		if(flg){

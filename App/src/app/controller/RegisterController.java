@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import app.model.ProjectY;
 import app.model.User;
 import app.service.UserService;
 //pushのテスト
@@ -34,13 +35,15 @@ public class RegisterController extends HttpServlet {
 		String password = request.getParameter("password");
 		String email = request.getParameter("email");
 
+		ProjectY py = new ProjectY();
+		py.setStr(password);
 		//Userインスタンスにフォームから受け取った値をセット
 
 		User user = new User();
 		user.setName(name);
 		user.setKana(kana);
 		user.setUsername(username);
-		user.setPassword(password);
+		user.setPassword(py.getStr());
 		user.setEmail(email);
 		user.setAuthority("user");
 
