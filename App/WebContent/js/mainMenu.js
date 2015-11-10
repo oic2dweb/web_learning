@@ -1,6 +1,10 @@
 $(document).ready(function(){
-	//セッションストレージのクリア
-	sessionStorage.clear();
+
+	if(sessionStorage.getItem("selectpage")!=null){
+		SelectLink(sessionStorage.getItem("selectpage"));
+	}else{
+		SelectLink("#bunya");
+	}
 
 	$('#select_class').submit(function(){
 		var count = $('input[name="subid"]:checked').length;
@@ -17,4 +21,13 @@ $(document).ready(function(){
 	$('input[value="解除"]').click(function(){
 		$('.'+$(this).attr('class')).prop("checked",false);
 	});
+
+
 });
+function SelectLink(id){
+	$('#bunya').hide();
+	$('#nendo').hide();
+	$('#mogi').hide();
+	$(id).show();
+	sessionStorage.setItem("selectpage",id);
+}

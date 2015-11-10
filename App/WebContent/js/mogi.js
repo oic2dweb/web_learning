@@ -1,7 +1,8 @@
 $(document).ready(function(){
 	//セッションストレージのクリア
-	//sessionStorage.clear();
+	
 	$("#kaishi").submit(function(){
-
+		sessionStorage.clear();
+		sessionStorage.setItem("count",0);
 	});
 });

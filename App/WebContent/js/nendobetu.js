@@ -1,8 +1,8 @@
 $(document).ready(function(){
 	//セッションストレージのクリア
-	sessionStorage.clear();
+	//sessionStorage.clear();
 	
-	$("select").change(function () {
+	$("#yeardata").change(function () {
 		$("#seyear").submit();
 	});
 	

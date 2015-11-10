@@ -15,23 +15,24 @@ $(document).ready(function(){
             datatype:"json",
             async: false,
             success: function(data){
-            	for(var i=0;i<sessionStorage.length;i++){
-            		sei[i] = data[i].ans
+            	for(var i=1;i<=sessionStorage.getItem("count");i++){
+            		sei[i] = data[i-1].ans
             	}
             }
         });
 
 		$("#kaitouresult").append("<tr>"+"<td>問</td>"+ "<td>回答</td>"+"<td>正誤</td>"+"<td>復習チェック※</td>"+"</tr>");
-		for (var i=0; i < sessionStorage.length; i++) {
-			var key = sessionStorage.key(i);
-			var answer = JSON.parse(sessionStorage.getItem(key));
+		for (var i=1; i <= sessionStorage.getItem("count"); i++) {
+			//var key = sessionStorage.key(i);
+			//alert(key);
+			var answer = JSON.parse(sessionStorage.getItem(i));
 			var mondaiid = answer.mondaiid;
 			var pagenumber = answer.pagenum - 1;
 			var seigo = "×";
 			if(answer.uans == sei[i]){
 				seigo = "○";
 			}
-			$("#kaitouresult").append("<tr>"+"<td class='kaisetsu'><a href='"+ CONTEXT_PATH + "login/fukushu?pagenumber=" + pagenumber + "'>" + key + "</a></td>"+ "<td>"+answer.uans+"</td>"+"<td>"+seigo+"</td>"+"<td><input type='checkbox' name='revision"+i+"'>復習</td>"+"</tr>");
+			$("#kaitouresult").append("<tr>"+"<td class='kaisetsu'><a href='"+ CONTEXT_PATH + "login/fukushu?pagenumber=" + pagenumber + "'>" + i + "</a></td>"+ "<td>"+answer.uans+"</td>"+"<td>"+seigo+"</td>"+"<td><input type='checkbox' name='revision"+i+"'>復習</td>"+"</tr>");
 			//回答結果を保存するためにサーバに送信するデータの記述
 			$("#kaitouresult").append("<input type='hidden' name='seigo' value='"+seigo+"'>");
 		}

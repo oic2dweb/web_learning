@@ -1,7 +1,7 @@
 angular.module('app', ['ngRoute', 'angularChart'])
-	
+
 	.config(['$routeProvider', function($routeProvider){
-		$routeProvider.when('/', {
+		$routeProvider.when('/mypage', {
 			templateUrl:CONTEXT_PATH + 'routing?dest=testRecords',
 		})
 		.when('/userUpdate', {
@@ -9,14 +9,14 @@ angular.module('app', ['ngRoute', 'angularChart'])
 		})
 		.when('/testRecords', {
 			templateUrl:CONTEXT_PATH + 'routing?dest=testRecords'
-		});	
+		});
 	}])
-	
+
 	.service('MyPageService', ['$http', '$log', function($http, $log){
 		var service = this;
 		var data = {};
 		var dimensions = {};
-		
+
 		var getUser = function(){
 			return $http({
 				method:'POST',
@@ -26,16 +26,16 @@ angular.module('app', ['ngRoute', 'angularChart'])
 				return response.data;
 			});
 		}
-		var getAllTestRecords = function(){			
+		var getAllTestRecords = function(){
 			return $http({
 				method:'GET',
 				url:CONTEXT_PATH + 'rest/mypage/testRecords/all',
 			})
 			.then(function(response){
 				return response.data;
-			});		
+			});
 		};
-		
+
 		dimensions = {
 			percentage:{
 				axis:'y',
@@ -50,7 +50,7 @@ angular.module('app', ['ngRoute', 'angularChart'])
 				postfix:'回',
 			},
 		};
-		
+
 		service.getUser = getUser;
 		service.options = {
 				data: data,
@@ -59,7 +59,7 @@ angular.module('app', ['ngRoute', 'angularChart'])
 			};
 		service.getAllTestRecords = getAllTestRecords;
 	}])
-	
+
 	.controller('MyPageController', ['MyPageService', '$log',function(MyPageService, $log){
 		var ctrl = this;
 		ctrl.options = MyPageService.options;

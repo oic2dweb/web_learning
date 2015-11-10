@@ -19,13 +19,33 @@ import app.persistence.QuestionDaoImpl;
 
 public class MainMenuController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {	
+		request.setCharacterEncoding("UTF-8");
+		HttpSession session = request.getSession();
+		session.removeAttribute("question");
+		String nowyear = request.getParameter("year");
+		if(nowyear!=null&&!nowyear.equals("")){
+			ArrayList<Question> que2 = SqlCreate(nowyear);
+			session.setAttribute("question", que2);
+			request.setAttribute("nowyear", nowyear);
+			
+		}
 		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/view/mainMenu.jsp");
 		rd.forward(request, response);
+	}
+	//選択された年度の問題情報をセッションに格納
+	public ArrayList<Question> SqlCreate(String year){
+		String sql = "select f.question,f.ronten,f.ans1,f.ans2,f.ans3,f.ans4,f.sei,f.kaisetu,"
+					+ "s.subclass_name from question_fe f join question_subclass" +
+						" s on f.subclass_id = s.subclass_id where year_id = " + year;
+
+		QuestionDao quedao = new QuestionDaoImpl();
+		ArrayList<Question> qes = quedao.getNendobetu(sql);
+		return qes;
+
 	}
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");

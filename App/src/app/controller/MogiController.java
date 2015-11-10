@@ -21,21 +21,12 @@ import app.service.QuestionService;
 public class MogiController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-		request.getRequestDispatcher("/WEB-INF/view/mogi.jsp").forward(request, response);
-	}
-
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
-		String year = request.getParameter("yeardata");
+		String year = request.getParameter("years");
 		String sql = "select * from question_fe where year_id = " + year;
 		QuestionService questionService = new QuestionService();
 		ArrayList<Question> qes = questionService.getQuestion(sql);

@@ -5,12 +5,24 @@
 <html>
 <head>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script src="${pageContext.request.contextPath}/js/config.js"></script>
 <script src="${pageContext.request.contextPath}/js/mainMenu.js"></script>
-
+<script src="${pageContext.request.contextPath}/js/mogi.js"></script>
+<script src="${pageContext.request.contextPath}/js/nendobetu.js"></script>
 
 <link href="${pageContext.request.contextPath}/css/bootstrap.min.css" rel="stylesheet">
 <link href="${pageContext.request.contextPath}/css/bootstrap-responsive.min.css" rel="stylesheet">
 <link href="${pageContext.request.contextPath}/css/title.css" rel="stylesheet">
+<link href="${pageContext.request.contextPath}/css/nendobetu.css" rel="stylesheet">
+
+<!-- 学習履歴/アカウント情報のスクリプトCSS -->
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/c3.css" />
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.2/angular.min.js"></script>
+<script src="https://code.angularjs.org/1.4.2/angular-route.min.js"></script>
+<script src="${pageContext.request.contextPath}/js/d3.js"></script>
+<script src="${pageContext.request.contextPath}/js/c3.js"></script>
+<script src="${pageContext.request.contextPath}/js/angular-chart.js"></script>
+<script src="${pageContext.request.contextPath}/js/mypage.js"></script>
 
 <title>OIC基本情報技術者試験　午前対策サイト</title>
 
@@ -23,18 +35,17 @@
   メインメニュー
   </h1>
 
-  <ul class="breadrumb">
-    <li><a href="${pageContext.request.contextPath}/welcome">ログインメニュー</a><span class="divider"> > </span></li>
-    <li class="active"><a href="#">メインメニュー</a></li>
-  </ul>
-
 </div>
-<a href="${pageContext.request.contextPath}/login/nendobetu">年度別モード</a><br>
-<a href="${pageContext.request.contextPath}/login/mogi">模擬試験モード</a><br>
-<a href="${pageContext.request.contextPath}/login/mypage">学習履歴/アカウント情報</a>
+<ul>
+	<li><a href="#bunya" onclick="SelectLink('#bunya')">分野別モード</a></li>
+	<li><a href="#nendo" onclick="SelectLink('#nendo')">年度別モード</a></li>
+	<li><a href="#mogi" onclick="SelectLink('#mogi')">模擬試験モード</a></li>
+	<li><a href="#mypage" onclick="SelectLink('#mypage')">学習履歴/アカウント情報</a></li>
+</ul>
+<div id="bunya">
 <div id="message"></div>
-<form method="post" action="${pageContext.request.contextPath}/login/mainmenu" id="select_class">
 
+<form method="post" action="${pageContext.request.contextPath}/login/mainmenu" id="select_class">
 <table>
 	<tbody>
 		<tr>
@@ -114,6 +125,47 @@
 </table>
 <input type="submit" value="出題開始">
 </form>
+</div>
+
+<div id="mogi">
+出題年度
+<form id = "kaishi" method = "post" action="${pageContext.request.contextPath}/login/mogi">
+<select name="years">
+<c:forEach var="years" items="${year}"><option value="${years.key}">${years.value}</option></c:forEach>
+</select>
+<input type="submit" value="出題開始">
+</form>
+</div>
+
+<div id="nendo">
+	テスト
+	出題年度
+	<form id="seyear" method="get" action="${pageContext.request.contextPath}/login/mainmenu">
+		<select id="yeardata" name="year">
+			<option value="">年度をお選びください。</option><c:forEach var="years" items="${year}"><option value="${years.key}" <c:if test="${years.key==nowyear}">selected</c:if>>${years.value}</option></c:forEach>
+		</select>
+	</form>
+
+	<table class="queall" >
+		<tr>
+			<th>NO</th><th>論点</th><th>分類</th>
+		</tr>
+
+		<c:forEach var="qes" items="${question}" varStatus="status">
+			<tr>
+				<td>
+					<a href="${pageContext.request.contextPath}/login/nenmondai?pagenumber=${status.count-1}"><c:out value="${status.count}"></c:out></a>
+				</td>
+				<td><c:out value="${qes.ronten}"></c:out></td>
+				<td><c:out value="${qes.subclass}"></c:out></td>
+			</tr>
+		</c:forEach>
+	</table>
+</div>
+
+<div>
+	<div ng-app="app" ng-view></div>
+</div>
 
 </body>
 </html>

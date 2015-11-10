@@ -79,7 +79,11 @@ $(document).ready(function(){
 					}
 					$("#kaisetu").hide();
 					$("#sei").hide();
-
+					if(sessionStorage.getItem("count")<$('#pagenumber').html()){
+						sessionStorage.setItem("count",$('#pagenumber').html());
+					}
+					
+					
 				}
 				});
 		}
