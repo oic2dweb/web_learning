@@ -67,6 +67,8 @@ angular.module('app', ['ngRoute', 'angularChart'])
 			for(i = 0; i < data.length; i++){
 				data[i].times = i+1;
 			}
+			//data = data.slice(data.length - 10 , data.length);
+			$log.log(data);
 			ctrl.options.data = data;
 		});
 		MyPageService.getUser().then(function(user){
