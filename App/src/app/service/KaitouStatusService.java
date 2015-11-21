@@ -10,4 +10,7 @@ public class KaitouStatusService {
 	public boolean create(KaitouStatus status){
 		return ksDao.create(status);
 	}
+	public void change(String questionid,Integer userid){
+		ksDao.RevChange(questionid,userid);
+	}
 }

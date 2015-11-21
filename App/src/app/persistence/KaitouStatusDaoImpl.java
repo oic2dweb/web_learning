@@ -28,10 +28,26 @@ public class KaitouStatusDaoImpl implements KaitouStatusDao{
 
 		return true;
 
-	}catch(Exception e) {
+		}catch(Exception e) {
 		return false;
+		}
 	}
-}
+
+	@Override
+	public void RevChange(String questionid,Integer userid) {
+		String sql = "update kaitou_status s join " +
+				"test_records t on s.records_id = t.id " +
+				"set revision = 0 " +
+				"where s.question_id = " + questionid + " and " +
+				"t.user_id = " + userid;
+		try(Connection conn = dataSource.getConnection();
+				PreparedStatement stmt = conn.prepareStatement(sql);){
+				stmt.executeUpdate();
+				}catch(Exception e){
+				e.printStackTrace();
+			}
+
+	}
 
 
 }

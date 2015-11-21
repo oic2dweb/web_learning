@@ -9,6 +9,7 @@
 <script src="${pageContext.request.contextPath}/js/mainMenu.js"></script>
 <script src="${pageContext.request.contextPath}/js/mogi.js"></script>
 <script src="${pageContext.request.contextPath}/js/nendobetu.js"></script>
+<script src="${pageContext.request.contextPath}/js/hukusyu.js"></script>
 
 <link href="${pageContext.request.contextPath}/css/bootstrap.min.css" rel="stylesheet">
 <link href="${pageContext.request.contextPath}/css/bootstrap-responsive.min.css" rel="stylesheet">
@@ -40,6 +41,7 @@
 	<li><a href="#bunya" onclick="SelectLink('#bunya')">分野別モード</a></li>
 	<li><a href="#nendo" onclick="SelectLink('#nendo')">年度別モード</a></li>
 	<li><a href="#mogi" onclick="SelectLink('#mogi')">模擬試験モード</a></li>
+	<li><a href="#hukusyu" onclick="SelectLink('#hukusyu')">復習モード</a></li>
 	<li><a href="#mypage" onclick="SelectLink('#mypage')">学習履歴/アカウント情報</a></li>
 </ul>
 <div id="bunya">
@@ -165,6 +167,11 @@
 
 <div>
 	<div ng-app="app" ng-view></div>
+</div>
+
+<div id="hukusyu" class="queall">
+	<table id="hukuall"></table>
+
 </div>
 
 </body>

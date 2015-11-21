@@ -28,6 +28,7 @@ function SelectLink(id){
 	$('#bunya').hide();
 	$('#nendo').hide();
 	$('#mogi').hide();
+	$('#hukusyu').hide();
 	$(id).show();
 	sessionStorage.setItem("selectpage",id);
 }

@@ -22,16 +22,16 @@ public class MainMenuController extends HttpServlet {
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {	
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
 		HttpSession session = request.getSession();
-		session.removeAttribute("question");
+		//session.removeAttribute("question");
 		String nowyear = request.getParameter("year");
 		if(nowyear!=null&&!nowyear.equals("")){
 			ArrayList<Question> que2 = SqlCreate(nowyear);
 			session.setAttribute("question", que2);
 			request.setAttribute("nowyear", nowyear);
-			
+
 		}
 		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/view/mainMenu.jsp");
 		rd.forward(request, response);

@@ -11,4 +11,5 @@ public interface QuestionDao {
 	public ArrayList<Integer> getClassCount(String sql);
 	public ArrayList<Question> getNendobetu(String sql);
 	public List<TestRecord> getAllTestRecordsByUser(Long userId);
+	public ArrayList<Question> getHukusyu(String sql);
 }

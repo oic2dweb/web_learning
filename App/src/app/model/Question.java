@@ -13,6 +13,7 @@ public class Question {
 	private String uans = "　";
 	private String sei;
 	private String kaisetu;
+	private String yearname;
 	public String getQuestion() {
 		return question;
 	}
@@ -78,6 +79,12 @@ public class Question {
 	}
 	public void setId(int id) {
 		this.id = id;
+	}
+	public String getYearname() {
+		return yearname;
+	}
+	public void setYearname(String yearname) {
+		this.yearname = yearname;
 	}
 
 

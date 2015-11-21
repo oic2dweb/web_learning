@@ -29,7 +29,7 @@ public class KaitouResultContololler extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
-		
+
 		HttpSession session = request.getSession();
 		int userid = (int) session.getAttribute("userid");//ユーザidの取得
 		TestRecordsDao trDao = new TestRecordsDaoImpl();
@@ -38,20 +38,20 @@ public class KaitouResultContololler extends HttpServlet {
 		@SuppressWarnings("unchecked")
 		ArrayList<Question> questionList = (ArrayList<Question>)session.getAttribute("question");
 		Question question;
-		
+
 		int result;
 		int revision;
 		String[] seigo = request.getParameterValues("seigo");	//フォームから正誤の取得
-		
+
 		KaitouStatus ks= new KaitouStatus();	//Daoに渡すクラスのインスタンス化
 		ks.setRecord_id(record_id);
-		  
+
 		//kaitoustatusテーブルに保存
 		KaitouStatusDao kaitouStatusDao = new KaitouStatusDaoImpl();
 		for(int i=0;i<questionList.size();i++){
 			 question = questionList.get(i);
 			 ks.setQuestion_id(question.getId());
-			 
+
 			 //正誤の変換
 			 if(seigo[i].equals("○")){
 				 result = 1;
@@ -59,15 +59,15 @@ public class KaitouResultContololler extends HttpServlet {
 				 result = 0;
 			 }
 			 ks.setResult(result);
-			 
+
 			 //復習チェックの確認
-			 if(request.getParameter("revision"+i)!=null){
+			 if(request.getParameter("revision"+(i+1))!=null){
 				 revision = 1;
 			 }else{
 				 revision = 0;
 			 }
 			 ks.setRevision(revision);
-			 
+
 			 kaitouStatusDao.create(ks);
 		}
 

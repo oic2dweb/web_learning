@@ -16,4 +16,8 @@ public class QuestionService {
 	public ArrayList<Integer> getClassCount(String sql){
 		return questionDao.getClassCount(sql);
 	}
+
+	public ArrayList<Question> getHukusyu(String sql){
+		return questionDao.getHukusyu(sql);
+	}
 }
