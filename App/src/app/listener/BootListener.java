@@ -1,5 +1,6 @@
 package app.listener;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.Map;
 
@@ -80,6 +81,12 @@ public class BootListener implements ServletContextListener {
         //question_subclassテーブルの一覧を取得
         ArrayList<SubClass> subClass = questionSubClassService.getSubClass();
         app.setAttribute("subClass", subClass);
+        
+        //wlsのフォルダがない場合のみ作成
+        File newfile = new File("c:\\wls");
+		if(newfile.mkdir()){
+			System.out.println("ディレクトリの作成に成功しました");
+		}
     }
 
 }
