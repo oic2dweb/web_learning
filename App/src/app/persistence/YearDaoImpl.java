@@ -132,4 +132,20 @@ public class YearDaoImpl implements YearDao{
 		}
 
 	}
+
+	@Override
+	public String getName(int year_id) {
+		String year_name = "";
+		try(Connection conn = dataSource.getConnection();
+				PreparedStatement stmt = conn.prepareStatement("select year_name from year where year_id = ?");){
+			stmt.setInt(1, year_id);
+			ResultSet result = stmt.executeQuery();
+			if(result.next()){
+				year_name = result.getString("year_name");
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return year_name;
+	}
 }

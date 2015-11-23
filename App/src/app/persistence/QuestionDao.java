@@ -20,4 +20,5 @@ public interface QuestionDao {
 	public ArrayList<EntryQuestion> getList(int yearid);
 	public int getQuantity(int year_id);
 	public boolean delete(int year_id);
+	public int getMaxNo(int year_id);
 }

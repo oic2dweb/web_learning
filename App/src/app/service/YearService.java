@@ -33,5 +33,10 @@ public class YearService {
 	public void publicYear(int no){
 		yearDao.publicYear(no);
 	}
+	public String getName(int year_id){
+		return yearDao.getName(year_id);
+		
+		
+	}
 
 }

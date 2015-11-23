@@ -39,4 +39,7 @@ public class QuestionService {
 	public boolean delete(int year_id){
 		return questionDao.delete(year_id);
 	}
+	public int getMaxNo(int year_id) {
+		return questionDao.getMaxNo(year_id);
+	}
 }

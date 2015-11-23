@@ -92,7 +92,6 @@ public class AdminMainMenuController extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 
 		HttpSession session = request.getSession();
-
 		String nowyear = request.getParameter("year");
 		if(nowyear!=null&&!nowyear.equals("")){
 			request.setAttribute("nowyear", nowyear);
@@ -101,7 +100,6 @@ public class AdminMainMenuController extends HttpServlet {
 		//公開フラグのない年度情報を取得
 		Map<Integer,String> noflgyear = yearService.getYear(0);
 		session.setAttribute("noflgyear", noflgyear);
-
 		//年度idをkeyとして公開フラグのない年度の問題数を取得
 		Map<Integer,Integer> quantity = new LinkedHashMap<Integer,Integer>(){
 			{

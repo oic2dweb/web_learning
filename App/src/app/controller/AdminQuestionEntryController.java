@@ -139,9 +139,9 @@ public class AdminQuestionEntryController extends HttpServlet {
 		case "back":session.setAttribute("qnumber", --no);break;
 		case "next":session.setAttribute("qnumber", ++no);break;
 		case "list":response.sendRedirect(request.getContextPath()+"/eb430180f1006fb41dd1e4eb4cdb508d/login/list");break;
-		case "onetimesave":response.sendRedirect(request.getContextPath()+"/eb430180f1006fb41dd1e4eb4cdb508d/login/menu");break;
+		case "onetimesave":response.sendRedirect(request.getContextPath()+"/eb430180f1006fb41dd1e4eb4cdb508d/login/mainmenu");break;
 		case "posting":yearService.publicYear(yearid);
-			response.sendRedirect(request.getContextPath()+"/eb430180f1006fb41dd1e4eb4cdb508d/login/menu");break;
+			response.sendRedirect(request.getContextPath()+"/eb430180f1006fb41dd1e4eb4cdb508d/login/mainmenu");break;
 		case "preview":response.sendRedirect(request.getContextPath()+"/eb430180f1006fb41dd1e4eb4cdb508d/login/preview");break;
 		}
 

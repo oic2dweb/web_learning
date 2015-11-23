@@ -290,43 +290,54 @@ public class QuestionDaoImpl implements QuestionDao{
 		}
 
 		//指定した年度の問題数を取得
-				@Override
-				public int getQuantity(int year_id){
-					int quantity = 0;
-					try(Connection conn = dataSource.getConnection();
-							PreparedStatement stmt = conn.prepareStatement("select count(*) from question_fe where year_id = ?");){
-							//SQL文に値をセット
-							stmt.setInt(1, year_id);
-
-							ResultSet result = stmt.executeQuery();
-							result.next();
-
-							quantity = result.getInt("count(*)");
-
-						}catch(Exception e){
-							e.printStackTrace();
-						}
-					return quantity;
+		@Override
+		public int getQuantity(int year_id){
+			int quantity = 0;
+			try(Connection conn = dataSource.getConnection();
+					PreparedStatement stmt = conn.prepareStatement("select count(*) from question_fe where year_id = ?");){
+					//SQL文に値をセット
+					stmt.setInt(1, year_id);
+					ResultSet result = stmt.executeQuery();
+					result.next();
+					quantity = result.getInt("count(*)");
+				}catch(Exception e){
+					e.printStackTrace();
 				}
+			return quantity;
+		}
 
-				@Override
-				public boolean delete(int year_id){
-					//DBとの接続
-					try(Connection conn = dataSource.getConnection();
-						//SQL文を用意
-						PreparedStatement stmt = conn.prepareStatement("delete from question_fe where year_id=?");){
+		@Override
+		public boolean delete(int year_id){
+			//DBとの接続
+			try(Connection conn = dataSource.getConnection();
+				//SQL文を用意
+				PreparedStatement stmt = conn.prepareStatement("delete from question_fe where year_id=?");){
+				//SQL文に値をセット
+				stmt.setInt(1, year_id);
+				//SQl文を実行
+				stmt.executeUpdate();
+				return true;
+			}catch(Exception e) {
+				return false;
+			}
+		}
 
-						//SQL文に値をセット
-						stmt.setInt(1, year_id);
+		@Override
+		public int getMaxNo(int year_id) {
 
-						//SQl文を実行
-						stmt.executeUpdate();
-						return true;
-
-					}catch(Exception e) {
-						return false;
-					}
+			int no=1;
+			try(Connection conn = dataSource.getConnection();
+					PreparedStatement stmt = conn.prepareStatement("select max(no) as no from question_fe where year_id = ?");){
+				stmt.setInt(1, year_id);
+				ResultSet result = stmt.executeQuery();
+				if(result.next()){
+					no = result.getInt("no");
 				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+			return no;
 
+		}
 
 }

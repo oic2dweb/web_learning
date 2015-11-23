@@ -11,4 +11,5 @@ public interface YearDao {
 	public int getId(String year_name);
 	public Map<Integer,String> getYear(int flg);
 	public void publicYear(int no);	//引数で渡した年度IDを公開状態にする
+	public String getName(int year_id);
 }

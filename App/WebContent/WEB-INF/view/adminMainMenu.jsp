@@ -4,6 +4,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+<meta charset="UTF-8">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 <script src="${pageContext.request.contextPath}/js/adminMainMenu.js"></script>
 
@@ -80,7 +81,7 @@
 			<tr>
 				<td>${years.value}</td>
 				<td>${quantity[years.key]}/80</td>
-				<td><a href="${pageContext.request.contextPath}/eb430180f1006fb41dd1e4eb4cdb508d/login/save?year_id=${years.key}&year_name=${years.value}">再開</a></td>
+				<td><a href="${pageContext.request.contextPath}/eb430180f1006fb41dd1e4eb4cdb508d/login/save?year_id=${years.key}">再開</a></td>
 				<td><a href="${pageContext.request.contextPath}/eb430180f1006fb41dd1e4eb4cdb508d/login/delete?year_id=${years.key}">削除</a></td>
 			</tr>
 		</c:forEach>
