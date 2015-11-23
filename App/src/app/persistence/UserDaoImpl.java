@@ -6,7 +6,9 @@ import java.sql.ResultSet;
 
 import javax.sql.DataSource;
 
+import app.model.ProjectY;
 import app.model.User;
+import app.model.UserTemp;
 
 public class UserDaoImpl implements UserDao {
 
@@ -156,5 +158,58 @@ public class UserDaoImpl implements UserDao {
 			e.printStackTrace();
 		}
 		return user;
+	}
+	public boolean update(UserTemp user) {
+
+		//DBとの接続
+		try(Connection conn = dataSource.getConnection();
+				//SQL文を用意
+				PreparedStatement stmt = conn.prepareStatement("UPDATE users SET "+ user.getAttribute()+"=? WHERE id=?");){
+
+				//SQL文に値をセット
+				stmt.setString(1, user.getValue());
+				stmt.setInt(2, user.getUser_id());
+
+				//SQl文を実行
+				stmt.executeUpdate();
+
+				return true;
+
+			}catch(Exception e) {
+				return false;
+			}
+	}
+
+	public boolean checkPassword(int id, String password) {
+
+		int flag = 0;
+		ProjectY py = new ProjectY();
+		py.setStr(password);
+
+			//Dbとの接続
+		try(Connection conn = dataSource.getConnection();
+			//SQL文を用意
+			PreparedStatement stmt = conn.prepareStatement("SELECT COUNT(*) FROM users WHERE id = ? and password = md5(?)");){
+			//SQL文に値をセット
+			stmt.setInt(1, id);
+			stmt.setString(2, py.getStr());
+			//実行結果の参照情報を格納するResultSet型の変数を用意する
+			ResultSet rs = stmt.executeQuery();
+			//もしレコード数が１以上だったら、trueを返す
+			if(rs.next()){
+				flag = rs.getInt(1);
+			}
+
+
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		//レコードがあればtrueを、なければfalseを返す
+		if(flag >= 1){
+			return true;
+		}else{
+			return false;
+		}
+
 	}
 }

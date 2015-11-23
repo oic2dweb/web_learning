@@ -1,6 +1,7 @@
 package app.service;
 
 import app.model.User;
+import app.model.UserTemp;
 import app.persistence.UserDao;
 import app.persistence.UserDaoImpl;
 
@@ -26,5 +27,11 @@ public class UserService {
 	}
 	public User getUser(Long userid){
 		return userDao.getUser(userid);
+	}
+	public boolean update(UserTemp user){
+		return userDao.update(user);
+	}
+	public boolean checkPassword(int id, String password){
+		return userDao.checkPassword(id, password);
 	}
 }
