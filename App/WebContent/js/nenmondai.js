@@ -11,8 +11,8 @@ $(document).ready(function(){
 			getque("next");
 		});
 		$("#open").click(function(){
-			$("#kaisetu").slideDown();
-			$("#sei").slideDown();
+			$('.kaisetu').slideDown();
+
 		});
 
 		//ラジオボタンの選択を変えた時の処理
@@ -67,9 +67,7 @@ $(document).ready(function(){
 					}else{
 						$("#next").show();
 					}
-					$("#kaisetu").hide();
-					$("#sei").hide();
-
+					$('.kaisetu').hide();
 				}
 				});
 		}

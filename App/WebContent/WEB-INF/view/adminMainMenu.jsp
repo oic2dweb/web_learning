@@ -65,7 +65,7 @@
 <form id="seyear" method="get" action="${pageContext.request.contextPath}/eb430180f1006fb41dd1e4eb4cdb508d/login/mainmenu">
 	<div class="form-group">
 	<select id="yeardata" name="year">
-		<option value="">年度をお選びください。</option><c:forEach var="years" items="${year}"><option value="${years.value}" <c:if test="${years.key==nowyear}">selected</c:if>>${years.value}</option></c:forEach>
+		<option value="">年度をお選びください。</option><c:forEach var="years" items="${year}"><option value="${years.key}" <c:if test="${years.key==nowyear}">selected</c:if>>${years.value}</option></c:forEach>
 	</select>
 	</div>
 	<div id="seyearbutton" class="form-group">

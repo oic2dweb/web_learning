@@ -32,6 +32,7 @@ public class AdminQuestionSaveController extends HttpServlet {
 		session.setAttribute("year_id",year_id);
 		session.setAttribute("year_name",year_name);
 		int no = questionService.getMaxNo(year_id);
+		
 		session.setAttribute("qnumber", no);
 		response.sendRedirect(request.getContextPath() + "/eb430180f1006fb41dd1e4eb4cdb508d/login/entry");
 	}

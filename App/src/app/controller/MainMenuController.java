@@ -40,7 +40,7 @@ public class MainMenuController extends HttpServlet {
 	public ArrayList<Question> SqlCreate(String year){
 		String sql = "select f.question,f.ronten,f.ans1,f.ans2,f.ans3,f.ans4,f.sei,f.kaisetu,"
 					+ "s.subclass_name from question_fe f join question_subclass" +
-						" s on f.subclass_id = s.subclass_id where year_id = " + year;
+						" s on f.subclass_id = s.subclass_id where year_id = " + year+" order by f.no";
 
 		QuestionDao quedao = new QuestionDaoImpl();
 		ArrayList<Question> qes = quedao.getNendobetu(sql);
@@ -51,12 +51,12 @@ public class MainMenuController extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		String[] subid = request.getParameterValues("subid");
 		StringBuffer sql = new StringBuffer();
-		sql.append("select * from question_fe where subclass_id in(");
+		sql.append("select q.id,q.question,q.ronten,q.ans1,q.ans2,q.ans3,q.ans4,q.sei,q.kaisetu from question_fe q join year y on q.year_id = y.year_id where q.subclass_id in(");
 		sql.append(subid[0]);
 		for(int i=1;i<subid.length;i++){
 			sql.append(","+subid[i]);
 		}
-		sql.append(")");
+		sql.append(") and y.flg = 1");
 		QuestionDao quedao = new QuestionDaoImpl();
 		ArrayList<Question> qes = quedao.getQustion(sql.toString());
 

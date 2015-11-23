@@ -35,9 +35,9 @@ $(document).ready(function(){
 	});
 	function sethuku(data){
 		$("#hukuall").html("");
-		$("#hukuall").append("<tr><th>NO</th><th>論点</th><th>出題年度</th><th>復習解除</th></tr>");
+		$("#hukuall").append("<tr class='info'><th>NO</th><th>論点</th><th>出題年度</th><th>復習解除</th></tr>");
 		for(var i=0; i<data.question.length; i++){
-    		$("#hukuall").append("<tr>"+"<td><a href='"+ CONTEXT_PATH + "login/nenmondai?pagenumber=" + (i) + "'>" + (i+1) + "</a></td>"+"<td>" + data.question[i].ronten + "</td>"+"<td>" + data.question[i].yearname + "</td>"+"<td><button class='btns btn btn-warning' name='" + data.question[i].id + "'>解除</button></td></tr>");
+    		$("#hukuall").append("<tr>"+"<td><a href='"+ CONTEXT_PATH + "login/nenmondai?pagenumber=" + (i) + "'>" + (i+1) + "</a></td>"+"<td>" + data.question[i].ronten + "</td>"+"<td>" + data.question[i].yearname + "</td>"+"<td><button class='btns btn btn-warning btn-xs' name='" + data.question[i].id + "'>解除</button></td></tr>");
     	//alert(data.question[1].ronten);
     	}
 	}

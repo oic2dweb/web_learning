@@ -27,7 +27,7 @@ public class MogiController extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
 		String year = request.getParameter("years");
-		String sql = "select * from question_fe where year_id = " + year;
+		String sql = "select * from question_fe where year_id = " + year+ " order by no";
 		QuestionService questionService = new QuestionService();
 		ArrayList<Question> qes = questionService.getQuestion(sql);
 

@@ -4,6 +4,9 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<script src="${pageContext.request.contextPath}/js/bootstrap.min.js"></script>
+
+<link href="${pageContext.request.contextPath}/css/bootstrap.min.css" rel="stylesheet">
 <title>OIC基本情報技術者試験　午前対策サイト</title>
 </head>
 <body>

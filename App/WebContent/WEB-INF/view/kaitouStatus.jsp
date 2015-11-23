@@ -7,12 +7,15 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 <script src="${pageContext.request.contextPath}/js/config.js"></script>
 <script src="${pageContext.request.contextPath}/js/kaitoustatus.js"></script>
+<script src="${pageContext.request.contextPath}/js/bootstrap.min.js"></script>
+
+<link href="${pageContext.request.contextPath}/css/bootstrap.min.css" rel="stylesheet">
 <title>OIC基本情報技術者試験　午前対策サイト</title>
 </head>
-<body>
+<body class="container">
 <h1>回答状況</h1>
-<table id="kaitoustatus"></table>
+<table id="kaitoustatus" class="table table-striped table-hover table-bordered"></table>
 
-<input type="button" name="mback" value="戻る" onclick="window.location='${pageContext.request.contextPath}/login/mondai'">
+<input type="button" name="mback" value="戻る" onclick="window.location='${pageContext.request.contextPath}/login/mondai'" class="btn btn-primary btn-lg">
 </body>
 </html>

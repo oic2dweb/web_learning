@@ -21,6 +21,9 @@ $(document).ready(function(){
 	$('input[value="解除"]').click(function(){
 		$('.'+$(this).attr('name')).prop("checked",false);
 	});
+	$('#nendobetu').click(function(){
+		$('#nendoquestion').html("");
+	});
 
 
 });

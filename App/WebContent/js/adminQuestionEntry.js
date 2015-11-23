@@ -1,8 +1,7 @@
 var mainClass;
 var subClass;
 $(document).ready(function(){
-
-
+	//分類をサーバーから取ってくる処理
 	var request = $.ajax({
 		type:"POST",
 		url:CONTEXT_PATH+"AdminQuestionEntryAjax",
@@ -64,11 +63,13 @@ $(document).ready(function(){
 		}
 	});
 
+	//解説画像が選択された時のイベント
 	$('input[name="kimg"]').change(function(){
 		$('input[name="hkimg"]').val(1);
 
 	});
-
+	
+	//投稿ボタンがクリックされた時のイベント
 	$('.submitbt').click(function(){
 		$('input[name="submitname"]').val($(this).attr('name'));
 		if($('input[name="submitname"]').val()=="posting"){
@@ -77,18 +78,17 @@ $(document).ready(function(){
 				return false;
 			}
 		}
-		$('form[name="entry"]').submit();
-	});
-	$('form[name="entry"]').submit(function(){
-		/*
-		alert($(this).attr('name'));
-		if($(this).attr('name')=='posting'){
-			if(!$('input[name="check"]:checked').val()){
-				alert('チェックされていません');
+		if($('input[name="submitname"]').attr('value')!='onetimesave'){
+			if($('textarea[name="question"]').val()==""&&$('input[name="qimg1"]').val()==""&&$('input[name="qimg2"]').val()==""&&$('input[name="qimg3"]').val()==""&&$('input[name="qimg4"]').val()==""){
+				$('#message').html('<font color="red">問題文章又は画像が挿入されていません</font>');
 				return false;
 			}
 		}
-		*/
+		$('form[name="entry"]').submit();
+	});
+	$('form[name="entry"]').submit(function(){
+		
+		
 
 	});
 });

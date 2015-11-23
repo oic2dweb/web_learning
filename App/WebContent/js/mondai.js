@@ -16,8 +16,7 @@ $(document).ready(function(){
 			getque("next");
 		});
 		$("#open").click(function(){
-			$("#kaisetu").slideDown();
-			$("#sei").slideDown();
+			$('.kaisetu').slideDown();
 		});
 
 		//ラジオボタンの選択を変えた時の処理
@@ -77,8 +76,7 @@ $(document).ready(function(){
 					if(kaisetsu = "false"){
 						$("#open").hide();
 					}
-					$("#kaisetu").hide();
-					$("#sei").hide();
+					$('.kaisetu').hide();
 					if(sessionStorage.getItem("count")<$('#pagenumber').html()){
 						sessionStorage.setItem("count",$('#pagenumber').html());
 					}

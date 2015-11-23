@@ -7,6 +7,9 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 <script src="${pageContext.request.contextPath}/js/config.js"></script>
 <script src="${pageContext.request.contextPath}/js/adminQuestionEntry.js"></script>
+<script src="${pageContext.request.contextPath}/js/bootstrap.min.js"></script>
+
+<link href="${pageContext.request.contextPath}/css/bootstrap.min.css" rel="stylesheet">
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
@@ -65,6 +68,7 @@
 		<textarea rows="10" cols="75" name="kaisetu" maxlength="1024">${adminQuestion.kaisetu}</textarea>
 		<p>解説画像</p>
 		<input type="file" name="kimg" accept="image/gif,image/jpeg,image/png"><input type="hidden" name="hkimg" value="0">
+		<div id="message"></div>
 		<input type="button" value="前問へ" name="back" class="submitbt"><input type="button" value="次問へ" name="next" class="submitbt"><input type="button" value="プレビュー" name="preview" class="submitbt">
 		<input type="button" value="一覧" name="list" class="submitbt"><input type="button" value="中断保存" name="onetimesave" class="submitbt"><input type="button" value="投稿" name="posting" class="submitbt">
 		<input type="checkbox" value="" name="check">チェックを入れてから投稿ボタンを押下してください。

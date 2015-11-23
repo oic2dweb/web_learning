@@ -10,12 +10,13 @@
 <script src="${pageContext.request.contextPath}/js/mogi.js"></script>
 <script src="${pageContext.request.contextPath}/js/nendobetu.js"></script>
 <script src="${pageContext.request.contextPath}/js/hukusyu.js"></script>
+<script src="${pageContext.request.contextPath}/js/bootstrap.min.js"></script>
 
 <link href="${pageContext.request.contextPath}/css/bootstrap.min.css" rel="stylesheet">
 <link href="${pageContext.request.contextPath}/css/bootstrap-responsive.min.css" rel="stylesheet">
 <link href="${pageContext.request.contextPath}/css/title.css" rel="stylesheet">
-<link href="${pageContext.request.contextPath}/css/nendobetu.css" rel="stylesheet">
 <link href="${pageContext.request.contextPath}/css/mainMenu.css" rel="stylesheet">
+
 <!-- 学習履歴/アカウント情報のスクリプトCSS -->
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/c3.css" />
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.2/angular.min.js"></script>
@@ -35,18 +36,14 @@
 
 <div  class="col-xs-3">
 	<div class="panel panel-info">
-	<ul class="nav nav-pills nav-stacked">
+	<ul class="nav nav-pills nav-stacked list-group">
+		<li><h3 class="panel-title list-group-item list-group-item-success">   メニュー</h3></li>
 
-
-				<li><h3 class="panel-title">メニュー</h3></li>
-
-
-
-		<li><a href="#meinmenu" onclick="SelectLink('#bunya')">分野別モード</a></li>
-		<li><a href="#nendo" onclick="SelectLink('#nendo')">年度別モード</a></li>
-		<li><a href="#mogi" onclick="SelectLink('#mogi')">模擬試験モード</a></li>
-		<li><a href="#hukusyu" onclick="SelectLink('#hukusyu')">復習モード</a></li>
-		<li><a href="#mypage" onclick="SelectLink('#mypage')">学習履歴/アカウント情報</a></li>
+		<li><a href="#meinmenu" onclick="SelectLink('#bunya')" class="list-group-item">分野別モード</a></li>
+		<li><a href="#meinmenu" onclick="SelectLink('#nendo')" class="list-group-item" id="nendobetu">年度別モード</a></li>
+		<li><a href="#meinmenu" onclick="SelectLink('#mogi')" class="list-group-item">模擬試験モード</a></li>
+		<li><a href="#hukusyu" onclick="SelectLink('#hukusyu')" class="list-group-item">復習モード</a></li>
+		<li><a href="#mypage" onclick="SelectLink('#mypage')" class="list-group-item">学習履歴/アカウント情報</a></li>
 
 	</ul>
 	</div>
@@ -61,7 +58,7 @@
 		<tr class="info">
 			<th colspan="3" class="thcenter">テクノロジ系<input type="button" value="選択" name="tecno" class="btn btn-success btn-sm"><input type="button" value="解除" name="tecno" class="tecno btn btn-success btn-sm"></th>
 		</tr>
-		<tr>
+		<tr class="bunyatr">
 			<th>・基礎理論</th>
 			<th>・コンピュータシステム</th>
 			<th>・技術要素</th>
@@ -96,7 +93,7 @@
 		<tr class="info">
 			<th colspan="3" class="thcenter">マネジメント系<input type="button" value="選択" name="manege" class="btn btn-success btn-sm"><input type="button" value="解除" name="manege" class="btn btn-success btn-sm"></th>
 		</tr>
-		<tr>
+		<tr class="bunyatr">
 			<th>・開発技術</th>
 			<th>・プロジェクトマネジメント</th>
 			<th>・サービスマネジメント</th>
@@ -116,7 +113,7 @@
 		<tr class="info">
 			<th colspan="3" class="thcenter">ストラテジ系<input type="button" value="選択" name="stora" class="btn btn-success btn-sm"><input type="button" value="解除" name="stora" class="btn btn-success btn-sm"></th>
 		</tr>
-		<tr>
+		<tr class="bunyatr">
 			<th>・企業と法務</th>
 			<th>・経営戦略</th>
 			<th>・システム戦略</th>
@@ -140,7 +137,7 @@
 <div id="mogi">
 出題年度
 <form id = "kaishi" method = "post" action="${pageContext.request.contextPath}/login/mogi">
-<select name="years">
+<select name="years" class="from-control">
 <c:forEach var="years" items="${year}"><option value="${years.key}">${years.value}</option></c:forEach>
 </select>
 <input type="submit" value="出題開始" class="btn btn-primary btn-lg">
@@ -151,25 +148,28 @@
 	テスト
 	出題年度
 	<form id="seyear" method="get" action="${pageContext.request.contextPath}/login/mainmenu">
-		<select id="yeardata" name="year">
+		<select id="yeardata" name="year" class="from-control">
 			<option value="">年度をお選びください。</option><c:forEach var="years" items="${year}"><option value="${years.key}" <c:if test="${years.key==nowyear}">selected</c:if>>${years.value}</option></c:forEach>
 		</select>
 	</form>
 
-	<table class="queall" >
-		<tr>
-			<th>NO</th><th>論点</th><th>分類</th>
-		</tr>
-
-		<c:forEach var="qes" items="${question}" varStatus="status">
-			<tr>
-				<td>
-					<a href="${pageContext.request.contextPath}/login/nenmondai?pagenumber=${status.count-1}"><c:out value="${status.count}"></c:out></a>
-				</td>
-				<td><c:out value="${qes.ronten}"></c:out></td>
-				<td><c:out value="${qes.subclass}"></c:out></td>
+	<table class="queall table table-striped table-hover table-bordered" >
+		<thead>	
+			<tr class="info">
+				<th>NO</th><th>論点</th><th>分類</th>
 			</tr>
-		</c:forEach>
+		</thead>
+		<tbody id="nendoquestion">
+			<c:forEach var="qes" items="${question}" varStatus="status">
+				<tr>
+					<td>
+						<a href="${pageContext.request.contextPath}/login/nenmondai?pagenumber=${status.count-1}"><c:out value="${status.count}"></c:out></a>
+					</td>
+					<td><c:out value="${qes.ronten}"></c:out></td>
+					<td><c:out value="${qes.subclass}"></c:out></td>
+				</tr>
+			</c:forEach>
+		</tbody>
 	</table>
 </div>
 
@@ -178,7 +178,7 @@
 </div>
 
 <div id="hukusyu" class="queall">
-	<table id="hukuall"></table>
+	<table id="hukuall" class="table table-striped table-hover table-bordered"></table>
 
 </div>
 </div>

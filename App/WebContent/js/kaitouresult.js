@@ -21,7 +21,7 @@ $(document).ready(function(){
             }
         });
 
-		$("#kaitouresult").append("<tr>"+"<td>問</td>"+ "<td>回答</td>"+"<td>正誤</td>"+"<td>復習チェック※</td>"+"</tr>");
+		$("#kaitouresult").append("<tr  class='info'>"+"<td>問</td>"+ "<td>回答</td>"+"<td>正誤</td>"+"<td>復習チェック※</td>"+"</tr>");
 		for (var i=1; i <= sessionStorage.getItem("count"); i++) {
 			//var key = sessionStorage.key(i);
 			//alert(key);

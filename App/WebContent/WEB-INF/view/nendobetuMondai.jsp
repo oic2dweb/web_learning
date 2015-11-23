@@ -34,8 +34,10 @@
 <input type="button" id="next" value="次の問題へ" class="btn btn-info">
 <input type="button" id="open" value="解説を表示" class="btn btn-info">
 <br><br>
-<div id="sei"></div>
-<div id="kaisetu"></div>
+<div class="well kaisetu">
+	<h4 id="sei"></h4>
+	<div id="kaisetu"></div>
+</div>
 <a href="${pageContext.request.contextPath}/login/mainmenu" class="btn btn-link">メインメニューへ</a>
 
 </body>

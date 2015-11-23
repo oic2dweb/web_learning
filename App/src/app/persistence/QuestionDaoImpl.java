@@ -331,7 +331,10 @@ public class QuestionDaoImpl implements QuestionDao{
 				stmt.setInt(1, year_id);
 				ResultSet result = stmt.executeQuery();
 				if(result.next()){
-					no = result.getInt("no");
+					if(result.getInt("no")!=0){
+						no = result.getInt("no");
+					}
+
 				}
 			} catch (SQLException e) {
 				e.printStackTrace();

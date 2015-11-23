@@ -23,23 +23,10 @@ import app.model.Question;
 public class MondaiAjax extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-
-
-
-
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-	}
-
-
-
-
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
 		String str = request.getParameter("status");
 		String json="";
-
-
 
 		//セッションの取得
 		HttpSession session = request.getSession();
@@ -74,9 +61,7 @@ public class MondaiAjax extends HttpServlet {
 		map.put("id", String.valueOf(que.getId()));
 
 		Gson gson = new Gson();
-		 json = gson.toJson(map);
-		//json ="{\"question\":" + qes.getQuestion(0) + "\"}";
-		//System.out.println(json);
+		json = gson.toJson(map);
 		out.print(json);
 	}
 

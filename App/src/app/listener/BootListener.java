@@ -57,7 +57,7 @@ public class BootListener implements ServletContextListener {
         for(i+=1;i<=total;i++){
         	sql.append(",count(if(subclass_id="+i+",1,null)) as '"+i+"'");
         }
-        sql.append(" from question_fe");
+        sql.append(" from question_fe q join year y on q.year_id = y.year_id where y.flg = 1");
         //分類ごとの総問題数を取得
         ArrayList<Integer> count = questionService.getClassCount(sql.toString());
         ServletContext app = arg0.getServletContext();
