@@ -3,8 +3,12 @@ package app.persistence;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
 
 import javax.sql.DataSource;
+
+import app.model.SubClass;
 
 public class QuestionSubClassDaoImpl implements QuestionSubClassDao{
 
@@ -24,21 +28,47 @@ public class QuestionSubClassDaoImpl implements QuestionSubClassDao{
 
 	}
 
-	/*
+
 	//Mapにsubclass_idをキー、subclass_nameを値として取得
-	public Map<Integer,String> getSubClass(int mainid){
-		Map<Integer,String> map = new HashMap<Integer,String>();
+	public ArrayList<SubClass> getSubClass(){
+		ArrayList<SubClass> list = new ArrayList<SubClass>();
+		SubClass subclass;
 		try(Connection conn = dataSource.getConnection();
-				PreparedStatement stmt = conn.prepareStatement("select * from question_subclass where mainclass_id=?");){
-			stmt.setInt(1, mainid);
+				PreparedStatement stmt = conn.prepareStatement("select * from question_subclass");){
 			ResultSet result = stmt.executeQuery();
 			while(result.next()){
-				map.put(result.getInt("subclass_id"), result.getString("subclass_name"));
+				subclass = new SubClass();
+				subclass.setId(result.getInt("subclass_id"));
+				subclass.setName(result.getString("subclass_name"));
+				subclass.setMainid(result.getInt("mainclass_id"));
+				list.add(subclass);
 			}
 		}catch (Exception e) {
 		}
-		return map;
+		return list;
 
 	}
-	*/
+
+
+	@Override
+	public int getMainClassId(int subid) {
+
+		
+		int mainid=-1;
+		try(Connection conn = dataSource.getConnection();
+				PreparedStatement stmt = conn.prepareStatement("select * from question_subclass where subclass_id = ?");){
+			stmt.setInt(1, subid);
+			ResultSet result = stmt.executeQuery();
+			if(result.next()){
+
+				mainid = result.getInt("mainclass_id");
+			}
+		} catch (SQLException e) {
+			// TODO 自動生成された catch ブロック
+			e.printStackTrace();
+		}
+		return mainid;
+	}
+
+
 }

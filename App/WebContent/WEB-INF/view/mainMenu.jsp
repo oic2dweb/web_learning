@@ -15,7 +15,7 @@
 <link href="${pageContext.request.contextPath}/css/bootstrap-responsive.min.css" rel="stylesheet">
 <link href="${pageContext.request.contextPath}/css/title.css" rel="stylesheet">
 <link href="${pageContext.request.contextPath}/css/nendobetu.css" rel="stylesheet">
-
+<link href="${pageContext.request.contextPath}/css/mainMenu.css" rel="stylesheet">
 <!-- 学習履歴/アカウント情報のスクリプトCSS -->
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/c3.css" />
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.2/angular.min.js"></script>
@@ -28,30 +28,38 @@
 <title>OIC基本情報技術者試験　午前対策サイト</title>
 
 </head>
-<body>
+<body class="container">
+	<div class="jumbotron" id="meinmenu">
+		<h2>OIC基本情報技術者試験　午前対策サイト</h2>
+	</div>
 
-<div id="main">
+<div  class="col-xs-3">
+	<div class="panel panel-info">
+	<ul class="nav nav-pills nav-stacked">
 
-  <h1 id="subtitle">
-  メインメニュー
-  </h1>
 
+				<li><h3 class="panel-title">メニュー</h3></li>
+
+
+
+		<li><a href="#meinmenu" onclick="SelectLink('#bunya')">分野別モード</a></li>
+		<li><a href="#nendo" onclick="SelectLink('#nendo')">年度別モード</a></li>
+		<li><a href="#mogi" onclick="SelectLink('#mogi')">模擬試験モード</a></li>
+		<li><a href="#hukusyu" onclick="SelectLink('#hukusyu')">復習モード</a></li>
+		<li><a href="#mypage" onclick="SelectLink('#mypage')">学習履歴/アカウント情報</a></li>
+
+	</ul>
+	</div>
 </div>
-<ul>
-	<li><a href="#bunya" onclick="SelectLink('#bunya')">分野別モード</a></li>
-	<li><a href="#nendo" onclick="SelectLink('#nendo')">年度別モード</a></li>
-	<li><a href="#mogi" onclick="SelectLink('#mogi')">模擬試験モード</a></li>
-	<li><a href="#hukusyu" onclick="SelectLink('#hukusyu')">復習モード</a></li>
-	<li><a href="#mypage" onclick="SelectLink('#mypage')">学習履歴/アカウント情報</a></li>
-</ul>
+<div class="col-xs-9">
 <div id="bunya">
 <div id="message"></div>
 
 <form method="post" action="${pageContext.request.contextPath}/login/mainmenu" id="select_class">
-<table>
+<table class="table table-striped table-hover table-bordered">
 	<tbody>
-		<tr>
-			<th colspan="3">テクノロジ系<input type="button" value="選択" id="select1on" class="tecno"><input type="button" value="解除" id="select1off" class="tecno"></th>
+		<tr class="info">
+			<th colspan="3" class="thcenter">テクノロジ系<input type="button" value="選択" name="tecno" class="btn btn-success btn-sm"><input type="button" value="解除" name="tecno" class="tecno btn btn-success btn-sm"></th>
 		</tr>
 		<tr>
 			<th>・基礎理論</th>
@@ -59,9 +67,9 @@
 			<th>・技術要素</th>
 		</tr>
 		<tr>
-			<td><label><input type="checkbox" name="subid" value="1" class="tecno">基礎理論(${count[0]})</label></td>
+			<td><label><input type="checkbox" name="subid" value="1" class="tecno ">基礎理論(${count[0]})</label></td>
 			<td><label><input type="checkbox" name="subid" value="3" class="tecno">コンピュータ構成要素(${count[2]})</label></td>
-			<td><label><input type="checkbox" name="subid" value="7" class="tecno">ヒューマンインターフェース基礎理論(${count[6]})</label></td>
+			<td><label><input type="checkbox" name="subid" value="7" class="tecno">ヒューマンインターフェース(${count[6]})</label></td>
 		</tr>
 		<tr>
 			<td><label><input type="checkbox" name="subid" value="2" class="tecno">アルゴリズムとプログラミング(${count[1]})</label></td>
@@ -85,8 +93,8 @@
 		</tr>
 
 
-		<tr>
-			<th colspan="3">マネジメント系<input type="button" value="選択" id="select2on" class="manege"><input type="button" value="解除" id="select2off" class="manege"></th>
+		<tr class="info">
+			<th colspan="3" class="thcenter">マネジメント系<input type="button" value="選択" name="manege" class="btn btn-success btn-sm"><input type="button" value="解除" name="manege" class="btn btn-success btn-sm"></th>
 		</tr>
 		<tr>
 			<th>・開発技術</th>
@@ -105,8 +113,8 @@
 		</tr>
 
 
-		<tr>
-			<th colspan="3">ストラテジ系<input type="button" value="選択" id="select3on" class="stora"><input type="button" value="解除" id="select3off" class="stora"></th>
+		<tr class="info">
+			<th colspan="3" class="thcenter">ストラテジ系<input type="button" value="選択" name="stora" class="btn btn-success btn-sm"><input type="button" value="解除" name="stora" class="btn btn-success btn-sm"></th>
 		</tr>
 		<tr>
 			<th>・企業と法務</th>
@@ -125,7 +133,7 @@
 		</tr>
 	</tbody>
 </table>
-<input type="submit" value="出題開始">
+<input type="submit" value="出題開始" class="btn btn-primary btn-lg">
 </form>
 </div>
 
@@ -135,7 +143,7 @@
 <select name="years">
 <c:forEach var="years" items="${year}"><option value="${years.key}">${years.value}</option></c:forEach>
 </select>
-<input type="submit" value="出題開始">
+<input type="submit" value="出題開始" class="btn btn-primary btn-lg">
 </form>
 </div>
 
@@ -173,6 +181,6 @@
 	<table id="hukuall"></table>
 
 </div>
-
+</div>
 </body>
 </html>

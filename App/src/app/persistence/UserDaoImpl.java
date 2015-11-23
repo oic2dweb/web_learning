@@ -11,6 +11,7 @@ import app.model.User;
 public class UserDaoImpl implements UserDao {
 
 	private DataSource dataSource = DataSourceFactory.getDataSource();
+
 	@Override
 	public boolean checkUniqueness(String attribute, String value) {
 

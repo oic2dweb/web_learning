@@ -4,11 +4,13 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.sql.DataSource;
 
+import app.model.EntryQuestion;
 import app.model.Question;
 import app.model.TestRecord;
 
@@ -160,7 +162,171 @@ public class QuestionDaoImpl implements QuestionDao{
 
 		}
 
+		@Override
+		public void insertQuestion(EntryQuestion eq) {
+			try(Connection conn = dataSource.getConnection();
+					//SQL文を用意
+					PreparedStatement stmt = conn.prepareStatement("insert into question_fe(year_id,ronten,subclass_id,question,ans1,ans2,ans3,ans4,sei,kaisetu,no) values(?,?,?,?,?,?,?,?,?,?,?)");){
+					stmt.setInt(1, eq.getYearid());
+					stmt.setString(2, eq.getRonten());
+					stmt.setInt(3, eq.getSubid());
+					stmt.setString(4,eq.getQuestion());
+					stmt.setString(5, eq.getAns1());
+					stmt.setString(6, eq.getAns2());
+					stmt.setString(7, eq.getAns3());
+					stmt.setString(8, eq.getAns4());
+					stmt.setString(9, eq.getSei());
+					stmt.setString(10,eq.getKaisetu());
+					stmt.setInt(11, eq.getNo());
+					stmt.executeUpdate();
 
+			} catch (SQLException e) {
+				// TODO 自動生成された catch ブロック
+				e.printStackTrace();
+			}
+
+		}
+
+		@Override
+		public boolean checkQuestionNo(int yearid,int no){
+			boolean flg = false;
+
+			try(Connection conn = dataSource.getConnection();
+					PreparedStatement stmt = conn.prepareStatement("select * from question_fe where year_id = ? and no = ?");){
+				stmt.setInt(1, yearid);
+				stmt.setInt(2, no);
+
+				ResultSet result = stmt.executeQuery();
+				if(result.next()){
+					flg = true;
+				}
+
+
+			}catch(Exception e){
+
+			}
+
+			return flg;
+
+		}
+
+		@Override
+		public void updateQuestion(EntryQuestion eq) {
+			try(Connection conn = dataSource.getConnection();
+					//SQL文を用意
+					PreparedStatement stmt = conn.prepareStatement("update question_fe set ronten=?,subclass_id=?,question=?,ans1=?,ans2=?,ans3=?,ans4=?,sei=?,kaisetu=? where year_id = ? and no = ?");){
+
+					stmt.setString(1, eq.getRonten());
+					stmt.setInt(2, eq.getSubid());
+					stmt.setString(3,eq.getQuestion());
+					stmt.setString(4, eq.getAns1());
+					stmt.setString(5, eq.getAns2());
+					stmt.setString(6, eq.getAns3());
+					stmt.setString(7, eq.getAns4());
+					stmt.setString(8, eq.getSei());
+					stmt.setString(9,eq.getKaisetu());
+					stmt.setInt(10, eq.getYearid());
+					stmt.setInt(11, eq.getNo());
+					stmt.executeUpdate();
+
+			} catch (SQLException e) {
+				// TODO 自動生成された catch ブロック
+				e.printStackTrace();
+			}
+
+		}
+
+		@Override
+		public EntryQuestion getQuestion(int yearid, int no) {
+			EntryQuestion question = null;
+
+			try(Connection conn = dataSource.getConnection();
+					PreparedStatement stmt = conn.prepareStatement("select * from question_fe where year_id = ? and no = ?");){
+				stmt.setInt(1, yearid);
+				stmt.setInt(2, no);
+
+				ResultSet result = stmt.executeQuery();
+				if(result.next()){
+					question = new EntryQuestion();
+					question.setQuestion(result.getString("question"));
+					question.setAns1(result.getString("ans1"));
+					question.setAns2(result.getString("ans2"));
+					question.setAns3(result.getString("ans3"));
+					question.setAns4(result.getString("ans4"));
+					question.setNo(result.getInt("no"));
+					question.setSei(result.getString("sei"));
+					question.setKaisetu(result.getString("kaisetu"));
+					question.setSubid(result.getInt("subclass_id"));
+					question.setRonten(result.getString("ronten"));
+				}
+			}catch(Exception e){
+
+			}
+
+			return question;
+		}
+
+		@Override
+		public ArrayList<EntryQuestion> getList(int yearid) {
+			ArrayList<EntryQuestion> list = new ArrayList<EntryQuestion>();
+			EntryQuestion entry;
+			try(Connection conn = dataSource.getConnection();
+					PreparedStatement stmt = conn.prepareStatement("select no,left(question,40) as question from question_fe where year_id = ? order by no");){
+				stmt.setInt(1, yearid);
+
+				ResultSet result = stmt.executeQuery();
+				while(result.next()){
+					entry = new EntryQuestion();
+					entry.setNo(result.getInt("no"));
+					entry.setQuestion(result.getString("question"));
+					list.add(entry);
+				}
+			} catch (SQLException e) {
+				// TODO 自動生成された catch ブロック
+				e.printStackTrace();
+			}
+			return list;
+
+		}
+
+		//指定した年度の問題数を取得
+				@Override
+				public int getQuantity(int year_id){
+					int quantity = 0;
+					try(Connection conn = dataSource.getConnection();
+							PreparedStatement stmt = conn.prepareStatement("select count(*) from question_fe where year_id = ?");){
+							//SQL文に値をセット
+							stmt.setInt(1, year_id);
+
+							ResultSet result = stmt.executeQuery();
+							result.next();
+
+							quantity = result.getInt("count(*)");
+
+						}catch(Exception e){
+							e.printStackTrace();
+						}
+					return quantity;
+				}
+
+				@Override
+				public boolean delete(int year_id){
+					//DBとの接続
+					try(Connection conn = dataSource.getConnection();
+						//SQL文を用意
+						PreparedStatement stmt = conn.prepareStatement("delete from question_fe where year_id=?");){
+
+						//SQL文に値をセット
+						stmt.setInt(1, year_id);
+
+						//SQl文を実行
+						stmt.executeUpdate();
+						return true;
+
+					}catch(Exception e) {
+						return false;
+					}
+				}
 
 
 }

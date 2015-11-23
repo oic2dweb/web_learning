@@ -6,7 +6,6 @@ body,div,h1{
 	margin:0;
 	padding:0;
 }
-
 #main{
 	height: auto;
 }
@@ -24,4 +23,21 @@ body,div,h1{
 	width: 400px;
 	font-style; normal;
 	font-size: 20px;
+}
+#sidemenu{
+	margin: 20px;
+	padding: 6px;
+	width: 150px;
+	border: solid 3px #000000;
+	froat: left;
+}
+#logoutmenu{
+	margin: 20px;
+	padding: 10px;
+	width: 200px;
+	background-color: #ffffcc;
+	border: solid 3px #385d8a;
+}
+.inline{
+	display: inline-block;
 }

@@ -64,12 +64,12 @@ public class MondaiAjax extends HttpServlet {
 		Question que = qes.get(i);
 		HashMap<String,String> map = new HashMap<String,String>();
 		map.put("pagenumber", String.valueOf(i + 1));
-		map.put("question",que.getQuestion());
-		map.put("ans1",que.getAns1());
-		map.put("ans2",que.getAns2());
-		map.put("ans3",que.getAns3());
-		map.put("ans4",que.getAns4());
-		map.put("kaisetu",que.getKaisetu());
+		map.put("question",que.getQuestion().replaceAll("@@path@@", request.getContextPath()));
+		map.put("ans1",que.getAns1().replaceAll("@@path@@", request.getContextPath()));
+		map.put("ans2",que.getAns2().replaceAll("@@path@@", request.getContextPath()));
+		map.put("ans3",que.getAns3().replaceAll("@@path@@", request.getContextPath()));
+		map.put("ans4",que.getAns4().replaceAll("@@path@@", request.getContextPath()));
+		map.put("kaisetu",que.getKaisetu().replaceAll("@@path@@", request.getContextPath()));
 		map.put("sei", que.getSei());
 		map.put("id", String.valueOf(que.getId()));
 

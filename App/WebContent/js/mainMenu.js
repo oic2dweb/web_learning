@@ -15,11 +15,11 @@ $(document).ready(function(){
 	});
 
 	$('input[value="選択"]').click(function(){
-		$('.'+$(this).attr('class')).prop("checked",true);
+		$('.'+$(this).attr('name')).prop("checked",true);
 	});
 
 	$('input[value="解除"]').click(function(){
-		$('.'+$(this).attr('class')).prop("checked",false);
+		$('.'+$(this).attr('name')).prop("checked",false);
 	});
 
 
