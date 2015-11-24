@@ -68,8 +68,8 @@ $(document).ready(function(){
 		$('input[name="hkimg"]').val(1);
 
 	});
-	
-	//投稿ボタンがクリックされた時のイベント
+
+	//submitボタンが押された時のイベント
 	$('.submitbt').click(function(){
 		$('input[name="submitname"]').val($(this).attr('name'));
 		if($('input[name="submitname"]').val()=="posting"){
@@ -78,18 +78,45 @@ $(document).ready(function(){
 				return false;
 			}
 		}
+		
 		if($('input[name="submitname"]').attr('value')!='onetimesave'){
+			if($('input[name="ronten"]').val()==""){
+				$('#message').html('<font color="red">論点の文章が入力されていません</font>');
+				return false;
+			}
 			if($('textarea[name="question"]').val()==""&&$('input[name="qimg1"]').val()==""&&$('input[name="qimg2"]').val()==""&&$('input[name="qimg3"]').val()==""&&$('input[name="qimg4"]').val()==""){
 				$('#message').html('<font color="red">問題文章又は画像が挿入されていません</font>');
 				return false;
 			}
+			if($('textarea[name="ans1"]').val()==""&&$('input[name="aimg1"]').val()==""){
+				$('#message').html('<font color="red">回答「ア」の文章又は画像が挿入されていません</font>');
+				return false;
+			}
+			if($('textarea[name="ans2"]').val()==""&&$('input[name="aimg2"]').val()==""){
+				$('#message').html('<font color="red">回答「イ」の文章又は画像が挿入されていません</font>');
+				return false;
+			}
+			if($('textarea[name="ans3"]').val()==""&&$('input[name="aimg3"]').val()==""){
+				$('#message').html('<font color="red">回答「ウ」の文章又は画像が挿入されていません</font>');
+				return false;
+			}
+			if($('textarea[name="ans4"]').val()==""&&$('input[name="aimg4"]').val()==""){
+				$('#message').html('<font color="red">回答「エ」の文章又は画像が挿入されていません</font>');
+				return false;
+			}
+			switch($('select[name="sei"]').val()){
+			case "ア":
+			case "イ":
+			case "ウ":
+			case "エ":break;
+			default:$('#message').html('<font color="red">正答が選択されていません</font>');return false;
+			}
+			if($('textarea[name="kaisetu"]').val()==""&&$('input[name="kimg"]').val()==""){
+				$('#message').html('<font color="red">解説の文章又は画像が挿入されていません</font>');
+				return false;
+			}
 		}
 		$('form[name="entry"]').submit();
-	});
-	$('form[name="entry"]').submit(function(){
-		
-		
-
 	});
 });
 function InsertMain(){

@@ -31,6 +31,7 @@
 </head>
 <body class="container">
 	<div class="jumbotron" id="meinmenu">
+		<!--<span><input type="button" value="ログアウト" class="info"></span>  -->
 		<h2>OIC基本情報技術者試験　午前対策サイト</h2>
 	</div>
 
@@ -154,7 +155,7 @@
 	</form>
 
 	<table class="queall table table-striped table-hover table-bordered" >
-		<thead>	
+		<thead>
 			<tr class="info">
 				<th>NO</th><th>論点</th><th>分類</th>
 			</tr>
