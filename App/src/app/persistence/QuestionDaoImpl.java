@@ -278,7 +278,7 @@ public class QuestionDaoImpl implements QuestionDao{
 				while(result.next()){
 					entry = new EntryQuestion();
 					entry.setNo(result.getInt("no"));
-					entry.setQuestion(result.getString("question"));
+					entry.setQuestion(result.getString("question").replaceAll("<","&lt"));
 					list.add(entry);
 				}
 			} catch (SQLException e) {

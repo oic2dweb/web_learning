@@ -79,7 +79,7 @@ $(document).ready(function(){
 			}
 		}
 		
-		if($('input[name="submitname"]').attr('value')!='onetimesave'){
+		if($('input[name="submitname"]').attr('value')!='onetimesave'&&$('input[name="submitname"]').attr('value')!='back'&&$('input[name="submitname"]').attr('value')!='list'){
 			if($('input[name="ronten"]').val()==""){
 				$('#message').html('<font color="red">論点の文章が入力されていません</font>');
 				return false;

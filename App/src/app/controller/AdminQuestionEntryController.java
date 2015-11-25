@@ -3,6 +3,7 @@ package app.controller;
 import java.io.IOException;
 import java.util.Date;
 
+import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
@@ -12,6 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.servlet.http.Part;
 
+import app.listener.BootListener;
 import app.model.EntryQuestion;
 import app.service.QuestionMainClassService;
 import app.service.QuestionService;
@@ -132,21 +134,23 @@ public class AdminQuestionEntryController extends HttpServlet {
 		}else{
 			questionService.insertQuestion(eq);
 		}
-
+		
 		//押されたボタンを判別
 		String status = request.getParameter("submitname");
 		switch(status){
 		case "back":session.setAttribute("qnumber", --no);break;
 		case "next":session.setAttribute("qnumber", ++no);break;
 		case "list":response.sendRedirect(request.getContextPath()+"/eb430180f1006fb41dd1e4eb4cdb508d/login/list");break;
-		case "onetimesave":response.sendRedirect(request.getContextPath()+"/eb430180f1006fb41dd1e4eb4cdb508d/login/mainmenu");break;
-		case "posting":yearService.publicYear(yearid);
+		case "onetimesave":yearService.publicYear(yearid,0);
+			
+			response.sendRedirect(request.getContextPath()+"/eb430180f1006fb41dd1e4eb4cdb508d/login/mainmenu");break;
+		case "posting":yearService.publicYear(yearid,1);
+			BootListener listener = new BootListener();
+			listener.contextInitialized(new ServletContextEvent(request.getServletContext()));
 			response.sendRedirect(request.getContextPath()+"/eb430180f1006fb41dd1e4eb4cdb508d/login/mainmenu");break;
 		case "preview":response.sendRedirect(request.getContextPath()+"/eb430180f1006fb41dd1e4eb4cdb508d/login/preview");break;
 		}
 
-
-		//request.getRequestDispatcher("/WEB-INF/view2/AdminQuestionEntry.jsp").forward(request,response);
 		doGet(request, response);
 	}
 

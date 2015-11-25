@@ -39,6 +39,13 @@ $(document).ready(function(){
 		var han = txt.replace(/[Ａ-Ｚａ-ｚ０-９]/g,function(s){return String.fromCharCode(s.charCodeAt(0)-0xFEE0)});
 		$(this).val(han);
 	});
+	$('#check').click(function(){
+		var result = confirm("本当に削除してもよろしいでしょうか？");
+		if(!result){
+			return false;
+		}	
+		
+	});
 });
 
 function SelectLink(id){

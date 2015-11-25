@@ -122,10 +122,11 @@ public class YearDaoImpl implements YearDao{
 	}
 
 	@Override
-	public void publicYear(int no) {
+	public void publicYear(int year_id,int num) {
 		try(Connection conn = dataSource.getConnection();
-				PreparedStatement stmt = conn.prepareStatement("update year set flg = 1 where year_id = ?");){
-			stmt.setInt(1, no);
+				PreparedStatement stmt = conn.prepareStatement("update year set flg = ? where year_id = ?");){
+			stmt.setInt(1, num);
+			stmt.setInt(2, year_id);
 			stmt.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();

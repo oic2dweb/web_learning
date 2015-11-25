@@ -30,13 +30,13 @@ public class YearService {
 		return yearDao.getId(nendo);
 	}
 
-	public void publicYear(int no){
-		yearDao.publicYear(no);
+	public void publicYear(int year_id,int num){
+		yearDao.publicYear(year_id,num);
 	}
 	public String getName(int year_id){
 		return yearDao.getName(year_id);
-		
-		
+
+
 	}
 
 }
