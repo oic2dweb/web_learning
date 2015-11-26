@@ -34,4 +34,7 @@ public class UserService {
 	public boolean checkPassword(int id, String password){
 		return userDao.checkPassword(id, password);
 	}
+	public String getName(int id){
+		return userDao.getName(id);
+	}
 }

@@ -212,4 +212,20 @@ public class UserDaoImpl implements UserDao {
 		}
 
 	}
+	@Override
+	public String getName(int id) {
+		String name="";
+		try(Connection conn = dataSource.getConnection();
+				PreparedStatement stmt = conn.prepareStatement("SELECT * FROM users WHERE id = ?");){
+			stmt.setInt(1, id);
+			ResultSet result = stmt.executeQuery();
+			if(result.next()){
+				name = result.getString("name");
+			}
+
+		}catch(Exception e){
+
+		}
+		return name;
+	}
 }

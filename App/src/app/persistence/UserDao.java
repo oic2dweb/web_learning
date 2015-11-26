@@ -12,4 +12,5 @@ public interface UserDao {
 	public User getUser(Long id);
 	public boolean update(UserTemp user);
 	public boolean checkPassword(int id, String password);
+	public String getName(int id);
 }

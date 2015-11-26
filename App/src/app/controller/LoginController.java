@@ -33,7 +33,9 @@ public class LoginController extends HttpServlet {
 		//ログインできたかチェック
 		if(flg){
 			int id = userService.getId(email);
+			String name = userService.getName(id);
 			HttpSession session = request.getSession();
+			session.setAttribute("name", name);
 			session.setAttribute("userid", id);
 			response.sendRedirect("login/mainmenu");
 		}else{

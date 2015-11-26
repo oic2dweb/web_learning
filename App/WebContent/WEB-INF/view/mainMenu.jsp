@@ -30,11 +30,17 @@
 
 </head>
 <body class="container">
-	<div class="jumbotron" id="meinmenu">
-		<!--<span><input type="button" value="ログアウト" class="info"></span>  -->
-		<h2>OIC基本情報技術者試験　午前対策サイト</h2>
+	<div class="row">
+		<span class="pull-right">${name}さんがログイン中<input type="button" onclick="window.location='${pageContext.request.contextPath}/welcome'" value="ログアウト" class="btn btn-default btn-sm"></span>
 	</div>
 
+	<div class="row">
+		<div class="jumbotron" id="meinmenu">
+
+			<h2 class="text-center">OIC基本情報技術者試験　午前対策サイト</h2>
+		</div>
+	</div>
+<div class="row">
 <div  class="col-xs-3">
 	<div class="panel panel-info">
 	<ul class="nav nav-pills nav-stacked list-group">
@@ -181,6 +187,7 @@
 <div id="hukusyu" class="queall">
 	<table id="hukuall" class="table table-striped table-hover table-bordered"></table>
 
+</div>
 </div>
 </div>
 </body>
