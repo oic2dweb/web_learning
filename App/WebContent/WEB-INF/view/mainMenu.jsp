@@ -160,7 +160,7 @@
 		</select>
 	</form>
 
-	<table class="queall table table-striped table-hover table-bordered" >
+	<table class="queall table table-striped table-hover table-bordered">
 		<thead>
 			<tr class="info">
 				<th>NO</th><th>論点</th><th>分類</th>

@@ -29,7 +29,7 @@ $(document).ready(function(){
 			$('#seyearbutton').hide();
 		}else{
 			$('#seyearbutton').show();
-			$('#seyearbutton').html('<button type="button" onclick="location.href=\'edit?year_name=' + year_name + '\'">変更開始</button>');
+			$('#seyearbutton').html('<button type="button" onclick="location.href=\'edit?year_name=' + year_name + '\'" class="btn btn-primary btn-lg">変更開始</button>');
 		}
 	});
 
