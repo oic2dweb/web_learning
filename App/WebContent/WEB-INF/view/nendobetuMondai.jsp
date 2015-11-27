@@ -33,6 +33,7 @@
 
 <input type="button" id="next" value="次の問題へ" class="btn btn-info">
 <input type="button" id="open" value="解説を表示" class="btn btn-info">
+<input type="button" id="kend"  value="回答を終了" class="btn btn-info">
 <br><br>
 <div class="well kaisetu">
 	<h2 id="seigo"></h2>
