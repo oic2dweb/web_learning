@@ -10,9 +10,11 @@ $(document).ready(function(){
 		getque("");
 
 		$("#back").click(function(){
+			$("#hukusyu").attr('checked', false);
 			getque("back");
 		});
 		$("#next").click(function(){
+			$("#hukusyu").attr('checked', false);
 			getque("next");
 		});
 		$("#open").click(function(){
@@ -25,6 +27,17 @@ $(document).ready(function(){
 			//セッションストレージにラジオボタンの値を保存
 			sessionStorage.setItem(pagenumber, JSON.stringify(answer));
 		});
+
+		//復習チェックをしたときの処理
+		$("#hukusyu").change(function(){
+			if($("#hukusyu:checked").val()) {
+				sessionStorage.setItem("huku" + pagenumber,1);
+			}else{
+				sessionStorage.setItem("huku" + pagenumber,0);
+			}
+		});
+
+
 
 		function getque(status){
 			answer.uans = "　";	//解答をスペースで初期化
@@ -60,6 +73,11 @@ $(document).ready(function(){
 					$("#kaisetu").html(data.kaisetu);
 					$("#sei").html("正解："+data.sei);
 
+					//復習チェック
+					if(sessionStorage.getItem("huku" + pagenumber) == "1"){
+						$("#hukusyu").prop("checked",true);
+						}
+
 					if(data.pagenumber == "1"){
 						$("#back").hide();
 						$("#result").hide();
@@ -80,8 +98,7 @@ $(document).ready(function(){
 					if(sessionStorage.getItem("count")<$('#pagenumber').html()){
 						sessionStorage.setItem("count",$('#pagenumber').html());
 					}
-					
-					
+
 				}
 				});
 		}

@@ -31,9 +31,7 @@ public class ProjectY {
 				break;
 			}
 		}
-		System.out.println(pass);
 		this.randpass = String.valueOf(pass);
-		System.out.println(randpass);
 	}
 
 

@@ -1,18 +1,23 @@
 $(document).ready(function(){
 	var pagenumber;	//現在の問題番号を格納する変数
 	var answer;	//ユーザーの解答を格納する変数
+	var sei; //回答を格納する変数
 
 		getque("");
 
 		$("#back").click(function(){
 			getque("back");
+			$("#seigo").html("");
 		});
 		$("#next").click(function(){
 			getque("next");
+			$("#seigo").html("");
 		});
 		$("#open").click(function(){
 			$('.kaisetu').slideDown();
-
+		});
+		$("#kend").click(function(){
+			window.location = "/App/login/mainmenu";
 		});
 
 		//ラジオボタンの選択を変えた時の処理
@@ -20,6 +25,12 @@ $(document).ready(function(){
 			answer = $('input[name="ans"]:checked').val();
 			//セッションストレージにラジオボタンの値を保存
 			sessionStorage.setItem(pagenumber, answer);
+			if($('input[name="ans"]:checked').val() == sei){
+				$("#seigo").html("正解　ヾ(＠⌒▽⌒＠)ﾉﾜｰｲ!");
+			}else{
+				$("#seigo").html("不正解　（￣□￣；）！！");
+			}
+			$('.kaisetu').slideDown();
 		});
 
 		function getque(status){
@@ -53,17 +64,18 @@ $(document).ready(function(){
 					$("#ans4").html(data.ans4);
 					$("#kaisetu").html(data.kaisetu);
 					$("#sei").html("正解："+data.sei);
+					 sei = data.sei;
 
 					if(data.pagenumber == "1"){
 						$("#back").hide();
-						$("#result").hide();
+						$("#kend").hide();
 					}else{
 						$("#back").show();
-						$("#result").hide();
+						$("#kend").hide();
 					}
 					if(data.pagenumber == $("#allque").val()){
 						$("#next").hide();
-						$("#result").show();
+						$("#kend").show();
 					}else{
 						$("#next").show();
 					}

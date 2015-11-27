@@ -35,6 +35,7 @@
 <input type="button" id="open" value="解説を表示" class="btn btn-info">
 <br><br>
 <div class="well kaisetu">
+	<h2 id="seigo"></h2>
 	<h4 id="sei"></h4>
 	<div id="kaisetu"></div>
 </div>

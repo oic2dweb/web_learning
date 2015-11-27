@@ -22,6 +22,7 @@
 				<span id="pagenumber"></span>/${fn:length(question)}問
 				<input type="hidden" id="allque" value="${fn:length(question)}">
 			</h3>
+			<input type="checkbox" id="hukusyu"/><label>復習</label>
 		</div>
 		<div class="panel-body">
 			<div id="question"></div>
@@ -33,8 +34,8 @@
 	<label><input type="radio" name="ans" value="ウ">ウ：<span id="ans3"></span></label><br>
 	<label><input type="radio" name="ans" value="エ">エ：<span id="ans4"></span></label><br><br>
 	</div>
-			<input type="button" id="back" value="前の問題へ" class="btn btn-info">
-			<input type="button" id="next" value="次の問題へ" class="btn btn-info">
+	<input type="button" id="back" value="前の問題へ" class="btn btn-info">
+	<input type="button" id="next" value="次の問題へ" class="btn btn-info">
 
 	<input type="button" id="open" value="解説を表示" class="btn btn-info">
 	<input type="button" id="status" value="回答状況" onclick="window.location='${pageContext.request.contextPath}/login/kaitoustatus'" class="btn btn-info">
