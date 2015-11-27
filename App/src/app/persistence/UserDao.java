@@ -13,4 +13,5 @@ public interface UserDao {
 	public boolean update(UserTemp user);
 	public boolean checkPassword(int id, String password);
 	public String getName(int id);
+	public boolean setTempPassword(User user);
 }

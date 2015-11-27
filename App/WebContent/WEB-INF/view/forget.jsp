@@ -18,13 +18,13 @@
 	<div id="message">
 
 		登録された連絡用メールアドレス(半角英数字)<br>
-		<form action="${pageContext.request.contextPath}/forget" method="post">
+		<form action="#" method="post">
  			<input type="email" name="email" id="email"><br>
  			メールにてお知らせします<br>
- 			<input type="button" value="送信" id="submit">
+ 			<button id="submit">送信</button>
 		</form>
 	</div>
-	<a href="${pageContext.request.contextPath}/welcome">メインメニューへ</a>
+	<a href="${pageContext.request.contextPath}/welcome">戻る</a>
 
 </body>
 </html>

@@ -9,6 +9,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import app.model.ProjectY;
+import app.model.User;
 import app.service.MailService;
 import app.service.UserService;
 
@@ -30,12 +32,21 @@ public class ForgetAjax extends HttpServlet {
 		PrintWriter out = response.getWriter();
 
 		String email = request.getParameter("email");
+		User user = new User();
+		ProjectY py = new ProjectY();
 
 
 		boolean flg = userDao.emailCheck(email);
 		String json ="{\"flg\":\"true\"}";
 		if(flg){
-			String text ="あなたのパスワードは～です";
+			py.setRandPass();
+			String pass = py.getRandPass();
+			String text ="仮パスワード発行\n\n仮パスワードは"+ pass +"です。\n\nこのパスワードはあくまでも仮のものです。\n初回ログイン時に必ず本パスワードへの変更をお願い致します。";
+			
+			py.setStr(pass);
+			user.setEmail(email);
+			user.setPassword(py.getStr());
+			userDao.setTempPassword(user);
 			boolean sendflg = mail.send(email, text);
 			json = "{\"flg\":\""+sendflg+"\"}";
 		}

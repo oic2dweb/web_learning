@@ -37,4 +37,7 @@ public class UserService {
 	public String getName(int id){
 		return userDao.getName(id);
 	}
+	public boolean setTempPassword(User user){
+		return userDao.setTempPassword(user);
+	}
 }

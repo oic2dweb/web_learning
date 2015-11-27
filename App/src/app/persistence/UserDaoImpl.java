@@ -228,4 +228,24 @@ public class UserDaoImpl implements UserDao {
 		}
 		return name;
 	}
+
+	public boolean setTempPassword(User user){
+		//DBとの接続
+			try(Connection conn = dataSource.getConnection();
+				//SQL文を用意
+					PreparedStatement stmt = conn.prepareStatement("UPDATE users SET password = md5(?) WHERE email = ?");){
+
+					//SQL文に値をセット
+					stmt.setString(1, user.getPassword());
+					stmt.setString(2, user.getEmail());
+					//SQl文を実行
+					stmt.executeUpdate();
+
+					return true;
+
+				}catch(Exception e) {
+					return false;
+				}
+
+	}
 }

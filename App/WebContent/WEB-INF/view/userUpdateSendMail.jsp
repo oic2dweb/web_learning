@@ -14,7 +14,7 @@
 	登録されているメールアドレス宛にメールが送信されました<br>
 	記載されているURLにアクセスして頂くことで変更が完了されます<br>
 	
-	<a href="${pageContext.request.contextPath}/login/mainmenu">戻る</a>
+	<a href="${pageContext.request.contextPath}/login/mainmenu#/testRecords">戻る</a>
 
 </body>
 </html>
