@@ -16,11 +16,14 @@ public class UserService {
 	public boolean checkUniqueness(String attribute, String value){
 		return userDao.checkUniqueness(attribute, value);
 	}
+	public boolean student_idCheck(String email){
+		return userDao.studentIdCheck(email);
+	}
 	public boolean emailCheck(String email){
 		return userDao.emailCheck(email);
 	}
-	public boolean loginCheck(String email, String password){
-		return userDao.loginCheck(email, password);
+	public boolean loginCheck(String student_id, String password){
+		return userDao.loginCheck(student_id, password);
 	}
 	public int getId(String email){
 		return userDao.getId(email);

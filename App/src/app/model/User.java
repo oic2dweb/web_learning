@@ -1,14 +1,15 @@
 package app.model;
 
 public class User {
-	
+
 	private Long id;
 	private String name;
 	private String kana;
-	private String username;
+	private String student_id;
 	private String password;
 	private String email;
-	private String authority;
+	private int class_id;
+
 	/**
 	 * idを取得します。
 	 * @return id
@@ -52,18 +53,18 @@ public class User {
 	    this.kana = kana;
 	}
 	/**
-	 * usernameを取得します。
-	 * @return username
+	 * student_idを取得します。
+	 * @return student_id
 	 */
-	public String getUsername() {
-	    return username;
+	public String getStudentId() {
+	    return student_id;
 	}
 	/**
-	 * usernameを設定します。
-	 * @param username username
+	 * student_idを設定します。
+	 * @param student_id student_id
 	 */
-	public void setUsername(String username) {
-	    this.username = username;
+	public void setStudentId(String student_id) {
+	    this.student_id = student_id;
 	}
 	/**
 	 * passwordを取得します。
@@ -94,20 +95,17 @@ public class User {
 	    this.email = email;
 	}
 	/**
-	 * authorityを取得します。
-	 * @return authority
+	 * class_idを取得します。
+	 * @return class_id
 	 */
-	public String getAuthority() {
-	    return authority;
+	public int getClassId() {
+	    return class_id;
 	}
 	/**
-	 * authorityを設定します。
-	 * @param authority authority
+	 * class_idを設定します。
+	 * @param class_id class_id
 	 */
-	public void setAuthority(String authority) {
-	    this.authority = authority;
+	public void setClassId(int class_id) {
+	    this.class_id = class_id;
 	}
-	
-
-	
 }

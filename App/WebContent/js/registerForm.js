@@ -6,11 +6,11 @@ $(document).ready(function(){
 		});
 	});
 
-//メールとユーザーIDに関するユニークチェックのAJAX処理
+//メールと学籍番号に関するユニークチェックのAJAX処理
 
-	function checkUniqueUsername(field, rules, i, options){
-		var data = '{"attribute":"username", "value":"' + field.val() + '"}';
-		
+	function checkUniqueStudenId(field, rules, i, options){
+		var data = '{"attribute":"student_id", "value":"' + field.val() + '"}';
+
 		var flag = false;
 		$.ajax({
 			method:'POST',
@@ -24,14 +24,14 @@ $(document).ready(function(){
 				}
 			}
 		});
-		
+
 		if(flag)
-			return "同じユーザーIDは登録されています。";
+			return "同じ学籍番号が登録されています";
 	}
-	
+
 	function checkUniqueEmail(field, rules, i, options){
 		var data = '{"attribute":"email", "value":"' + field.val() + '"}';
-		
+
 		var flag = false;
 		$.ajax({
 			method:'POST',
@@ -45,9 +45,9 @@ $(document).ready(function(){
 				}
 			}
 		});
-		
+
 		if(flag)
-			return "同じメールは登録されています。";
+			return "同じメールアドレスが登録されています";
 	}
 
 

@@ -7,11 +7,12 @@
 <meta charset="UTF-8">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 <script src="${pageContext.request.contextPath}/js/adminMainMenu.js"></script>
+<script src="${pageContext.request.contextPath}/js/form.js"></script>
 
 <link href="${pageContext.request.contextPath}/css/bootstrap.min.css" rel="stylesheet">
 <link href="${pageContext.request.contextPath}/css/bootstrap-responsive.min.css" rel="stylesheet">
 <link href="${pageContext.request.contextPath}/css/title.css" rel="stylesheet">
-<link href="${pageContext.request.contextPath}/css/mainMenu.css" rel="stylesheet">
+
 
 <title>OIC基本情報技術者試験　午前対策サイト</title>
 </head>

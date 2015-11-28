@@ -14,8 +14,10 @@
 </head>
 <body class="container">
 <h1>回答結果</h1>
+<p>問題番号をクリックで解説を表示します</p>
 <form id="ansrsend" method="post" action="${pageContext.request.contextPath}/login/kaitouresult">
-<table id="kaitouresult" class="table table-striped table-hover table-bordered"></table>
+	<table id="kaitouresult" class="table table-striped table-hover table-bordered"></table>
+	<span id="score"></span><br>
 	<input type="submit" class="strgclr btn btn-primary btn-lg" value="結果を保存">
 </form>
 </body>

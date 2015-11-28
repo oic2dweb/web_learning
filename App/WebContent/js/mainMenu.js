@@ -25,7 +25,6 @@ $(document).ready(function(){
 		$('#nendoquestion').html("");
 	});
 
-
 });
 function SelectLink(id){
 	$('#bunya').hide();

@@ -19,20 +19,21 @@ public class LoginController extends HttpServlet {
 
 	private UserService userService = new UserService();
 
+
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
 
-		String email = request.getParameter("email");
+		String student_id = request.getParameter("student_id");
 		String password = request.getParameter("password");
 		ProjectY py = new ProjectY();
 		py.setStr(password);
 
-		//UserServiceクラスにemail,passwordを渡す
-		boolean flg = userService.loginCheck(email,py.getStr());
+		//UserServiceクラスにstudent_id,passwordを渡す
+		boolean flg = userService.loginCheck(student_id,py.getStr());
 
 		//ログインできたかチェック
 		if(flg){
-			int id = userService.getId(email);
+			int id = userService.getId(student_id);
 			String name = userService.getName(id);
 			HttpSession session = request.getSession();
 			session.setAttribute("name", name);

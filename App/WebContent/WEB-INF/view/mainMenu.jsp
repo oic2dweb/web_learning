@@ -7,7 +7,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 <script src="${pageContext.request.contextPath}/js/config.js"></script>
 <script src="${pageContext.request.contextPath}/js/mainMenu.js"></script>
-<script src="${pageContext.request.contextPath}/js/mogi.js"></script>
+<script src="${pageContext.request.contextPath}/js/SessionStrClr.js"></script>
 <script src="${pageContext.request.contextPath}/js/nendobetu.js"></script>
 <script src="${pageContext.request.contextPath}/js/hukusyu.js"></script>
 <script src="${pageContext.request.contextPath}/js/bootstrap.min.js"></script>
@@ -147,7 +147,7 @@
 <select name="years" class="from-control">
 <c:forEach var="years" items="${year}"><option value="${years.key}">${years.value}</option></c:forEach>
 </select>
-<input type="submit" value="出題開始" class="btn btn-primary btn-lg">
+<input type="submit" value="出題開始" class="btn btn-primary btn-lg sessionstrclr">
 </form>
 </div>
 

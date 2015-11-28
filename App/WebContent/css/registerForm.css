@@ -8,9 +8,6 @@ p{
 .red{
 	color: red;
 }
-.form-horizontal{
-	padding: 6px;
-}
 .formcaption{
 	font-size: small;
 }
@@ -20,7 +17,7 @@ p{
 #username,#password,#re-password,#email,#re-email{
 	ime-mode: inactive;
 }
-#name,#kana,#username,#password,#re-password{
+#name,#kana,#student_id,#password,#re-password{
 	width: 300px;
 }
 #email,#re-email{

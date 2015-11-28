@@ -37,7 +37,7 @@
 	<input type="button" id="back" value="前の問題へ" class="btn btn-info">
 	<input type="button" id="next" value="次の問題へ" class="btn btn-info">
 
-	<input type="button" id="open" value="解説を表示" class="btn btn-info">
+
 	<input type="button" id="status" value="回答状況" onclick="window.location='${pageContext.request.contextPath}/login/kaitoustatus'" class="btn btn-info">
 	<input type="button" id="result" value="回答結果へ" onclick="window.location='${pageContext.request.contextPath}/login/kaitouresult'" class="btn btn-info">
 	<br><br>
@@ -46,6 +46,6 @@
 		<div id="kaisetu"></div>
 	</div>
 	<a href="${pageContext.request.contextPath}/login/mainmenu" class="btn btn-link">メインメニューへ</a>
-	<!--<input type="button" id="" value="メインメニューへ" onclick="window.location='${pageContext.request.contextPath}/login/mainmenu'">  -->
+
 </body>
 </html>

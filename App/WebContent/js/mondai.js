@@ -5,7 +5,8 @@ $(document).ready(function(){
 			mondaiid: "",
 			pagenum: ""
 	}
-	var kaisetsu = "false";	//回答結果から飛んできた時のフラグを格納する変数
+	//回答結果から飛んできた時のフラグを格納する変数
+	var kaisetsu = sessionStorage.getItem("kaisetsu");
 
 		getque("");
 
@@ -21,12 +22,14 @@ $(document).ready(function(){
 			$('.kaisetu').slideDown();
 		});
 
-		//ラジオボタンの選択を変えた時の処理
-		$('input[name="ans"]:radio').change(function(){
-			answer.uans = $('input[name="ans"]:checked').val();
-			//セッションストレージにラジオボタンの値を保存
-			sessionStorage.setItem(pagenumber, JSON.stringify(answer));
-		});
+		if(kaisetsu == "false"){
+			//ラジオボタンの選択を変えた時の処理
+			$('input[name="ans"]:radio').change(function(){
+				answer.uans = $('input[name="ans"]:checked').val();
+				//セッションストレージにラジオボタンの値を保存
+				sessionStorage.setItem(pagenumber, JSON.stringify(answer));
+			});
+		}
 
 		//復習チェックをしたときの処理
 		$("#hukusyu").change(function(){
@@ -76,7 +79,7 @@ $(document).ready(function(){
 					//復習チェック
 					if(sessionStorage.getItem("huku" + pagenumber) == "1"){
 						$("#hukusyu").prop("checked",true);
-						}
+					}
 
 					if(data.pagenumber == "1"){
 						$("#back").hide();
@@ -91,10 +94,12 @@ $(document).ready(function(){
 					}else{
 						$("#next").show();
 					}
-					if(kaisetsu = "false"){
-						$("#open").hide();
+					if(kaisetsu == "false"){
+						$(".kaisetu").hide();
+					}else if(kaisetsu == "true"){
+						$("#status").hide();
+						$("#result").show();
 					}
-					$('.kaisetu').hide();
 					if(sessionStorage.getItem("count")<$('#pagenumber').html()){
 						sessionStorage.setItem("count",$('#pagenumber').html());
 					}

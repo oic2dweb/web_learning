@@ -29,15 +29,8 @@ $(document).ready(function(){
 			$('#seyearbutton').hide();
 		}else{
 			$('#seyearbutton').show();
-			$('#seyearbutton').html('<button type="button" onclick="location.href=\'edit?year_name=' + year_name + '\'" class="btn btn-primary btn-lg">変更開始</button>');
+			$('#seyearbutton').html('<button type="button" onclick="location.href=\'edit?year_name=' + year_name + '\' class="btn btn-primary btn-lg"">変更開始</button>');
 		}
-	});
-
-	//フォームの全角英数を半角英数に変換
-	$('.fm').change(function(){
-		var txt  = $(this).val();
-		var han = txt.replace(/[Ａ-Ｚａ-ｚ０-９]/g,function(s){return String.fromCharCode(s.charCodeAt(0)-0xFEE0)});
-		$(this).val(han);
 	});
 	$('#check').click(function(){
 		var result = confirm("本当に削除してもよろしいでしょうか？");
