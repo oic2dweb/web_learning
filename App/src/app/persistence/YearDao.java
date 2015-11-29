@@ -5,7 +5,7 @@ import java.util.Map;
 import app.model.Year;
 
 public interface YearDao {
-	public boolean checkUniqueness(String year_name);
+	public boolean checkUniqueness(String year_name,int type_id);
 	public boolean create(Year year);
 	public boolean delete(int year_id);
 	public int getId(String year_name);

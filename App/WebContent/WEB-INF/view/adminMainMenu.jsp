@@ -6,6 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script src="${pageContext.request.contextPath}/js/config.js"></script>
 <script src="${pageContext.request.contextPath}/js/adminMainMenu.js"></script>
 <script src="${pageContext.request.contextPath}/js/form.js"></script>
 
@@ -22,7 +23,7 @@
 	</div>
 	<div class="row">
 		<div class="jumbotron" id="meinmenu">
-			<h2 class="text-center">OIC基本情報技術者試験　午前対策サイト</h2>
+			<h2 class="text-center">OIC　${type_name }　午前対策サイト</h2>
 			<h3 class="text-center">管理者メニュー</h3>
 		</div>
 	</div>

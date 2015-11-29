@@ -41,6 +41,7 @@ public class HukusyuAjax extends HttpServlet {
 		ArrayList<Question> qes = questionService.getHukusyu(sql);
 		//セッションに問題情報を保存
 		session.setAttribute("question", qes);
+		@SuppressWarnings("rawtypes")
 		HashMap<String,ArrayList> map = new HashMap<String,ArrayList>();
 
 		map.put("question", qes);

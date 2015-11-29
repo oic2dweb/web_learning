@@ -34,7 +34,7 @@ public class AdminController extends HttpServlet {
 			String adminid = adminService.getId(id);
 			HttpSession session = request.getSession();
 			session.setAttribute("adminid", adminid);
-			response.sendRedirect("login/mainmenu");
+			response.sendRedirect("login/select");
 		}else{
 			request.setAttribute("error", "<font color=\"red\">※ID　or　パスワードに誤りがございます。</font>");
 			request.getRequestDispatcher("/WEB-INF/view/admin.jsp").forward(request, response);

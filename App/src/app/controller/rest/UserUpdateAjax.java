@@ -12,9 +12,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import app.service.UserService;
-
 import com.google.gson.Gson;
+
+import app.service.UserService;
 
 /**
  * Servlet implementation class UserUpdateAjax
@@ -49,13 +49,6 @@ public class UserUpdateAjax extends HttpServlet {
 
 		//クライアント側に結果を返す
 		out.print(json);
-
-	}
-
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 	}
 

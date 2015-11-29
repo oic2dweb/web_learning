@@ -33,22 +33,21 @@ public class AdminQuestionEntryController extends HttpServlet {
 	private QuestionMainClassService qmcService = new QuestionMainClassService();
 	private QuestionSubClassService qscService = new QuestionSubClassService();
 	private YearService yearService = new YearService();
-	int count=0;
-	int yearid;
+
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		HttpSession session = request.getSession();
-		yearid = (int) session.getAttribute("year_id");
+		int yearid = (int) session.getAttribute("year_id");
 
 		if(request.getParameter("no")!=null){
 			session.setAttribute("qnumber",Integer.parseInt(request.getParameter("no")));
 		}
 		int no = (int)session.getAttribute("qnumber");
-
-		EntryQuestion adminQuestion = questionService.getQuestion(yearid, no);
+		int type_id = Integer.parseInt((String)session.getAttribute("type"));
+		EntryQuestion adminQuestion = questionService.getQuestion(yearid, no,type_id);
 		if(adminQuestion!=null){
 			adminQuestion.setMainid(qscService.getMainClassId(adminQuestion.getSubid()));
 			adminQuestion.setCatid(qmcService.getCatId(adminQuestion.getMainid()));
@@ -63,10 +62,11 @@ public class AdminQuestionEntryController extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
-		QuestionService questionService = new QuestionService();
+
+		int count=0;
 
 		HttpSession session = request.getSession();
-		yearid = (int)session.getAttribute("year_id");
+		int yearid = (int)session.getAttribute("year_id");
 		String ronten = request.getParameter("ronten");
 		int subid = Integer.parseInt(request.getParameter("subname"));
 		StringBuffer question = new StringBuffer(request.getParameter("question"));
@@ -81,7 +81,7 @@ public class AdminQuestionEntryController extends HttpServlet {
 		int qimgcnt=Integer.parseInt(request.getParameter("qimgcnt"));
 		for(int i=1;i<=qimgcnt;i++){
 			Part part = request.getPart("qimg"+i);
-			String filename = upload(part);
+			String filename = upload(part,yearid,count++);
 			String filetag = "<img src='@@path@@/ImgServlet?path="+yearid+"/"+filename+"' class='img-responsive'>";
 			question.append(filetag);
 		}
@@ -89,7 +89,7 @@ public class AdminQuestionEntryController extends HttpServlet {
 		for(int i=1;i<=4;i++){
 			if(request.getParameter("haimg"+i).equals("1")){
 				Part part = request.getPart("aimg"+i);
-				String filename=upload(part);
+				String filename=upload(part,yearid,count++);
 				String filetag = "<img src='@@path@@/ImgServlet?path="+yearid+"/"+filename+"' class='img-responsive'>";
 				switch(i){
 				case 1:
@@ -111,7 +111,7 @@ public class AdminQuestionEntryController extends HttpServlet {
 
 		if(request.getParameter("hkimg").equals("1")){
 			Part part = request.getPart("kimg");
-			String filename=upload(part);
+			String filename=upload(part,yearid,count++);
 			String filetag = "<img src='@@path@@/ImgServlet?path="+yearid+"/"+filename+"' class='img-responsive'>";
 			kaisetu.append(filetag);
 		}
@@ -134,7 +134,7 @@ public class AdminQuestionEntryController extends HttpServlet {
 		}else{
 			questionService.insertQuestion(eq);
 		}
-		
+
 		//押されたボタンを判別
 		String status = request.getParameter("submitname");
 		switch(status){
@@ -142,11 +142,12 @@ public class AdminQuestionEntryController extends HttpServlet {
 		case "next":session.setAttribute("qnumber", ++no);break;
 		case "list":response.sendRedirect(request.getContextPath()+"/eb430180f1006fb41dd1e4eb4cdb508d/login/list");break;
 		case "onetimesave":yearService.publicYear(yearid,0);
-			
+
 			response.sendRedirect(request.getContextPath()+"/eb430180f1006fb41dd1e4eb4cdb508d/login/mainmenu");break;
 		case "posting":yearService.publicYear(yearid,1);
 			BootListener listener = new BootListener();
 			listener.contextInitialized(new ServletContextEvent(request.getServletContext()));
+			session.setAttribute("year",request.getServletContext().getAttribute("year"+session.getAttribute("type")));
 			response.sendRedirect(request.getContextPath()+"/eb430180f1006fb41dd1e4eb4cdb508d/login/mainmenu");break;
 		case "preview":response.sendRedirect(request.getContextPath()+"/eb430180f1006fb41dd1e4eb4cdb508d/login/preview");break;
 		}
@@ -154,10 +155,12 @@ public class AdminQuestionEntryController extends HttpServlet {
 		doGet(request, response);
 	}
 
-	public String upload(Part part){
+	public String upload(Part part,int yearid,int count){
 
 		String disposition = part.getHeader("Content-Disposition");
-		String fname = "img"+ new Date().getTime()+(count++);
+		String fname = "img"+yearid+count+
+
+				new Date().getTime();
 		String ext="";
 
 		String[] headers = disposition.split(";");

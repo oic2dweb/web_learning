@@ -22,8 +22,8 @@ public class YearService {
 		return yearDao.delete(year_id);
 	}
 
-	public boolean checkUniqueness(String year_name){
-		return yearDao.checkUniqueness(year_name);
+	public boolean checkUniqueness(String year_name,int type_id){
+		return yearDao.checkUniqueness(year_name,type_id);
 	}
 
 	public int getId(String nendo){

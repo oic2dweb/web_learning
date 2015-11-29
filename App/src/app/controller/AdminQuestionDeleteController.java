@@ -20,8 +20,8 @@ import app.service.YearService;
 public class AdminQuestionDeleteController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	public QuestionService questionService = new QuestionService();
-	public YearService yearService = new YearService();
+	private QuestionService questionService = new QuestionService();
+	private YearService yearService = new YearService();
 	private DeleteDir dir = new DeleteDir();
 
 

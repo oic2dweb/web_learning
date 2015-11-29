@@ -16,7 +16,7 @@ public interface QuestionDao {
 	public void insertQuestion(EntryQuestion eq);	//問題を追加する
 	public void updateQuestion(EntryQuestion eq);	//問題を更新する
 	public boolean checkQuestionNo(int yearid,int no);	//既に問題が登録されているとtrueを返す
-	public EntryQuestion getQuestion(int yearid, int no) ;
+	public EntryQuestion getQuestion(int yearid, int no,int type_id) ;
 	public ArrayList<EntryQuestion> getList(int yearid);
 	public int getQuantity(int year_id);
 	public boolean delete(int year_id);

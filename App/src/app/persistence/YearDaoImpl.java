@@ -57,14 +57,15 @@ public class YearDaoImpl implements YearDao{
 	}
 
 	@Override
-	public boolean checkUniqueness(String year_name) {
+	public boolean checkUniqueness(String year_name,int type_id) {
 		int flag = 0;
 			//DBとの接続
 		try(Connection conn = dataSource.getConnection();
 			//SQL文を用意
-			PreparedStatement stmt = conn.prepareStatement("SELECT COUNT(*) FROM year WHERE year_name = ?");){
+			PreparedStatement stmt = conn.prepareStatement("SELECT COUNT(*) FROM year WHERE year_name = ? and type_id = ?");){
 			//SQL文に値をセット
 			stmt.setString(1, year_name);
+			stmt.setInt(2, type_id);
 			//実行結果の参照情報を格納するResultSet型の変数を用意する
 			ResultSet rs = stmt.executeQuery();
 			//もしレコード数が１以上だったら、ユニークではなく、falseを返す
@@ -87,11 +88,12 @@ public class YearDaoImpl implements YearDao{
 		//DBとの接続
 		try(Connection conn = dataSource.getConnection();
 			//SQL文を用意
-			PreparedStatement stmt = conn.prepareStatement("insert into year (year_name,flg) values(?,?)");){
+			PreparedStatement stmt = conn.prepareStatement("insert into year (year_name,type_id,flg) values(?,?,?)");){
 
 			//SQL文に値をセット
 			stmt.setString(1, year.getYear_name());
-			stmt.setInt(2, year.getFlg());
+			stmt.setInt(2, year.getType_id());
+			stmt.setInt(3, year.getFlg());
 
 			//SQl文を実行
 			stmt.executeUpdate();

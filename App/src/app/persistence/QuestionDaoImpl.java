@@ -238,13 +238,14 @@ public class QuestionDaoImpl implements QuestionDao{
 		}
 
 		@Override
-		public EntryQuestion getQuestion(int yearid, int no) {
+		public EntryQuestion getQuestion(int yearid, int no,int type_id) {
 			EntryQuestion question = null;
 
 			try(Connection conn = dataSource.getConnection();
-					PreparedStatement stmt = conn.prepareStatement("select * from question_fe where year_id = ? and no = ?");){
+					PreparedStatement stmt = conn.prepareStatement("select * from question_fe q join year y on q.year_id = y.year_id where y.year_id = ? and q.no = ? and y.type_id = ?");){
 				stmt.setInt(1, yearid);
 				stmt.setInt(2, no);
+				stmt.setInt(3, type_id);
 
 				ResultSet result = stmt.executeQuery();
 				if(result.next()){
@@ -261,7 +262,7 @@ public class QuestionDaoImpl implements QuestionDao{
 					question.setRonten(result.getString("ronten"));
 				}
 			}catch(Exception e){
-
+				
 			}
 
 			return question;

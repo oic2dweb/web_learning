@@ -6,6 +6,7 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 
 import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -16,6 +17,7 @@ import javax.servlet.http.HttpSession;
 import app.model.Year;
 import app.persistence.QuestionDao;
 import app.persistence.QuestionDaoImpl;
+import app.service.QuestionTypeService;
 import app.service.YearService;
 
 /**
@@ -25,7 +27,8 @@ import app.service.YearService;
 public class AdminMainMenuController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	public YearService yearService = new YearService();
+	private YearService yearService = new YearService();
+	private QuestionTypeService questionTypeService = new QuestionTypeService();
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
@@ -50,8 +53,12 @@ public class AdminMainMenuController extends HttpServlet {
 		}
 		String year_name = buf.toString();
 
+		//試験の種類を取得
+		HttpSession session = request.getSession();
+		int type_id = Integer.parseInt((String)session.getAttribute("type"));
+		
 		//既に登録されている年度でないかチェック
-		boolean unique = yearService.checkUniqueness(year_name);
+		boolean unique = yearService.checkUniqueness(year_name,type_id);
 		if(unique == false){
 			//既に登録されていた場合メインメニューに戻る
 			request.setAttribute("error", "※既に登録されている年度です");
@@ -61,6 +68,7 @@ public class AdminMainMenuController extends HttpServlet {
 			Year year = new Year();
 			year.setYear_name(year_name);
 			year.setFlg(0);
+			year.setType_id(type_id);
 
 			boolean flg = yearService.register(year);
 
@@ -70,11 +78,10 @@ public class AdminMainMenuController extends HttpServlet {
 			}else{
 				//セッションにyear_idとyear_nameを格納し登録ページへ移動
 				int year_id = yearService.getId(year_name);
-				HttpSession session = request.getSession();
 				session.setAttribute("year_id",year_id);
 				session.setAttribute("year_name",year_name);
 				session.setAttribute("qnumber", 1);	//問題番号の初期化
-				
+
 				//画像フォルダの作成
 				File newfile = new File("c:\\wls\\"+year_id);
 				if(newfile.mkdir()){
@@ -90,15 +97,25 @@ public class AdminMainMenuController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
-
 		HttpSession session = request.getSession();
+
+		//adminSelectContent.jsから値を受け取った時の試験の種類を設定
+		if(request.getParameter("type")!=null){
+			session.setAttribute("type", request.getParameter("type"));
+			String type_name = questionTypeService.getName(Integer.parseInt(request.getParameter("type")));
+			session.setAttribute("type_name", type_name);
+			ServletContext app = request.getServletContext();
+			session.setAttribute("year",app.getAttribute("year"+request.getParameter("type")));
+		}
+
 		String nowyear = request.getParameter("year");
 		if(nowyear!=null&&!nowyear.equals("")){
 			request.setAttribute("nowyear", nowyear);
 		}
 
+		int type_id = Integer.parseInt((String)session.getAttribute("type"));
 		//公開フラグのない年度情報を取得
-		Map<Integer,String> noflgyear = yearService.getYear(0);
+		Map<Integer,String> noflgyear = yearService.getYear(0,type_id);
 		session.setAttribute("noflgyear", noflgyear);
 		//年度idをkeyとして公開フラグのない年度の問題数を取得
 		Map<Integer,Integer> quantity = new LinkedHashMap<Integer,Integer>(){

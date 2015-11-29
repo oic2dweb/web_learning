@@ -28,7 +28,8 @@ public class AdminPreviewController extends HttpServlet {
 		HttpSession session = request.getSession();
 		int yearid = (int) session.getAttribute("year_id");
 		int no = (int)session.getAttribute("qnumber");
-		EntryQuestion question = questionService.getQuestion(yearid, no);
+		int type_id = Integer.parseInt((String)session.getAttribute("type"));
+		EntryQuestion question = questionService.getQuestion(yearid, no,type_id);
 		question.setQuestion(question.getQuestion().replaceAll("@@path@@", request.getContextPath()));
 		question.setAns1(question.getAns1().replaceAll("@@path@@", request.getContextPath()));
 		question.setAns2(question.getAns2().replaceAll("@@path@@", request.getContextPath()));

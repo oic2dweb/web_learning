@@ -30,8 +30,8 @@ public class QuestionService {
 	public boolean checkQuestionNo(int yearid,int no){
 		return questionDao.checkQuestionNo(yearid, no);
 	}
-	public EntryQuestion getQuestion(int yearid, int no) {
-		return questionDao.getQuestion(yearid, no);
+	public EntryQuestion getQuestion(int yearid, int no,int type_id) {
+		return questionDao.getQuestion(yearid, no,type_id);
 	}
 	public ArrayList<EntryQuestion> getList(int yearid){
 		return questionDao.getList(yearid);
