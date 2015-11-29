@@ -34,6 +34,7 @@ public class MainMenuController extends HttpServlet {
 			session.setAttribute("type_name", type_name);
 			ServletContext app = request.getServletContext();
 			session.setAttribute("year",app.getAttribute("year"+request.getParameter("type")));
+			session.setAttribute("count", app.getAttribute("count"+request.getParameter("type")));
 		}
 		//session.removeAttribute("question");
 		String nowyear = request.getParameter("year");
