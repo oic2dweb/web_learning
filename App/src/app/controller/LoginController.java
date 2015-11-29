@@ -38,7 +38,7 @@ public class LoginController extends HttpServlet {
 			HttpSession session = request.getSession();
 			session.setAttribute("name", name);
 			session.setAttribute("userid", id);
-			response.sendRedirect("login/mainmenu");
+			response.sendRedirect("login/selectcontent");
 		}else{
 			request.setAttribute("error", "<font color=\"red\">※Emeilアドレス　or　パスワードに誤りがございます。</font>");
 			request.getRequestDispatcher("/WEB-INF/view/welcome.jsp").forward(request, response);

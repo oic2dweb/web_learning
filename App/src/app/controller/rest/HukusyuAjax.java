@@ -12,11 +12,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.google.gson.Gson;
+
 import app.model.Question;
 import app.service.KaitouStatusService;
 import app.service.QuestionService;
-
-import com.google.gson.Gson;
 
 
 @WebServlet("/HukusyuAjax")
@@ -27,12 +27,13 @@ public class HukusyuAjax extends HttpServlet {
 		String json="";
 		//セッションの取得
 		HttpSession session = request.getSession();
+		String type = (String)session.getAttribute("type");
 
 		//セッションからユーザー名を取得
 		int userid = (int) session.getAttribute("userid");
 		String sql = "select distinct f.id,f.question,f.ronten,f.ans1,f.ans2,f.ans3,f.ans4,f.sei,f.kaisetu,y.year_name"
 					+ " from question_fe f join year y on f.year_id = y.year_id join kaitou_status k on f.id = k.question_id"
-					+" join test_records t on k.records_id = t.id where k.revision = 1 and t.user_id = " + userid
+					+" join test_records t on k.records_id = t.id where k.revision = 1 and t.user_id = " + userid+" and y.type_id = "+type
 					+" order by f.id";
 
 		//ＤＢから問題情報を取得

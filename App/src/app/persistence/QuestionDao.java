@@ -11,7 +11,7 @@ public interface QuestionDao {
 	public ArrayList<Question> getQustion(String sql);
 	public ArrayList<Integer> getClassCount(String sql);
 	public ArrayList<Question> getNendobetu(String sql);
-	public List<TestRecord> getAllTestRecordsByUser(Long userId);
+	public List<TestRecord> getAllTestRecordsByUser(Long userId,String type_id);
 	public ArrayList<Question> getHukusyu(String sql);
 	public void insertQuestion(EntryQuestion eq);	//問題を追加する
 	public void updateQuestion(EntryQuestion eq);	//問題を更新する

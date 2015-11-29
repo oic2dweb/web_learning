@@ -172,6 +172,7 @@ public class UserDaoImpl implements UserDao {
 			stmt.setString(1, id.toString());
 			ResultSet rs = stmt.executeQuery();
 			if(rs.next()){
+				System.out.println(rs.getString(4));
 				user.setId(rs.getLong(1));
 				user.setName(rs.getString(2));
 				user.setKana(rs.getString(3));

@@ -37,7 +37,7 @@
 	<div class="row">
 		<div class="jumbotron" id="meinmenu">
 
-			<h2 class="text-center">OIC基本情報技術者試験　午前対策サイト</h2>
+			<h2 class="text-center">OIC　${type_name}試験　午前対策サイト</h2>
 		</div>
 	</div>
 <div class="row">

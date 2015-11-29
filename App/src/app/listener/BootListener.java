@@ -65,8 +65,14 @@ public class BootListener implements ServletContextListener {
 
         //年度選択プルダウンメニューの要素を取得
         YearService yearService = new YearService();
-        Map<Integer,String> year = yearService.getYear(1);
-        app.setAttribute("year",year );
+        Map<Integer,String> year2 = yearService.getYear(1,2);
+        app.setAttribute("year2",year2 );
+        
+        Map<Integer,String> year1 = yearService.getYear(1,1);
+        app.setAttribute("year1",year1 );
+        
+        Map<Integer,String> year3 = yearService.getYear(1,3);
+        app.setAttribute("year3",year3 );
 
         //question_catテーブルのcat_name一覧を取得
         QuestionCatService questionCatService = new QuestionCatService();
@@ -81,7 +87,7 @@ public class BootListener implements ServletContextListener {
         //question_subclassテーブルの一覧を取得
         ArrayList<SubClass> subClass = questionSubClassService.getSubClass();
         app.setAttribute("subClass", subClass);
-        
+
         //wlsのフォルダがない場合のみ作成
         File newfile = new File("c:\\wls");
 		if(newfile.mkdir()){

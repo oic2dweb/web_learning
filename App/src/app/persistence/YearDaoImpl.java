@@ -16,15 +16,15 @@ public class YearDaoImpl implements YearDao{
 	private DataSource dataSource = DataSourceFactory.getDataSource();
 
 	@Override
-	public Map<Integer,String> getYear(int flg) {
+	public Map<Integer,String> getYear(int flg,int type_id) {
 		Map<Integer,String> year = new LinkedHashMap<Integer,String>();
 
 		try(Connection conn = dataSource.getConnection();
 			//SQL文を用意
-			PreparedStatement stmt = conn.prepareStatement("select * from year where flg = ? order by year_id desc;");){
+			PreparedStatement stmt = conn.prepareStatement("select * from year where flg = ? and type_id = ? order by year_id desc;");){
 			//SQL文に値をセット
 			stmt.setInt(1, flg);
-
+			stmt.setInt(2, type_id);
 			ResultSet rs = stmt.executeQuery();
 
 			while(rs.next()){

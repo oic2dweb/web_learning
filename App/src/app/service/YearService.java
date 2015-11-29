@@ -10,8 +10,8 @@ public class YearService {
 
 	private YearDao yearDao = new YearDaoImpl();
 
-	public Map<Integer,String> getYear(int flg) {
-		return yearDao.getYear(flg);
+	public Map<Integer,String> getYear(int flg,int type_id) {
+		return yearDao.getYear(flg,type_id);
 	}
 
 	public boolean register(Year year){

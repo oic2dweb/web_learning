@@ -101,20 +101,21 @@ public class QuestionDaoImpl implements QuestionDao{
 			return question;
 		}
 		@Override
-		public List<TestRecord> getAllTestRecordsByUser(Long userId) {
+		public List<TestRecord> getAllTestRecordsByUser(Long userId,String type_id) {
 
 			List<TestRecord> list = new ArrayList<>();
 			String sql = "SELECT a.id, a.time, COUNT(b.id), "
 					   + "SUM(b.result), ROUND(SUM(b.result)/COUNT(b.id) *100) "
 					   + "FROM test_records a JOIN kaitou_status b "
-					   + "on (a.id = b.records_id) "
-					   + "WHERE a.user_id = ? "
+					   + "on (a.id = b.records_id) join question_fe c on (b.question_id = c.id) join year d on (c.year_id = d.year_id) "
+					   + "WHERE a.user_id = ? and d.type_id = ? "
 					   + "GROUP BY a.id, a.time "
 					   + "ORDER BY a.time";
 
 			try(Connection conn = dataSource.getConnection();
 				PreparedStatement stmt = conn.prepareStatement(sql);){
 					stmt.setString(1, userId.toString());
+					stmt.setString(2, type_id);
 					ResultSet rs = stmt.executeQuery();
 					while(rs.next()){
 						TestRecord testRecord = new TestRecord();
