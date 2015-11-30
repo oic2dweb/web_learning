@@ -45,7 +45,7 @@
 			<h2>問題登録</h2>
 			<p>出題年度</p>
 			<form method="post" class="form-inline" role="form" action="${pageContext.request.contextPath}/eb430180f1006fb41dd1e4eb4cdb508d/login/mainmenu">
-				
+
 				<div class="form-group">
 					<label for="gengo">元号</label>
 					<input type="text" name="gengo" id="gengo" value="平成" class="form-control" style="width:80px;">
@@ -66,11 +66,11 @@
 					<label for="sonotajiki">時期を入力</label>
 					<input type="text" name="sonotajiki" id="sonotajiki" class="form-control">
 				</div>
-				
+
 				<div class="form-group">
-					<input type="submit" class="btn btn-primary btn-lg form-control" value="登録開始">
+					<input type="submit" class="btn btn-primary form-control" value="登録開始">
 				</div>
-				
+
 			</form>
 			<div>${error}</div>
 		</div>

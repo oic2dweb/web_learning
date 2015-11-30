@@ -37,7 +37,23 @@ $(document).ready(function(){
 	$('select[name="mainname"]').change(function(){
 		InsertSub();
 	});
+	$('input[name="qimg1"]').change(function(){
+		var txt = $('textarea[name="question"]').html();
+		$('textarea[name="question"]').html(txt.replace(/@@img1@@/g,""));
 
+		$('textarea[name="question"]').append('@@img1@@');
+	});
+		
+	
+	$('input[name="qimg2"]').change(function(){
+		$('textarea[name="question"]').append('@@img2@@');
+	});
+	$('input[name="qimg3"]').change(function(){
+		$('textarea[name="question"]').append('@@img3@@');
+	});
+	$('input[name="qimg4"]').change(function(){
+		$('textarea[name="question"]').append('@@img4@@');
+	});
 	//問題画像が選択されたときのイベント
 	$('.qimg').change(function(){
 		var count=0;
@@ -46,7 +62,7 @@ $(document).ready(function(){
 			if(name!=null){
 				$('input[name="qimg'+(i+1)+'"]').removeAttr("disabled");
 				count++;
-
+				
 			}else{
 				$('input[name="qimg'+(i+1)+'"]').attr("disabled","disabled");
 			}
@@ -67,6 +83,22 @@ $(document).ready(function(){
 	$('input[name="kimg"]').change(function(){
 		$('input[name="hkimg"]').val(1);
 
+	});
+	
+	$('input[name="insert_img"]').change(function(){
+		alert($('input[name="insert_img"]').val());
+		/*
+		var request = $.ajax({
+			type:"POST",
+			url:CONTEXT_PATH+"AdminQuestionEntryAjax",
+			datatype:"json",
+			async: false,
+			success: function(data){
+				mainClass = data.mainClass;
+				subClass = data.subClass;
+			}
+			)}
+			*/
 	});
 
 	//submitボタンが押された時のイベント

@@ -35,7 +35,8 @@ public class AdminPreviewController extends HttpServlet {
 		question.setAns2(question.getAns2().replaceAll("@@path@@", request.getContextPath()));
 		question.setAns3(question.getAns3().replaceAll("@@path@@", request.getContextPath()));
 		question.setAns4(question.getAns4().replaceAll("@@path@@", request.getContextPath()));
-		question.setKaisetu("正答："+question.getKaisetu().replaceAll("@@path@@", request.getContextPath()));
+		question.setKaisetu(question.getKaisetu().replaceAll("@@path@@", request.getContextPath()));
+		question.setSei("正答："+question.getSei());
 		request.setAttribute("question", question);
 		request.getRequestDispatcher("/WEB-INF/view/adminPreview.jsp").forward(request, response);
 	}

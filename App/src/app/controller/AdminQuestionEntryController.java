@@ -82,9 +82,12 @@ public class AdminQuestionEntryController extends HttpServlet {
 		for(int i=1;i<=qimgcnt;i++){
 			Part part = request.getPart("qimg"+i);
 			String filename = upload(part,yearid,count++);
-			String filetag = "<img src='@@path@@/ImgServlet?path="+yearid+"/"+filename+"' class='img-responsive'>";
-			question.append(filetag);
+			String filetag = "<img src='@@path@@/ImgServlet?path="+yearid+"/"+filename+"'>";
+			question.replace(question.indexOf("@@img"+i+"@@"), question.indexOf("@@img"+i+"@@")+8, filetag);
+			//question.append(filetag);
 		}
+		//question.replace(question.indexOf("@@img1@@"), question.indexOf("@@img1@@")+7, "こんにちは");
+		//System.out.println(question.indexOf("@@img@@"));
 
 		for(int i=1;i<=4;i++){
 			if(request.getParameter("haimg"+i).equals("1")){

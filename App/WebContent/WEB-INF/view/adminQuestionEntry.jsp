@@ -19,20 +19,20 @@
 			<h3 class="panel-title">${type_name}　${year_name}</h3>
 		</div>
 		<div class="panel-body">
-				
-			
+
+
 			<form action="${pageContext.request.contextPath}/eb430180f1006fb41dd1e4eb4cdb508d/login/entry" method="post" name="entry" enctype="multipart/form-data">
 				<div class="well">
 				<div class="form-inline">
 					<div class="form-group">
 						<label class="control-label">問題番号</label>
-						<input type="text" name="qnumber" value="${qnumber}" size="1"  placeholder="Text" readonly>/
+						<input type="text" name="qnumber" value="${qnumber}" size="1" readonly>/
 						<input type="text" value="80" name="maxnumber" size="1" placeholder="Text" readonly>
 					</div>
 					&emsp;
 					<div class="form-group">
 						<label class="control-label">論点</label>
-						<input type="text" name="ronten" value="${adminQuestion.ronten}" class="form-control">
+						<input type="text" name="ronten" value="${adminQuestion.ronten}" class="form-control" maxlength="32">
 					</div>
 				</div>
 				</div>
@@ -45,14 +45,15 @@
 								</c:forEach>
 							</select>
 							<select name="mainname" class="form-control"></select><input type="hidden" value="${adminQuestion.mainid}" name="hmainname">
-						
+
 							<select name="subname" class="form-control"></select><input type="hidden" value="${adminQuestion.subid}" name="hsubname">
 					</div>
 				</div>
 				<div class="well">
+
 					<div class="form-group">
 						<label class="control-label">問題文章</label>
-						<textarea rows="10" cols="75" class="form-control" placeholder="TextArea" name="question" maxlength="1024">${adminQuestion.question}</textarea>
+						<textarea rows="10" cols="75" class="form-control" name="question" maxlength="700">${adminQuestion.question}</textarea>
 					</div>
 					<div class="row">
 						<div class="form-group col-xs-5">
@@ -80,37 +81,37 @@
 				</div>
 				<div class="well">
 					<label class="control-label">回答</label>
-					
+
 					<div class="form-inline">
 						<div class="form-group">
-							<label class="control-label">ア：</label><textarea class="form-control" placeholder="TextArea" rows="1" cols="75" name="ans1" maxlength="256">${adminQuestion.ans1}</textarea>
+							<label class="control-label">ア：</label><textarea class="form-control" rows="1" cols="75" name="ans1" maxlength="150">${adminQuestion.ans1}</textarea>
 						</div>
 						<div class="form-group"><input type="file" name="aimg1" class="aimg" accept="image/gif,image/jpeg,image/png"><input type="hidden" name="haimg1" value="0"></div>
 					</div>
-					
+
 					<div class="form-inline">
 						<div class="form-group">
-							<label class="control-label">イ：</label><textarea class="form-control" placeholder="TextArea" rows="1" cols="75" name="ans2" maxlength="256">${adminQuestion.ans2}</textarea>
+							<label class="control-label">イ：</label><textarea class="form-control" rows="1" cols="75" name="ans2" maxlength="150">${adminQuestion.ans2}</textarea>
 						</div>
 					</div>
-					
+
 					<p><input type="file" name="aimg2" class="aimg" accept="image/gif,image/jpeg,image/png"><input type="hidden" name="haimg2" value="0"></p>
-					
+
 					<div class="form-inline">
 						<div class="form-group">
-							<label class="control-label">ウ：</label><textarea class="form-control" placeholder="TextArea" rows="1" cols="75" name="ans3" maxlength="256">${adminQuestion.ans3}</textarea>
+							<label class="control-label">ウ：</label><textarea class="form-control" rows="1" cols="75" name="ans3" maxlength="150">${adminQuestion.ans3}</textarea>
 						</div>
 					</div>
 					<p><input type="file" name="aimg3" class="aimg" accept="image/gif,image/jpeg,image/png"><input type="hidden" name="haimg3" value="0"></p>
 					<div class="form-inline">
 						<div class="form-group">
-							<label class="control-label">エ：</label><textarea class="form-control" placeholder="TextArea" rows="1" cols="75" name="ans4" maxlength="256">${adminQuestion.ans4}</textarea>
+							<label class="control-label">エ：</label><textarea class="form-control" rows="1" cols="75" name="ans4" maxlength="150">${adminQuestion.ans4}</textarea>
 						</div>
 					</div>
 					<p><input type="file" name="aimg4" class="aimg" accept="image/gif,image/jpeg,image/png"><input type="hidden" name="haimg4" value="0"></p>
-					
+
 				</div>
-				
+
 				<div class="well">
 					<label class="control-label">正答</label>
 					<select name="sei">
@@ -124,7 +125,7 @@
 				<div class="well">
 					<div class="form-group">
 						<label class="control-label">解説</label>
-						<textarea rows="10" class="form-control" placeholder="TextArea" cols="75" name="kaisetu" maxlength="1024">${adminQuestion.kaisetu}</textarea>
+						<textarea rows="10" class="form-control" cols="75" name="kaisetu" maxlength="900">${adminQuestion.kaisetu}</textarea>
 					</div>
 					<label class="control-label">解説画像</label>
 					<input type="file" name="kimg" accept="image/gif,image/jpeg,image/png"><input type="hidden" name="hkimg" value="0">
@@ -134,7 +135,7 @@
 					<input type="button" value="一覧" name="list" class="submitbt btn btn-success"><input type="button" value="中断保存" name="onetimesave" class="submitbt btn btn-success"><input type="button" value="投稿" name="posting" class="submitbt btn btn-primary">
 					<input type="checkbox" value="" name="check">チェックを入れてから投稿ボタンを押下してください。
 					<input type="hidden" name="submitname">
-				
+
 			</form>
 		</div>
 	</div>
