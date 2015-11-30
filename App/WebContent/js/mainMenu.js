@@ -14,16 +14,17 @@ $(document).ready(function(){
 		}
 	});
 
-	$('input[value="選択"]').click(function(){
+	$('input[value="全選択"]').click(function(){
 		$('.'+$(this).attr('name')).prop("checked",true);
 	});
 
-	$('input[value="解除"]').click(function(){
+	$('input[value="全解除"]').click(function(){
 		$('.'+$(this).attr('name')).prop("checked",false);
 	});
 	$('#nendobetu').click(function(){
 		$('#nendoquestion').html("");
 	});
+
 
 });
 function SelectLink(id){

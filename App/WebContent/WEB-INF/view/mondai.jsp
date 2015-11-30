@@ -7,11 +7,13 @@
 <head>
 <meta charset="UTF-8">
 <link href="${pageContext.request.contextPath}/css/bootstrap.min.css" rel="stylesheet">
+<link href="${pageContext.request.contextPath}/css/mondai.css" rel="stylesheet">
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 <script src="${pageContext.request.contextPath}/js/bootstrap.min.js"></script>
 <script src="${pageContext.request.contextPath}/js/config.js"></script>
 <script src="${pageContext.request.contextPath}/js/mondai.js"></script>
+
 
 <title>OIC基本情報技術者試験　午前対策サイト</title>
 </head>
@@ -21,8 +23,9 @@
 			<h3 class="panel-title">
 				<span id="pagenumber"></span>/${fn:length(question)}問
 				<input type="hidden" id="allque" value="${fn:length(question)}">
+				<input type="checkbox" id="hukusyu"/><label>復習</label>
 			</h3>
-			<input type="checkbox" id="hukusyu"/><label>復習</label>
+
 		</div>
 		<div class="panel-body">
 			<div id="question"></div>

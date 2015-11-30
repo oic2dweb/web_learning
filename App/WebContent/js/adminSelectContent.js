@@ -1,0 +1,11 @@
+$(document).ready(function(){
+	$('.box1').click(function(){
+		window.location=CONTEXT_PATH+'eb430180f1006fb41dd1e4eb4cdb508d/login/mainmenu?type=1';
+	});
+	$('.box2').click(function(){
+		window.location=CONTEXT_PATH+'eb430180f1006fb41dd1e4eb4cdb508d/login/mainmenu?type=2';
+	});
+	$('.box3').click(function(){
+		window.location=CONTEXT_PATH+'eb430180f1006fb41dd1e4eb4cdb508d/login/mainmenu?type=3';
+	});
+});

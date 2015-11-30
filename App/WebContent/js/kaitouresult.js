@@ -2,12 +2,7 @@ $(document).ready(function(){
 	resulttable();
 	
 	sessionStorage.setItem("kaisetsu", "true");
-	/*
-	$(".kaisetsu").click(function(){
-		var kaisetsu = "true";
-		window.location = "${pageContext.request.contextPath}/login/mondai";
-	});
-	*/
+
 
 	$('.hukucheck').change(function(){
 		if ($(this).prop("checked") == true) {

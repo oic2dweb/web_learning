@@ -35,6 +35,6 @@
 		<div id="sei">${question.sei}</div>
 		<div id="kaisetu">${question.kaisetu}</div>
 	</div>
-	<input type="button" id="" value="戻る" onclick="window.location='${pageContext.request.contextPath}/eb430180f1006fb41dd1e4eb4cdb508d/login/entry'">
+	<input type="button" id="" class="btn btn-info" value="戻る" onclick="window.location='${pageContext.request.contextPath}/eb430180f1006fb41dd1e4eb4cdb508d/login/entry'">
 </body>
 </html>

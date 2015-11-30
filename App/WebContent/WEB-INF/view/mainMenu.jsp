@@ -63,7 +63,7 @@
 <table class="table table-striped table-hover table-bordered">
 	<tbody>
 		<tr class="info">
-			<th colspan="3" class="thcenter">テクノロジ系<input type="button" value="選択" name="tecno" class="btn btn-success btn-sm"><input type="button" value="解除" name="tecno" class="tecno btn btn-success btn-sm"></th>
+			<th colspan="3" class="thcenter">テクノロジ系<input type="button" value="全選択" name="tecno" class="btn btn-success btn-sm"><input type="button" value="全解除" name="tecno" class="tecno btn btn-success btn-sm"></th>
 		</tr>
 		<tr class="bunyatr">
 			<th>・基礎理論</th>
@@ -98,7 +98,7 @@
 
 
 		<tr class="info">
-			<th colspan="3" class="thcenter">マネジメント系<input type="button" value="選択" name="manege" class="btn btn-success btn-sm"><input type="button" value="解除" name="manege" class="btn btn-success btn-sm"></th>
+			<th colspan="3" class="thcenter">マネジメント系<input type="button" value="全選択" name="manege" class="btn btn-success btn-sm"><input type="button" value="全解除" name="manege" class="btn btn-success btn-sm"></th>
 		</tr>
 		<tr class="bunyatr">
 			<th>・開発技術</th>
@@ -118,7 +118,7 @@
 
 
 		<tr class="info">
-			<th colspan="3" class="thcenter">ストラテジ系<input type="button" value="選択" name="stora" class="btn btn-success btn-sm"><input type="button" value="解除" name="stora" class="btn btn-success btn-sm"></th>
+			<th colspan="3" class="thcenter">ストラテジ系<input type="button" value="全選択" name="stora" class="btn btn-success btn-sm"><input type="button" value="全解除" name="stora" class="btn btn-success btn-sm"></th>
 		</tr>
 		<tr class="bunyatr">
 			<th>・企業と法務</th>
@@ -137,7 +137,7 @@
 		</tr>
 	</tbody>
 </table>
-<input type="submit" value="出題開始" class="btn btn-primary btn-lg">
+<input type="submit" value="出題開始" class="btn btn-primary btn-lg sessionstrclr">
 </form>
 </div>
 
@@ -170,7 +170,7 @@
 			<c:forEach var="qes" items="${question}" varStatus="status">
 				<tr>
 					<td>
-						<a href="${pageContext.request.contextPath}/login/nenmondai?pagenumber=${status.count-1}"><c:out value="${status.count}"></c:out></a>
+						<a href="${pageContext.request.contextPath}/login/nenmondai?pagenumber=${status.count-1}" class="sessionstrclr"><c:out value="${status.count}"></c:out></a>
 					</td>
 					<td><c:out value="${qes.ronten}"></c:out></td>
 					<td><c:out value="${qes.subclass}"></c:out></td>

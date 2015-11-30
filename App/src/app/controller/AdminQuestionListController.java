@@ -27,7 +27,6 @@ public class AdminQuestionListController extends HttpServlet {
 		HttpSession session = request.getSession();
 		int yearid = (int)session.getAttribute("year_id");
 		ArrayList<EntryQuestion> qlist = questionService.getList(yearid);
-		//session.setAttribute("qlist", qlist);
 		request.setAttribute("qlist", qlist);
 		request.getRequestDispatcher("/WEB-INF/view/adminQuestionList.jsp").forward(request, response);
 	}
