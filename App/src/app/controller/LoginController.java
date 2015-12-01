@@ -40,7 +40,7 @@ public class LoginController extends HttpServlet {
 			session.setAttribute("userid", id);
 			response.sendRedirect("login/selectcontent");
 		}else{
-			request.setAttribute("error", "<font color=\"red\">※Emeilアドレス　or　パスワードに誤りがございます。</font>");
+			request.setAttribute("error", "<font color=\"red\">※学籍番号　or　パスワードに誤りがございます。</font>");
 			request.getRequestDispatcher("/WEB-INF/view/welcome.jsp").forward(request, response);
 
 		}
