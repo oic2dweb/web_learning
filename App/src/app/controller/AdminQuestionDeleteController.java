@@ -35,6 +35,7 @@ public class AdminQuestionDeleteController extends HttpServlet {
 		//指定された年度の問題を削除
 		boolean flg1 = questionService.delete(year_id);
 		if(!flg1){
+			System.out.println("aa");
 			//削除できなかった時はエラーページへ
 			request.getRequestDispatcher("/WEB-INF/view/500error.jsp").forward(request, response);
 		}else{

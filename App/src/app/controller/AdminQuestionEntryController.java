@@ -145,11 +145,13 @@ public class AdminQuestionEntryController extends HttpServlet {
 		case "next":session.setAttribute("qnumber", ++no);break;
 		case "list":response.sendRedirect(request.getContextPath()+"/eb430180f1006fb41dd1e4eb4cdb508d/login/list");break;
 		case "onetimesave":yearService.publicYear(yearid,0);
-
-			response.sendRedirect(request.getContextPath()+"/eb430180f1006fb41dd1e4eb4cdb508d/login/mainmenu");break;
-		case "posting":yearService.publicYear(yearid,1);
 			BootListener listener = new BootListener();
 			listener.contextInitialized(new ServletContextEvent(request.getServletContext()));
+			session.setAttribute("year",request.getServletContext().getAttribute("year"+session.getAttribute("type")));
+			response.sendRedirect(request.getContextPath()+"/eb430180f1006fb41dd1e4eb4cdb508d/login/mainmenu");break;
+		case "posting":yearService.publicYear(yearid,1);
+			BootListener listener2 = new BootListener();
+			listener2.contextInitialized(new ServletContextEvent(request.getServletContext()));
 			session.setAttribute("year",request.getServletContext().getAttribute("year"+session.getAttribute("type")));
 			response.sendRedirect(request.getContextPath()+"/eb430180f1006fb41dd1e4eb4cdb508d/login/mainmenu");break;
 		case "preview":response.sendRedirect(request.getContextPath()+"/eb430180f1006fb41dd1e4eb4cdb508d/login/preview");break;
