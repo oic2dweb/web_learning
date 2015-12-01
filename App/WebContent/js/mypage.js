@@ -69,10 +69,11 @@ angular.module('app', ['ngRoute', 'angularChart'])
 			}
 			if(data && data.length > 10){
 				data = data.slice(data.length - 10 , data.length);
-			}	
+			}
 			ctrl.options.data = data;
 		});
 		MyPageService.getUser().then(function(user){
 			ctrl.user = user;
+			$log.log(user);
 		});
 	}]);

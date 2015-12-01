@@ -21,23 +21,23 @@ import app.service.UserService;
 public class UserRestController {
 
 private UserService userService = new UserService();
-	
+
 	//即時入力のメールやユーザーIDがすでにDBに入るかどうかのチェック処理
 	@SuppressWarnings("unchecked")
 	@POST
 	@Path("/unique")
 	@Consumes("application/json")
 	public Response checkUniqueness(String data){
-		
+
 		//届いたJSON文字列をJAVAのマップに変換
 		Gson gson = new Gson();
 		Map<String, String> map = new HashMap<String, String>();
 		map = gson.fromJson(data, map.getClass());
-		
+
 		//もし同じデータがあったら、ユニークではなく、falseを返す
 		//同じデータがなかったら、ユニークで、trueを返す
 		boolean result = userService.checkUniqueness(map.get("attribute"), map.get("value"));
-		
+
 		//クライアントサイドにメッセージ表示用のキーを送信
 		if(result){
 			return Response.ok("REGISTER_OK").build();
@@ -45,7 +45,7 @@ private UserService userService = new UserService();
 			return Response.ok("REGISTER_NOTUNIQUE").build();
 		}
 	}
-	
+
 	@POST
 	@Path("/userinfo")
 	@Produces("application/json")
@@ -53,7 +53,8 @@ private UserService userService = new UserService();
 		Integer id = (int)request.getSession().getAttribute("userid");
 		Long userid = id.longValue();
 		User user = userService.getUser(userid);
+		System.out.println("#######debug:" + user);
 		return Response.ok(user).build();
 	}
-	
+
 }

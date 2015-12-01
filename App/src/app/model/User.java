@@ -108,4 +108,9 @@ public class User {
 	public void setClassId(int class_id) {
 	    this.class_id = class_id;
 	}
+
+	@Override
+	public String toString(){
+		return this.name + " " + this.id + " " + this.student_id;
+	}
 }
