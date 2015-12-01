@@ -107,7 +107,7 @@ public class QuestionDaoImpl implements QuestionDao{
 			String sql = "SELECT a.id, a.time, COUNT(b.id), "
 					   + "SUM(b.result), ROUND(SUM(b.result)/COUNT(b.id) *100) "
 					   + "FROM test_records a JOIN kaitou_status b "
-					   + "on (a.id = b.records_id) join question_fe c on (b.question_id = c.id) join year d on (c.year_id = d.year_id) "
+					   + "on (a.id = b.records_id) join questiones c on (b.question_id = c.id) join year d on (c.year_id = d.year_id) "
 					   + "WHERE a.user_id = ? and d.type_id = ? "
 					   + "GROUP BY a.id, a.time "
 					   + "ORDER BY a.time";
@@ -167,7 +167,7 @@ public class QuestionDaoImpl implements QuestionDao{
 		public void insertQuestion(EntryQuestion eq) {
 			try(Connection conn = dataSource.getConnection();
 					//SQL文を用意
-					PreparedStatement stmt = conn.prepareStatement("insert into question_fe(year_id,ronten,subclass_id,question,ans1,ans2,ans3,ans4,sei,kaisetu,no) values(?,?,?,?,?,?,?,?,?,?,?)");){
+					PreparedStatement stmt = conn.prepareStatement("insert into questiones(year_id,ronten,subclass_id,question,ans1,ans2,ans3,ans4,sei,kaisetu,no) values(?,?,?,?,?,?,?,?,?,?,?)");){
 					stmt.setInt(1, eq.getYearid());
 					stmt.setString(2, eq.getRonten());
 					stmt.setInt(3, eq.getSubid());
@@ -193,7 +193,7 @@ public class QuestionDaoImpl implements QuestionDao{
 			boolean flg = false;
 
 			try(Connection conn = dataSource.getConnection();
-					PreparedStatement stmt = conn.prepareStatement("select * from question_fe where year_id = ? and no = ?");){
+					PreparedStatement stmt = conn.prepareStatement("select * from questiones where year_id = ? and no = ?");){
 				stmt.setInt(1, yearid);
 				stmt.setInt(2, no);
 
@@ -215,7 +215,7 @@ public class QuestionDaoImpl implements QuestionDao{
 		public void updateQuestion(EntryQuestion eq) {
 			try(Connection conn = dataSource.getConnection();
 					//SQL文を用意
-					PreparedStatement stmt = conn.prepareStatement("update question_fe set ronten=?,subclass_id=?,question=?,ans1=?,ans2=?,ans3=?,ans4=?,sei=?,kaisetu=? where year_id = ? and no = ?");){
+					PreparedStatement stmt = conn.prepareStatement("update questiones set ronten=?,subclass_id=?,question=?,ans1=?,ans2=?,ans3=?,ans4=?,sei=?,kaisetu=? where year_id = ? and no = ?");){
 
 					stmt.setString(1, eq.getRonten());
 					stmt.setInt(2, eq.getSubid());
@@ -242,7 +242,7 @@ public class QuestionDaoImpl implements QuestionDao{
 			EntryQuestion question = null;
 
 			try(Connection conn = dataSource.getConnection();
-					PreparedStatement stmt = conn.prepareStatement("select * from question_fe q join year y on q.year_id = y.year_id where y.year_id = ? and q.no = ? and y.type_id = ?");){
+					PreparedStatement stmt = conn.prepareStatement("select * from questiones q join year y on q.year_id = y.year_id where y.year_id = ? and q.no = ? and y.type_id = ?");){
 				stmt.setInt(1, yearid);
 				stmt.setInt(2, no);
 				stmt.setInt(3, type_id);
@@ -273,7 +273,7 @@ public class QuestionDaoImpl implements QuestionDao{
 			ArrayList<EntryQuestion> list = new ArrayList<EntryQuestion>();
 			EntryQuestion entry;
 			try(Connection conn = dataSource.getConnection();
-					PreparedStatement stmt = conn.prepareStatement("select no,left(question,40) as question from question_fe where year_id = ? order by no");){
+					PreparedStatement stmt = conn.prepareStatement("select no,left(question,40) as question from questiones where year_id = ? order by no");){
 				stmt.setInt(1, yearid);
 
 				ResultSet result = stmt.executeQuery();
@@ -296,7 +296,7 @@ public class QuestionDaoImpl implements QuestionDao{
 		public int getQuantity(int year_id){
 			int quantity = 0;
 			try(Connection conn = dataSource.getConnection();
-					PreparedStatement stmt = conn.prepareStatement("select count(*) from question_fe where year_id = ?");){
+					PreparedStatement stmt = conn.prepareStatement("select count(*) from questiones where year_id = ?");){
 					//SQL文に値をセット
 					stmt.setInt(1, year_id);
 					ResultSet result = stmt.executeQuery();
@@ -313,7 +313,7 @@ public class QuestionDaoImpl implements QuestionDao{
 			//DBとの接続
 			try(Connection conn = dataSource.getConnection();
 				//SQL文を用意
-				PreparedStatement stmt = conn.prepareStatement("delete from question_fe where year_id=?");){
+				PreparedStatement stmt = conn.prepareStatement("delete from questiones where year_id=?");){
 				//SQL文に値をセット
 				stmt.setInt(1, year_id);
 				//SQl文を実行
@@ -329,7 +329,7 @@ public class QuestionDaoImpl implements QuestionDao{
 
 			int no=1;
 			try(Connection conn = dataSource.getConnection();
-					PreparedStatement stmt = conn.prepareStatement("select max(no) as no from question_fe where year_id = ?");){
+					PreparedStatement stmt = conn.prepareStatement("select max(no) as no from questiones where year_id = ?");){
 				stmt.setInt(1, year_id);
 				ResultSet result = stmt.executeQuery();
 				if(result.next()){

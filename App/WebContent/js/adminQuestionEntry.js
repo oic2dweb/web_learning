@@ -40,19 +40,48 @@ $(document).ready(function(){
 	$('input[name="qimg1"]').change(function(){
 		var txt = $('textarea[name="question"]').html();
 		$('textarea[name="question"]').html(txt.replace(/@@img1@@/g,""));
-
 		$('textarea[name="question"]').append('@@img1@@');
 	});
 		
-	
 	$('input[name="qimg2"]').change(function(){
+		var txt = $('textarea[name="question"]').html();
+		$('textarea[name="question"]').html(txt.replace(/@@img2@@/g,""));
 		$('textarea[name="question"]').append('@@img2@@');
 	});
 	$('input[name="qimg3"]').change(function(){
+		var txt = $('textarea[name="question"]').html();
+		$('textarea[name="question"]').html(txt.replace(/@@img3@@/g,""));
 		$('textarea[name="question"]').append('@@img3@@');
 	});
 	$('input[name="qimg4"]').change(function(){
+		var txt = $('textarea[name="question"]').html();
+		$('textarea[name="question"]').html(txt.replace(/@@img4@@/g,""));
 		$('textarea[name="question"]').append('@@img4@@');
+	});
+	$('input[name="aimg1"]').change(function(){
+		var txt = $('textarea[name="ans1"]').html();
+		$('textarea[name="ans1"]').html(txt.replace(/@@img@@/g,""));
+		$('textarea[name="ans1"]').append('@@img@@');
+	});
+	$('input[name="aimg2"]').change(function(){
+		var txt = $('textarea[name="ans2"]').html();
+		$('textarea[name="ans2"]').html(txt.replace(/@@img@@/g,""));
+		$('textarea[name="ans2"]').append('@@img@@');
+	});
+	$('input[name="aimg3"]').change(function(){
+		var txt = $('textarea[name="ans3"]').html();
+		$('textarea[name="ans3"]').html(txt.replace(/@@img@@/g,""));
+		$('textarea[name="ans3"]').append('@@img@@');
+	});
+	$('input[name="aimg4"]').change(function(){
+		var txt = $('textarea[name="ans4"]').html();
+		$('textarea[name="ans4"]').html(txt.replace(/@@img@@/g,""));
+		$('textarea[name="ans4"]').append('@@img@@');
+	});
+	$('input[name="kimg"]').change(function(){
+		var txt = $('textarea[name="kaisetu"]').html();
+		$('textarea[name="kaisetu"]').html(txt.replace(/@@img@@/g,""));
+		$('textarea[name="kaisetu"]').append('@@img@@');
 	});
 	//問題画像が選択されたときのイベント
 	$('.qimg').change(function(){
@@ -148,6 +177,12 @@ $(document).ready(function(){
 				return false;
 			}
 		}
+		/*
+		var text = $('textarea[name="question"]').html();
+		text = text.replace(/\r\n/g,'\n');
+		text = text.replace(/\r/g,'\n');
+		$('textarea[name="question"]').html(text.replace(/\n/g,'<br>'));
+		*/
 		$('form[name="entry"]').submit();
 	});
 });

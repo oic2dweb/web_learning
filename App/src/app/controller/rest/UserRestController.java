@@ -53,7 +53,6 @@ private UserService userService = new UserService();
 		Integer id = (int)request.getSession().getAttribute("userid");
 		Long userid = id.longValue();
 		User user = userService.getUser(userid);
-		System.out.println("#######debug:" + user);
 		return Response.ok(user).build();
 	}
 

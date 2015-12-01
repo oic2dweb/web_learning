@@ -47,10 +47,19 @@ public class AdminQuestionEntryController extends HttpServlet {
 		}
 		int no = (int)session.getAttribute("qnumber");
 		int type_id = Integer.parseInt((String)session.getAttribute("type"));
+
+		//すでに登録されてる問題がある場合の取り出し
 		EntryQuestion adminQuestion = questionService.getQuestion(yearid, no,type_id);
 		if(adminQuestion!=null){
 			adminQuestion.setMainid(qscService.getMainClassId(adminQuestion.getSubid()));
 			adminQuestion.setCatid(qmcService.getCatId(adminQuestion.getMainid()));
+			//改行タブを改行コードに置換
+			adminQuestion.setQuestion(adminQuestion.getQuestion().replaceAll("<br>", "\r\n"));
+			adminQuestion.setAns1(adminQuestion.getAns1().replaceAll("<br>", "\r\n"));
+			adminQuestion.setAns2(adminQuestion.getAns2().replaceAll("<br>", "\r\n"));
+			adminQuestion.setAns3(adminQuestion.getAns3().replaceAll("<br>", "\r\n"));
+			adminQuestion.setAns4(adminQuestion.getAns4().replaceAll("<br>", "\r\n"));
+			adminQuestion.setKaisetu(adminQuestion.getKaisetu().replaceAll("<br>", "\r\n"));
 			request.setAttribute("adminQuestion", adminQuestion);
 		}
 
@@ -69,54 +78,77 @@ public class AdminQuestionEntryController extends HttpServlet {
 		int yearid = (int)session.getAttribute("year_id");
 		String ronten = request.getParameter("ronten");
 		int subid = Integer.parseInt(request.getParameter("subname"));
-		StringBuffer question = new StringBuffer(request.getParameter("question"));
-		StringBuffer ans1 = new StringBuffer(request.getParameter("ans1"));
-		StringBuffer ans2 = new StringBuffer(request.getParameter("ans2"));
-		StringBuffer ans3 = new StringBuffer(request.getParameter("ans3"));
-		StringBuffer ans4 = new StringBuffer(request.getParameter("ans4"));
+
+		//改行コードを改行タブに置換
+		String temp = request.getParameter("question");
+		temp = temp.replaceAll("\r\n", "<br>");
+		temp = temp.replaceAll("\n", "<br>");
+		StringBuffer question = new StringBuffer(temp);
+
+		String ans1 = request.getParameter("ans1");
+		ans1 = ans1.replaceAll("\r\n", "<br>");
+		ans1 = ans1.replaceAll("\n", "<br>");
+
+		String ans2 = request.getParameter("ans2");
+		ans2 = ans2.replaceAll("\r\n", "<br>");
+		ans2 = ans2.replaceAll("\n", "<br>");
+
+		String ans3 = request.getParameter("ans3");
+		ans3 = ans3.replaceAll("\r\n", "<br>");
+		ans3 = ans3.replaceAll("\n", "<br>");
+
+		String ans4 = request.getParameter("ans4");
+		ans4 = ans4.replaceAll("\r\n", "<br>");
+		ans4 = ans4.replaceAll("\n", "<br>");
+
 		String sei = request.getParameter("sei");
-		StringBuffer kaisetu = new StringBuffer(request.getParameter("kaisetu"));
+
+		temp = request.getParameter("kaisetu");
+		temp = temp.replaceAll("\r\n", "<br>");
+		temp = temp.replaceAll("\n", "<br>");
+		StringBuffer kaisetu = new StringBuffer(temp);
 		int no = Integer.parseInt(request.getParameter("qnumber"));
 
+		//問題文章の画像アップロード処理
 		int qimgcnt=Integer.parseInt(request.getParameter("qimgcnt"));
 		for(int i=1;i<=qimgcnt;i++){
 			Part part = request.getPart("qimg"+i);
 			String filename = upload(part,yearid,count++);
 			String filetag = "<img src='@@path@@/ImgServlet?path="+yearid+"/"+filename+"'>";
 			question.replace(question.indexOf("@@img"+i+"@@"), question.indexOf("@@img"+i+"@@")+8, filetag);
-			//question.append(filetag);
 		}
-		//question.replace(question.indexOf("@@img1@@"), question.indexOf("@@img1@@")+7, "こんにちは");
-		//System.out.println(question.indexOf("@@img@@"));
 
+		//回答の画像アップロード処理
 		for(int i=1;i<=4;i++){
 			if(request.getParameter("haimg"+i).equals("1")){
 				Part part = request.getPart("aimg"+i);
 				String filename=upload(part,yearid,count++);
-				String filetag = "<img src='@@path@@/ImgServlet?path="+yearid+"/"+filename+"' class='img-responsive'>";
+				String filetag = "<img src='@@path@@/ImgServlet?path="+yearid+"/"+filename+"'>";
 				switch(i){
 				case 1:
-					ans1.append(filetag);
+					ans1 = ans1.replaceAll("@@img@@", filetag);
 					break;
 				case 2:
-					ans2.append(filetag);
+					ans2 = ans2.replaceAll("@@img@@", filetag);
 					break;
 				case 3:
-					ans3.append(filetag);
+					ans3 = ans3.replaceAll("@@img@@", filetag);
 					break;
 				case 4:
-					ans4.append(filetag);
+					ans4 = ans4.replaceAll("@@img@@", filetag);
 					break;
 
 				}
 			}
 		}
 
+		//解説の画像アップロード処理
 		if(request.getParameter("hkimg").equals("1")){
 			Part part = request.getPart("kimg");
 			String filename=upload(part,yearid,count++);
-			String filetag = "<img src='@@path@@/ImgServlet?path="+yearid+"/"+filename+"' class='img-responsive'>";
-			kaisetu.append(filetag);
+			String filetag = "<img src='@@path@@/ImgServlet?path="+yearid+"/"+filename+"'>";
+			kaisetu.replace(kaisetu.indexOf("@@img@@"), kaisetu.indexOf("@@img@@")+7, filetag);
+			//kaisetu.append(filetag);
 		}
 
 		EntryQuestion eq = new EntryQuestion();
@@ -124,14 +156,15 @@ public class AdminQuestionEntryController extends HttpServlet {
 		eq.setRonten(ronten);
 		eq.setSubid(subid);
 		eq.setQuestion(question.toString());
-		eq.setAns1(ans1.toString());
-		eq.setAns2(ans2.toString());
-		eq.setAns3(ans3.toString());
-		eq.setAns4(ans4.toString());
+		eq.setAns1(ans1);
+		eq.setAns2(ans2);
+		eq.setAns3(ans3);
+		eq.setAns4(ans4);
 		eq.setSei(sei);
 		eq.setKaisetu(kaisetu.toString());
 		eq.setNo(no);
 
+		//すでにDBに存在する問題番号かどうか？
 		if(questionService.checkQuestionNo(yearid, no)){
 			questionService.updateQuestion(eq);
 		}else{
@@ -160,6 +193,7 @@ public class AdminQuestionEntryController extends HttpServlet {
 		doGet(request, response);
 	}
 
+	//画像をアップロードするメソッド
 	public String upload(Part part,int yearid,int count){
 
 		String disposition = part.getHeader("Content-Disposition");

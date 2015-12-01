@@ -51,7 +51,7 @@ public class MainMenuController extends HttpServlet {
 	//選択された年度の問題情報をセッションに格納
 	public ArrayList<Question> SqlCreate(String year,String type){
 		String sql = "select f.question,f.ronten,f.ans1,f.ans2,f.ans3,f.ans4,f.sei,f.kaisetu,"
-					+ "s.subclass_name from question_fe f join question_subclass" +
+					+ "s.subclass_name from questiones f join question_subclass" +
 						" s on f.subclass_id = s.subclass_id join year y on f.year_id = y.year_id where y.year_id = " + year+" and y.type_id = "+type+" order by f.no";
 
 		QuestionDao quedao = new QuestionDaoImpl();
@@ -65,7 +65,7 @@ public class MainMenuController extends HttpServlet {
 		String type = (String)session.getAttribute("type");
 		String[] subid = request.getParameterValues("subid");
 		StringBuffer sql = new StringBuffer();
-		sql.append("select q.id,q.question,q.ronten,q.ans1,q.ans2,q.ans3,q.ans4,q.sei,q.kaisetu from question_fe q join year y on q.year_id = y.year_id where q.subclass_id in(");
+		sql.append("select q.id,q.question,q.ronten,q.ans1,q.ans2,q.ans3,q.ans4,q.sei,q.kaisetu from questiones q join year y on q.year_id = y.year_id where q.subclass_id in(");
 		sql.append(subid[0]);
 		for(int i=1;i<subid.length;i++){
 			sql.append(","+subid[i]);

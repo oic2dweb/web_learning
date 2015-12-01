@@ -29,8 +29,7 @@ public class MogiController extends HttpServlet {
 		HttpSession session = request.getSession();
 		String year = request.getParameter("years");
 		String type = (String)session.getAttribute("type");
-		String sql = "select q.id,q.question,q.ronten,q.ans1,q.ans2,q.ans3,q.ans4,q.sei,q.kaisetu from question_fe q join year y on q.year_id = y.year_id where y.year_id = " + year+ " and y.type_id = "+type+" order by no";
-		System.out.println(sql);
+		String sql = "select q.id,q.question,q.ronten,q.ans1,q.ans2,q.ans3,q.ans4,q.sei,q.kaisetu from questiones q join year y on q.year_id = y.year_id where y.year_id = " + year+ " and y.type_id = "+type+" order by no";
 		QuestionService questionService = new QuestionService();
 		ArrayList<Question> qes = questionService.getQuestion(sql);
 
