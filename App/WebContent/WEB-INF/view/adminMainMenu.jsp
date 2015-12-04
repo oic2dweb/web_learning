@@ -19,7 +19,7 @@
 </head>
 <body class="container">
 	<div class="row">
-		<span class="pull-right"><button class="btn" onclick="location.href='${pageContext.request.contextPath}/eb430180f1006fb41dd1e4eb4cdb508d/admin'">ログアウト</button></span>
+		<span class="pull-right"><button class="btn btn-default" onclick="location.href='${pageContext.request.contextPath}/eb430180f1006fb41dd1e4eb4cdb508d/admin'">ログアウト</button></span>
 	</div>
 	<div class="row">
 		<div class="jumbotron" id="meinmenu">

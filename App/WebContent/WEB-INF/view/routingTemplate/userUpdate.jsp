@@ -53,27 +53,45 @@
 						</div>
 					</div>
 					<div class="control-group">
-        				<label class="control-label" for="name">お名前</label>
+						<div class="row">
+							<div class="col-sm-4">
+        						<label class="control-label" for="name">お名前</label>
+        					</div>
+        				</div>
         				<div class="controls">
-          					<input type="text" name="name" id="name" class="validate[required,maxSize[20],custom[zenkaku]] text-input form-control" data-prompt-position="centerRight:20,0">
+        					<div class="row">
+        						<div class="col-sm-7">		
+          							<input type="text" name="name" id="name" class="validate[required,maxSize[20],custom[zenkaku]] text-input form-control" data-prompt-position="centerRight:20,0">
+								</div>
+							</div>
 							<input type="hidden" value="0" class="submitCount">
 							<p>（全角文字）</p>
 							<p>このお名前でよろしければ、パスワードを入力してください</p>
 						</div>
 					</div>
 					<div class="control-group">
-						<label class="control-label" for="name">パスワード</label>
+						<div class="row">
+							<div class="col-sm-4">
+								<label class="control-label" for="name">パスワード</label>
+							</div>
+						</div>			
         				<div class="controls">
-          					<input type="password" name="password1" id="password1" class="validate[required],funcCall[checkPassword]] text-input form-control" data-prompt-position="centerRight:20,0">
+        					<div class="row">
+        						<div class="col-sm-7">	
+          							<input type="password" name="password1" id="password1" class="validate[required],funcCall[checkPassword]] text-input form-control" data-prompt-position="centerRight:20,0">
+          						</div>
+          					</div>
           					<input type="hidden" value="0" class="submitCount">
 						</div>
       				</div>
 					<div class="controls">
 						<div id="messageBox"></div>
-						<span class="right">
-							<input type="button" id="cancel1" value="キャンセル" class="btn btn-default">
-							<button type="submit" class="submit btn btn-info">変更を保存</button>
-						</span>
+						<div class="row">
+							<div class="col-sm-12">
+								<input type="button" id="cancel1" value="キャンセル" class="btn btn-default">
+								<button type="submit" class="submit btn btn-info">変更を保存</button>
+							</div>
+						</div>	
 					</div>
 					<input type="hidden" name="attribute" value="name">
 				</div>
@@ -100,26 +118,44 @@
 						</div>
 					</div>
 					<div class="control-group">
-						<label class="control-label" for="name">お名前かな</label>
+						<div class="row">
+							<div class="col-sm-4">
+								<label class="control-label" for="name">お名前かな</label>
+							</div>
+						</div>
 						<div class="controls">
- 							<input type="text" name="kana" id="kana" class="validate[required,maxSize[20],custom[zkana], checkUniqueness] text-input form-control" data-prompt-position="centerRight:20,0">
+							<div class="row">
+        						<div class="col-sm-7">	
+ 									<input type="text" name="kana" id="kana" class="validate[required,maxSize[20],custom[zkana], checkUniqueness] text-input form-control" data-prompt-position="centerRight:20,0">
+								</div>
+							</div>
 							<input type="hidden" value="0" class="submitCount">
 							<p>（全角ひらがな）</p>
 							<p>このお名前かなでよろしければ、パスワードを入力してください</p>
 						</div>
 					</div>
 					<div class="control-group">
-						<label class="control-label" for="name">パスワード</label>
+						<div class="row">
+							<div class="col-sm-4">
+								<label class="control-label" for="name">パスワード</label>
+							</div>
+						</div>
         				<div class="controls">
-          					<input type="password" name="password2" id="password2" class="validate[required],funcCall[checkPassword]] text-input form-control" data-prompt-position="centerRight:20,0">
+        					<div class="row">
+        						<div class="col-sm-7">
+          							<input type="password" name="password2" id="password2" class="validate[required],funcCall[checkPassword]] text-input form-control" data-prompt-position="centerRight:20,0">
+        						</div>
+        					</div>
         				</div>
 					</div>
 					<div class="controls">
         				<div id="messageBox"></div>
-        				<span class="right">
-        					<input type="button" id="cancel2" value="キャンセル" class="btn btn-default">
-        					<button type="submit" class="submit btn btn-info">変更を保存</button>
-						</span>
+        				<div class="row">
+							<div class="col-sm-12">
+        						<input type="button" id="cancel2" value="キャンセル" class="btn btn-default">
+        						<button type="submit" class="submit btn btn-info">変更を保存</button>
+							</div>
+						</div>
 					</div>
       				<input type="hidden" name="attribute" value="kana">
 				</div>
@@ -148,33 +184,59 @@
 					</div>
 					  
 					<div class="control-group">
-        				<label class="control-label" for="password">新規パスワード</label>
+						<div class="row">
+							<div class="col-sm-4">
+        						<label class="control-label" for="password">新規パスワード</label>
+        					</div>
+        				</div>
         				<div class="controls">
-          					<input type="password" name="password" id="password" class="validate[required,minSize[4],maxSize[8]] text-input form-control" data-prompt-position="centerRight:20,0">
+        					<div class="row">
+        						<div class="col-sm-7">
+          							<input type="password" name="password" id="password" class="validate[required,minSize[4],maxSize[8]] text-input form-control" data-prompt-position="centerRight:20,0">
+          						</div>
+          					</div>
           					<input type="hidden" value="0" class="submitCount">
 							<p>（半角英数字－４文字以上８文字以内）</p>
 						</div>
 					</div>
 					<div class="control-group">
-        				<label class="control-label" for="re-password">新規パスワード再入力</label>
+						<div class="row">
+							<div class="col-sm-4">
+        						<label class="control-label" for="re-password">新規パスワード再入力</label>
+        					</div>
+        				</div>
         				<div class="controls">
-          					<input type="password" name="re-password" id="re-password" class="validate[required,equals[password]] text-input form-control" data-prompt-position="centerRight:20,0">
+        					<div class="row">
+        						<div class="col-sm-7">
+          							<input type="password" name="re-password" id="re-password" class="validate[required,equals[password]] text-input form-control" data-prompt-position="centerRight:20,0">
+          						</div>
+          					</div>
           					<p><span class="red">※必須</span></p>
           					<p>このパスワードでよろしければ、現在のパスワードを入力してください</p>
         				</div>
       				</div>
 					<div class="control-group">
-        				<label class="control-label" for="name">現在のパスワード</label>
+						<div class="row">
+							<div class="col-sm-4">
+        						<label class="control-label" for="name">現在のパスワード</label>
+        					</div>
+        				</div>
         				<div class="controls">
-          					<input type="password" name="password3" id="password3" class="validate[required],funcCall[checkPassword]] text-input form-control" data-prompt-position="centerRight:20,0">
+        					<div class="row">
+        						<div class="col-sm-7">
+          							<input type="password" name="password3" id="password3" class="validate[required],funcCall[checkPassword]] text-input form-control" data-prompt-position="centerRight:20,0">
+        						</div>
+        					</div>
         				</div>
       				</div>
 					<div class="controls">
         				<div id="messageBox"></div>
-        				<span class="right">
-        					<input type="button" id="cancel3" value="キャンセル" class="btn btn-default">
-        					<button type="submit" class="submit btn btn-info">変更を保存</button>
-						</span>
+        				<div class="row">
+							<div class="col-sm-12">
+        						<input type="button" id="cancel3" value="キャンセル" class="btn btn-default">
+        						<button type="submit" class="submit btn btn-info">変更を保存</button>
+							</div>
+						</div>
       				</div>
 					<input type="hidden" name="attribute" value="password">
 				</div>

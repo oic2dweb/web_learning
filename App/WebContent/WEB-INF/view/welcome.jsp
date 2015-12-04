@@ -23,7 +23,7 @@
 <div id="main">
 
   <h1 id="maintitle">
-  OIC　基本情報技術者試験　午前対策サイト
+  OIC　情報処理技術者試験　午前対策サイト
   </h1>
 
   <div class="loginformwrap">
@@ -42,11 +42,11 @@
         </div>
       </div>
       <div class="controls">
-        <button type="submit" class="login">ログイン</button>
+        <button type="submit" class="login btn btn-primary">ログイン</button>
       </div>
     </form>
-    <a href="${pageContext.request.contextPath}/register" id="register">新規登録</a>
-    <a href="${pageContext.request.contextPath}/forget" id="forget">お忘れの場合</a>
+    <a href="${pageContext.request.contextPath}/register" id="register" class="btn link">新規登録</a>
+    <a href="${pageContext.request.contextPath}/forget" id="forget" class="btn link">お忘れの場合</a>
     <div>${error}</div>
   </div>
 

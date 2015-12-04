@@ -12,19 +12,29 @@
 <link href="${pageContext.request.contextPath}/css/bootstrap.min.css" rel="stylesheet">
 <title>OIC基本情報技術者試験　午前対策サイト</title>
 </head>
-<body>
-	<h1>お忘れの場合</h1>
-
-	<div id="message">
-
-		登録された連絡用メールアドレス(半角英数字)<br>
-		<form action="#" method="post">
- 			<input type="email" name="email" id="email"><br>
- 			メールにてお知らせします<br>
- 			<button id="submit">送信</button>
-		</form>
+<body class="container">
+	<div class="panel panel-primary">
+		<div class="panel-heading">
+			<h1 class="panel-title">お忘れの場合</h1>
+		</div>
+		<div class="panel-body">
+			<div id="message">
+				<div class="form-group">
+					<form action="#" method="post">
+						<label class="control-label">登録された連絡用メールアドレス(半角英数字)</label>
+						<div class="row">
+							<div class="col-xs-6">
+								<input type="email" name="email" id="email" class="form-control">
+							</div>
+						</div>
+ 						メールにてお知らせします<br>
+ 						<button id="submit" class="btn btn-primary">送信</button>
+					</form>
+				</div>
+			</div>
+		</div>
 	</div>
-	<a href="${pageContext.request.contextPath}/welcome">戻る</a>
+	<a href="${pageContext.request.contextPath}/welcome" class="btn link">戻る</a>
 
 </body>
 </html>

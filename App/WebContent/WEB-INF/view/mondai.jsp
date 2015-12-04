@@ -41,8 +41,8 @@
 	<input type="button" id="next" value="次の問題へ" class="btn btn-info">
 
 
-	<input type="button" id="status" value="回答状況" onclick="window.location='${pageContext.request.contextPath}/login/kaitoustatus'" class="btn btn-info">
-	<input type="button" id="result" value="回答結果へ" onclick="window.location='${pageContext.request.contextPath}/login/kaitouresult'" class="btn btn-info">
+	<input type="button" id="status" value="回答状況" onclick="window.location='${pageContext.request.contextPath}/login/kaitoustatus'" class="btn btn-success">
+	<input type="button" id="result" value="回答結果へ" onclick="window.location='${pageContext.request.contextPath}/login/kaitouresult'" class="btn btn-primary">
 	<br><br>
 	<div class="well kaisetu">
 		<h4 id="sei"></h4>

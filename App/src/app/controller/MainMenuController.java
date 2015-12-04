@@ -71,7 +71,7 @@ public class MainMenuController extends HttpServlet {
 			sql.append(","+subid[i]);
 		}
 		sql.append(") and y.flg = 1 and y.type_id = "+type);
-		System.out.println(sql.toString());
+
 		QuestionDao quedao = new QuestionDaoImpl();
 		ArrayList<Question> qes = quedao.getQustion(sql.toString());
 
