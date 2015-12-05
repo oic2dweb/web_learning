@@ -192,11 +192,11 @@
         				<div class="controls">
         					<div class="row">
         						<div class="col-sm-7">
-          							<input type="password" name="password" id="password" class="validate[required,minSize[4],maxSize[8]] text-input form-control" data-prompt-position="centerRight:20,0">
+          							<input type="password" name="password" id="password" class="validate[required,minSize[8],maxSize[32]] text-input form-control" data-prompt-position="centerRight:20,0">
           						</div>
           					</div>
           					<input type="hidden" value="0" class="submitCount">
-							<p>（半角英数字－４文字以上８文字以内）</p>
+							<p>（半角英数字－８文字以上３２文字以内）</p>
 						</div>
 					</div>
 					<div class="control-group">

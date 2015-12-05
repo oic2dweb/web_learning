@@ -100,7 +100,7 @@ $(document).ready(function(){
 						$("#status").hide();
 						$("#result").show();
 					}
-					if(sessionStorage.getItem("count")<$('#pagenumber').html()){
+					if(Number(sessionStorage.getItem("count"))<Number($('#pagenumber').html())){
 						sessionStorage.setItem("count",$('#pagenumber').html());
 					}
 
