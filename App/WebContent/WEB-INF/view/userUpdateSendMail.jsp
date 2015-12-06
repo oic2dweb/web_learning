@@ -7,7 +7,7 @@
 <script src="${pageContext.request.contextPath}/js/bootstrap.min.js"></script>
 
 <link href="${pageContext.request.contextPath}/css/bootstrap.min.css" rel="stylesheet">
-<title>OIC基本情報技術者試験　午前対策サイト</title>
+<title>OIC情報処理技術者試験　午前対策サイト</title>
 </head>
 <body class="container">
 	<div class="panel panel-default">
@@ -19,7 +19,7 @@
 			記載されているURLにアクセスして頂くことで変更が完了されます<br>
 		</div>
 	</div>
-	
+
 	<a href="${pageContext.request.contextPath}/login/mainmenu#/testRecords">戻る</a>
 
 </body>

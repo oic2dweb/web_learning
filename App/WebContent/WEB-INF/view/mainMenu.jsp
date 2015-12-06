@@ -26,7 +26,7 @@
 <script src="${pageContext.request.contextPath}/js/angular-chart.js"></script>
 <script src="${pageContext.request.contextPath}/js/mypage.js"></script>
 
-<title>OIC基本情報技術者試験　午前対策サイト</title>
+<title>OIC情報処理技術者試験　午前対策サイト</title>
 
 </head>
 <body class="container">
@@ -63,7 +63,7 @@
 <table class="table table-striped table-hover table-bordered">
 	<tbody>
 		<tr class="info">
-			<th colspan="3" class="thcenter">テクノロジ系<input type="button" value="全選択" name="tecno" class="btn btn-success btn-sm"><input type="button" value="全解除" name="tecno" class="tecno btn btn-success btn-sm"></th>
+			<th colspan="3" class="thcenter">テクノロジ系&nbsp;<input type="button" value="全選択" name="tecno" class="btn btn-success btn-sm">&nbsp;<input type="button" value="全解除" name="tecno" class="tecno btn btn-success btn-sm"></th>
 		</tr>
 		<tr class="bunyatr">
 			<th>・基礎理論</th>
@@ -71,7 +71,7 @@
 			<th>・技術要素</th>
 		</tr>
 		<tr>
-			<td><label><input type="checkbox" name="subid" value="1" class="tecno ">基礎理論(${count[0]})</label></td>
+			<td><label><input type="checkbox" name="subid" value="1" class="tecno">基礎理論(${count[0]})</label></td>
 			<td><label><input type="checkbox" name="subid" value="3" class="tecno">コンピュータ構成要素(${count[2]})</label></td>
 			<td><label><input type="checkbox" name="subid" value="7" class="tecno">ヒューマンインターフェース(${count[6]})</label></td>
 		</tr>
@@ -98,7 +98,7 @@
 
 
 		<tr class="info">
-			<th colspan="3" class="thcenter">マネジメント系<input type="button" value="全選択" name="manege" class="btn btn-success btn-sm"><input type="button" value="全解除" name="manege" class="btn btn-success btn-sm"></th>
+			<th colspan="3" class="thcenter">マネジメント系&nbsp;<input type="button" value="全選択" name="manege" class="btn btn-success btn-sm">&nbsp;<input type="button" value="全解除" name="manege" class="btn btn-success btn-sm"></th>
 		</tr>
 		<tr class="bunyatr">
 			<th>・開発技術</th>
@@ -118,7 +118,7 @@
 
 
 		<tr class="info">
-			<th colspan="3" class="thcenter">ストラテジ系<input type="button" value="全選択" name="stora" class="btn btn-success btn-sm"><input type="button" value="全解除" name="stora" class="btn btn-success btn-sm"></th>
+			<th colspan="3" class="thcenter">ストラテジ系&nbsp;<input type="button" value="全選択" name="stora" class="btn btn-success btn-sm">&nbsp;<input type="button" value="全解除" name="stora" class="btn btn-success btn-sm"></th>
 		</tr>
 		<tr class="bunyatr">
 			<th>・企業と法務</th>

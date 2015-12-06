@@ -11,7 +11,7 @@
 
 <link href="${pageContext.request.contextPath}/css/bootstrap.min.css" rel="stylesheet">
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>OIC情報処理技術者試験　午前対策サイト</title>
 </head>
 <body class="container">
 	<div class="panel panel-success">
@@ -82,34 +82,73 @@
 				<div class="well">
 					<label class="control-label">回答</label>
 
-					<div class="form-inline">
+					<div class="row">
 						<div class="form-group">
-							<label class="control-label">ア：</label><textarea class="form-control" rows="1" cols="75" name="ans1" maxlength="150">${adminQuestion.ans1}</textarea>
-						</div>
-						<div class="form-group"><input type="file" name="aimg1" class="aimg" accept="image/gif,image/jpeg,image/png"><input type="hidden" name="haimg1" value="0"></div>
-					</div>
+							<div class="col-xs-1">
+								<label class="control-label">ア：</label>
+							</div>
+							<div class="col-xs-11">
+								<textarea class="form-control" rows="1" cols="75" name="ans1" maxlength="150">${adminQuestion.ans1}</textarea>
+							</div>
 
-					<div class="form-inline">
-						<div class="form-group">
-							<label class="control-label">イ：</label><textarea class="form-control" rows="1" cols="75" name="ans2" maxlength="150">${adminQuestion.ans2}</textarea>
-						</div>
-					</div>
-
-					<p><input type="file" name="aimg2" class="aimg" accept="image/gif,image/jpeg,image/png"><input type="hidden" name="haimg2" value="0"></p>
-
-					<div class="form-inline">
-						<div class="form-group">
-							<label class="control-label">ウ：</label><textarea class="form-control" rows="1" cols="75" name="ans3" maxlength="150">${adminQuestion.ans3}</textarea>
 						</div>
 					</div>
-					<p><input type="file" name="aimg3" class="aimg" accept="image/gif,image/jpeg,image/png"><input type="hidden" name="haimg3" value="0"></p>
-					<div class="form-inline">
-						<div class="form-group">
-							<label class="control-label">エ：</label><textarea class="form-control" rows="1" cols="75" name="ans4" maxlength="150">${adminQuestion.ans4}</textarea>
+					<div class="row">
+						<div class="col-xs-1"></div>
+						<div class="col-xs-4">
+							<input type="file" name="aimg1" class="aimg" accept="image/gif,image/jpeg,image/png"><input type="hidden" name="haimg1" value="0">
 						</div>
 					</div>
-					<p><input type="file" name="aimg4" class="aimg" accept="image/gif,image/jpeg,image/png"><input type="hidden" name="haimg4" value="0"></p>
 
+					<div class="row">
+						<div class="form-group">
+							<div class="col-xs-1">
+								<label class="control-label">イ：</label>
+							</div>
+							<div class="col-xs-11">
+								<textarea class="form-control" rows="1" cols="75" name="ans2" maxlength="150">${adminQuestion.ans2}</textarea>
+							</div>
+						</div>
+					</div>
+
+					<div class="row">
+						<div class="col-xs-1"></div>
+						<div class="col-xs-4">
+							<input type="file" name="aimg2" class="aimg" accept="image/gif,image/jpeg,image/png"><input type="hidden" name="haimg2" value="0">
+						</div>
+					</div>
+					<div class="row">
+						<div class="form-group">
+							<div class="col-xs-1">
+								<label class="control-label">ウ：</label>
+							</div>
+							<div class="col-xs-11">
+								<textarea class="form-control" rows="1" cols="75" name="ans3" maxlength="150">${adminQuestion.ans3}</textarea>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-xs-1"></div>
+						<div class="col-xs-4">
+							<input type="file" name="aimg3" class="aimg" accept="image/gif,image/jpeg,image/png"><input type="hidden" name="haimg3" value="0">
+						</div>
+					</div>
+					<div class="row">
+						<div class="form-group">
+							<div class="col-xs-1">
+								<label class="control-label">エ：</label>
+							</div>
+							<div class="col-xs-11">
+								<textarea class="form-control" rows="1" cols="75" name="ans4" maxlength="150">${adminQuestion.ans4}</textarea>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-xs-1"></div>
+						<div class="col-xs-4">
+							<input type="file" name="aimg4" class="aimg" accept="image/gif,image/jpeg,image/png"><input type="hidden" name="haimg4" value="0">
+						</div>
+					</div>
 				</div>
 
 				<div class="well">

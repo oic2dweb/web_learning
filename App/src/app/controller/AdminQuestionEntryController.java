@@ -114,7 +114,7 @@ public class AdminQuestionEntryController extends HttpServlet {
 		for(int i=1;i<=qimgcnt;i++){
 			Part part = request.getPart("qimg"+i);
 			String filename = upload(part,yearid,count++);
-			String filetag = "<img src='@@path@@/ImgServlet?path="+yearid+"/"+filename+"'>";
+			String filetag = "<img src='@@path@@/ImgServlet?path="+yearid+"/"+filename+"' class='img-responsive'>";
 			question.replace(question.indexOf("@@img"+i+"@@"), question.indexOf("@@img"+i+"@@")+8, filetag);
 		}
 
@@ -123,7 +123,7 @@ public class AdminQuestionEntryController extends HttpServlet {
 			if(request.getParameter("haimg"+i).equals("1")){
 				Part part = request.getPart("aimg"+i);
 				String filename=upload(part,yearid,count++);
-				String filetag = "<img src='@@path@@/ImgServlet?path="+yearid+"/"+filename+"'>";
+				String filetag = "<img src='@@path@@/ImgServlet?path="+yearid+"/"+filename+"' class='img-responsive'>";
 				switch(i){
 				case 1:
 					ans1 = ans1.replaceAll("@@img@@", filetag);
@@ -146,7 +146,7 @@ public class AdminQuestionEntryController extends HttpServlet {
 		if(request.getParameter("hkimg").equals("1")){
 			Part part = request.getPart("kimg");
 			String filename=upload(part,yearid,count++);
-			String filetag = "<img src='@@path@@/ImgServlet?path="+yearid+"/"+filename+"'>";
+			String filetag = "<img src='@@path@@/ImgServlet?path="+yearid+"/"+filename+"' class='img-responsive'>";
 			kaisetu.replace(kaisetu.indexOf("@@img@@"), kaisetu.indexOf("@@img@@")+7, filetag);
 			//kaisetu.append(filetag);
 		}

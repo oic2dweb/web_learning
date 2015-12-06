@@ -16,15 +16,15 @@
 <link href="${pageContext.request.contextPath}/css/title.css" rel="stylesheet">
 <link href="${pageContext.request.contextPath}/css/loginForm.css" rel="stylesheet">
 
-<title>OIC基本情報技術者試験　午前対策サイト</title>
+<title>OIC情報処理技術者試験　午前対策サイト</title>
 </head>
 <body class="container">
 
 <div id="main">
 
-  <h1 id="maintitle">
-  OIC　情報処理技術者試験　午前対策サイト
-  </h1>
+  <h3 id="maintitle">
+  OIC　情報処理技術者試験<br>午前対策サイト
+  </h3>
 
   <div class="loginformwrap">
     <form id="loginform" class="form-vertical" method="post" action="${pageContext.request.contextPath}/login">

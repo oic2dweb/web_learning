@@ -15,7 +15,9 @@ body,div,h1{
 	width: 400px;
 	border: solid 3px #000000;
 	font-style; normal;
-	font-size: 20px;
+	letter-spacing: 0.2em;
+	text-align: center;
+	
 }
 #subtitle{
 	margin: 20px;

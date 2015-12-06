@@ -15,7 +15,7 @@
 <link href="${pageContext.request.contextPath}/css/title.css" rel="stylesheet">
 
 
-<title>OIC基本情報技術者試験　午前対策サイト</title>
+<title>OIC情報処理技術者試験　午前対策サイト</title>
 </head>
 <body class="container">
 	<div class="row">
@@ -101,7 +101,7 @@
 							<td>${years.value}</td>
 							<td>${quantity[years.key]}/${typeQuantity}</td>
 							<td><a href="${pageContext.request.contextPath}/eb430180f1006fb41dd1e4eb4cdb508d/login/save?year_id=${years.key}">再開</a></td>
-							<td><a href="${pageContext.request.contextPath}/eb430180f1006fb41dd1e4eb4cdb508d/login/delete?year_id=${years.key}" id="check">削除</a></td>
+							<td><a href="${pageContext.request.contextPath}/eb430180f1006fb41dd1e4eb4cdb508d/login/delete?year_id=${years.key}" class="check">削除</a></td>
 						</tr>
 					</c:forEach>
 				</tbody>

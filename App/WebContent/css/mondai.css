@@ -3,3 +3,15 @@
 	margin-top: 5px;
 
 }
+.well{
+	background-color: #FFFFDD;
+}
+.ans{
+	padding-left: 2.8em;
+  	text-indent: -2.8em;
+	
+}
+
+.img-responsive{
+	display:inline;
+}

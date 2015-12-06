@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>OIC基本情報技術者試験　午前対策サイト</title>
+<title>OIC情報処理技術者試験　午前対策サイト</title>
 </head>
 <body>
 <h2>server error</h2>

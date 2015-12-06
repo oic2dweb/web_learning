@@ -17,7 +17,7 @@
 <link href="${pageContext.request.contextPath}/css/registerForm.css" rel="stylesheet">
 <link href="${pageContext.request.contextPath}/css/validationEngine.jquery.css" rel="stylesheet">
 
-<title>OIC基本情報技術者試験　午前対策サイト</title>
+<title>OIC情報処理技術者試験　午前対策サイト</title>
 
 </head>
 <body class="container">
@@ -124,10 +124,10 @@
       </div>
       <div class="controls">
         <div id="messageBox"></div>
-        
+
         <button type="submit" class="submit btn btn-primary">登録</button>
         <button type="button" onclick="location.href='${pageContext.request.contextPath}/welcome'" class="cancel btn btn-default">キャンセル</button>
-        
+
       </div>
     </form>
     </div>

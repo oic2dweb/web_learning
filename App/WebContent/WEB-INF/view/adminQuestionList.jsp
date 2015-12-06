@@ -8,7 +8,7 @@
 <script src="${pageContext.request.contextPath}/js/bootstrap.min.js"></script>
 <link href="${pageContext.request.contextPath}/css/bootstrap.min.css" rel="stylesheet">
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>OIC情報処理技術者試験　午前対策サイト</title>
 </head>
 <body class="container">
 	<h3>問題一覧</h3>
