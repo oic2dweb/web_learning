@@ -32,7 +32,7 @@
 	<label><input type="radio" name="ans" value="エ">エ：<span id="ans4">${question.ans4}</span></label><br><br>
 	
 	<div class="well kaisetu">
-		<div id="sei">${question.sei}</div>
+		<h4 id="sei">${question.sei}</h4>
 		<div id="kaisetu">${question.kaisetu}</div>
 	</div>
 	<input type="button" id="" class="btn btn-info" value="戻る" onclick="window.location='${pageContext.request.contextPath}/eb430180f1006fb41dd1e4eb4cdb508d/login/entry'">

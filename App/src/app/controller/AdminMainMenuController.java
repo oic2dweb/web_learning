@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import app.model.QuestionType;
 import app.model.Year;
 import app.persistence.QuestionDao;
 import app.persistence.QuestionDaoImpl;
@@ -101,11 +102,15 @@ public class AdminMainMenuController extends HttpServlet {
 
 		//adminSelectContent.jsから値を受け取った時の試験の種類を設定
 		if(request.getParameter("type")!=null){
+			int typeId = Integer.parseInt(request.getParameter("type"));
 			session.setAttribute("type", request.getParameter("type"));
-			String type_name = questionTypeService.getName(Integer.parseInt(request.getParameter("type")));
-			session.setAttribute("type_name", type_name);
+			QuestionType questionType = questionTypeService.getQuestionType(typeId);
+			String type_name = questionType.getTypeName();
+			int typeQuantity = questionType.getQuantity();
+			session.setAttribute("type_name", type_name);	//選んだ試験の名前を設定
+			session.setAttribute("typeQuantity", typeQuantity);	//その試験の出題数を設定
 			ServletContext app = request.getServletContext();
-			session.setAttribute("year",app.getAttribute("year"+request.getParameter("type")));
+			session.setAttribute("year",app.getAttribute("year"+typeId));
 		}
 
 		String nowyear = request.getParameter("year");

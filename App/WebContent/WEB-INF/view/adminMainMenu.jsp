@@ -48,11 +48,11 @@
 
 				<div class="form-group">
 					<label for="gengo">元号</label>
-					<input type="text" name="gengo" id="gengo" value="平成" class="form-control" style="width:80px;">
+					<input type="text" name="gengo" id="gengo" value="平成" class="form-control" style="width:80px;" maxlength="2">
 				</div>
 				<div class="form-group">
 					<label for="nensu">年数</label>
-					<input type="text" name="nensu" id="nensu" class="fm form-control" style="width:80px;">年
+					<input type="text" name="nensu" id="nensu" class="fm form-control" style="width:80px;" maxlength="2">年
 				</div>
 				<div class="form-group">
 					<label for="jiki">時期</label>
@@ -64,7 +64,7 @@
 				</div>
 				<div class="form-group" id="jikinuryoku">
 					<label for="sonotajiki">時期を入力</label>
-					<input type="text" name="sonotajiki" id="sonotajiki" class="form-control">
+					<input type="text" name="sonotajiki" id="sonotajiki" class="form-control" maxlength="6">
 				</div>
 
 				<div class="form-group">
@@ -99,7 +99,7 @@
 					<c:forEach var="years" items="${noflgyear}">
 						<tr>
 							<td>${years.value}</td>
-							<td>${quantity[years.key]}/80</td>
+							<td>${quantity[years.key]}/${typeQuantity}</td>
 							<td><a href="${pageContext.request.contextPath}/eb430180f1006fb41dd1e4eb4cdb508d/login/save?year_id=${years.key}">再開</a></td>
 							<td><a href="${pageContext.request.contextPath}/eb430180f1006fb41dd1e4eb4cdb508d/login/delete?year_id=${years.key}" id="check">削除</a></td>
 						</tr>

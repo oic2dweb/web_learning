@@ -27,7 +27,7 @@
 					<div class="form-group">
 						<label class="control-label">問題番号</label>
 						<input type="text" name="qnumber" value="${qnumber}" size="1" readonly>/
-						<input type="text" value="80" name="maxnumber" size="1" placeholder="Text" readonly>
+						<input type="text" value="${typeQuantity}" name="maxnumber" size="1" placeholder="Text" readonly>
 					</div>
 					&emsp;
 					<div class="form-group">
