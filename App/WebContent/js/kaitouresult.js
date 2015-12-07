@@ -42,7 +42,7 @@ $(document).ready(function(){
 				seigo = "○";
 				score = score+1;
 			}
-			$("#kaitouresult").append("<tr>"+"<td class='kaisetsu'><a href='"+ CONTEXT_PATH + "login/fukushu?pagenumber=" + pagenumber + "'>" + i + "</a></td>"+ "<td>"+answer.uans+"</td>"+"<td>"+seigo+"</td>"+"<td><input type='checkbox' id='hukusyu"+i+"' name='revision"+i+"' class='hukucheck' value=" + i +">復習</td>"+"</tr>");
+			$("#kaitouresult").append("<tr>"+"<td class='kaisetsu'><a href='"+ CONTEXT_PATH + "login/fukushu?pagenumber=" + pagenumber + "' class='no'>" + i + "</a></td>"+ "<td>"+answer.uans+"</td>"+"<td>"+seigo+"</td>"+"<td><input type='checkbox' id='hukusyu"+i+"' name='revision"+i+"' class='hukucheck' value=" + i +">復習</td>"+"</tr>");
 			if(sessionStorage.getItem("huku" + i) == 1){
 				$("#hukusyu" + i).attr('checked','checked');
 			}

@@ -12,6 +12,7 @@
 <script src="${pageContext.request.contextPath}/js/hukusyu.js"></script>
 <script src="${pageContext.request.contextPath}/js/bootstrap.min.js"></script>
 
+
 <link href="${pageContext.request.contextPath}/css/bootstrap.min.css" rel="stylesheet">
 <link href="${pageContext.request.contextPath}/css/bootstrap-responsive.min.css" rel="stylesheet">
 <link href="${pageContext.request.contextPath}/css/title.css" rel="stylesheet">
@@ -137,7 +138,9 @@
 		</tr>
 	</tbody>
 </table>
+
 <input type="submit" value="出題開始" class="btn btn-primary btn-lg sessionstrclr">
+
 </form>
 </div>
 
@@ -169,8 +172,8 @@
 		<tbody id="nendoquestion">
 			<c:forEach var="qes" items="${question}" varStatus="status">
 				<tr>
-					<td>
-						<a href="${pageContext.request.contextPath}/login/nenmondai?pagenumber=${status.count-1}" class="sessionstrclr"><c:out value="${status.count}"></c:out></a>
+					<td class="thcenter">
+						<a href="${pageContext.request.contextPath}/login/nenmondai?pagenumber=${status.count-1}" class="sessionstrclr no"><c:out value="${status.count}"></c:out></a>
 					</td>
 					<td><c:out value="${qes.ronten}"></c:out></td>
 					<td><c:out value="${qes.subclass}"></c:out></td>

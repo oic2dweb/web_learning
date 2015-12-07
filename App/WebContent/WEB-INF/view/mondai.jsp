@@ -31,12 +31,12 @@
 			<div id="question"></div>
 		</div>
 	</div>
-	<div class="radio">
+	
 	<label class="ans"><input type="radio" name="ans" value="ア">ア：<span id="ans1"></span></label><br>
 	<label class="ans"><input type="radio" name="ans" value="イ">イ：<span id="ans2"></span></label><br>
 	<label class="ans"><input type="radio" name="ans" value="ウ">ウ：<span id="ans3"></span></label><br>
 	<label class="ans"><input type="radio" name="ans" value="エ">エ：<span id="ans4"></span></label><br><br>
-	</div>
+	
 	<input type="button" id="back" value="前の問題へ" class="btn btn-info">
 	<input type="button" id="next" value="次の問題へ" class="btn btn-info">
 
