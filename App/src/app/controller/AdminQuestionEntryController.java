@@ -81,29 +81,35 @@ public class AdminQuestionEntryController extends HttpServlet {
 
 		//改行コードを改行タブに置換
 		String temp = request.getParameter("question");
+		temp = temp.replaceAll("(\r\n){3,}|\n{3,}","<br><br>");
 		temp = temp.replaceAll("\r\n", "<br>");
 		temp = temp.replaceAll("\n", "<br>");
 		StringBuffer question = new StringBuffer(temp);
 
 		String ans1 = request.getParameter("ans1");
+		ans1 = ans1.replaceAll("(\r\n){3,}|\n{3,}","<br><br>");
 		ans1 = ans1.replaceAll("\r\n", "<br>");
 		ans1 = ans1.replaceAll("\n", "<br>");
 
 		String ans2 = request.getParameter("ans2");
+		ans2 = ans2.replaceAll("(\r\n){3,}|\n{3,}","<br><br>");
 		ans2 = ans2.replaceAll("\r\n", "<br>");
 		ans2 = ans2.replaceAll("\n", "<br>");
 
 		String ans3 = request.getParameter("ans3");
+		ans3 = ans3.replaceAll("(\r\n){3,}|\n{3,}","<br><br>");
 		ans3 = ans3.replaceAll("\r\n", "<br>");
 		ans3 = ans3.replaceAll("\n", "<br>");
 
 		String ans4 = request.getParameter("ans4");
+		ans4 = ans4.replaceAll("(\r\n){3,}|\n{3,}","<br><br>");
 		ans4 = ans4.replaceAll("\r\n", "<br>");
 		ans4 = ans4.replaceAll("\n", "<br>");
 
 		String sei = request.getParameter("sei");
 
 		temp = request.getParameter("kaisetu");
+		temp = temp.replaceAll("(\r\n){3,}|\n{3,}","<br><br>");
 		temp = temp.replaceAll("\r\n", "<br>");
 		temp = temp.replaceAll("\n", "<br>");
 		StringBuffer kaisetu = new StringBuffer(temp);
