@@ -20,7 +20,7 @@ import javax.servlet.http.HttpSession;
 public class LoginFilter implements Filter {
 
     /**
-     * Default constructor. 
+     * Default constructor.
      */
     public LoginFilter() {
         // TODO Auto-generated constructor stub
@@ -40,14 +40,14 @@ public class LoginFilter implements Filter {
 		//reqestとresponseオブジェクトをキャスト
 		HttpServletRequest req = (HttpServletRequest)request;
 		HttpServletResponse res = (HttpServletResponse)response;
-		
+
 		HttpSession session = req.getSession();
 		if(session.getAttribute("userid")!=null){
 			chain.doFilter(request, response);
 		}else{
 			res.sendRedirect(req.getContextPath()+"/welcome");
 		}
-		
+
 	}
 
 	/**

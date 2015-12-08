@@ -22,7 +22,7 @@
 		<span class="pull-right"><button class="btn btn-default" onclick="location.href='${pageContext.request.contextPath}/eb430180f1006fb41dd1e4eb4cdb508d/admin'">ログアウト</button></span>
 	</div>
 	<div class="row">
-		<div class="jumbotron" id="meinmenu">
+		<div class="jumbotron" id="mainmenu">
 			<h2 class="text-center">OIC　${type_name }　午前対策サイト</h2>
 			<h3 class="text-center">管理者メニュー</h3>
 		</div>

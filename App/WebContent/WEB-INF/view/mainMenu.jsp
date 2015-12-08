@@ -36,7 +36,7 @@
 	</div>
 
 	<div class="row">
-		<div class="jumbotron" id="meinmenu">
+		<div class="jumbotron" id="mainmenu">
 
 			<h2 class="text-center">OIC　${type_name}試験　午前対策サイト</h2>
 		</div>
@@ -47,9 +47,9 @@
 	<ul class="nav nav-pills nav-stacked list-group">
 		<li><h3 class="panel-title list-group-item list-group-item-success">   メニュー</h3></li>
 
-		<li><a href="#meinmenu" onclick="SelectLink('#bunya')" class="list-group-item">分野別モード</a></li>
-		<li><a href="#meinmenu" onclick="SelectLink('#nendo')" class="list-group-item" id="nendobetu">年度別モード</a></li>
-		<li><a href="#meinmenu" onclick="SelectLink('#mogi')" class="list-group-item">模擬試験モード</a></li>
+		<li><a href="#mainmenu" onclick="SelectLink('#bunya')" class="list-group-item">分野別モード</a></li>
+		<li><a href="#mainmenu" onclick="SelectLink('#nendo')" class="list-group-item" id="nendobetu">年度別モード</a></li>
+		<li><a href="#mainmenu" onclick="SelectLink('#mogi')" class="list-group-item">模擬試験モード</a></li>
 		<li><a href="#hukusyu" onclick="SelectLink('#hukusyu')" class="list-group-item">復習モード</a></li>
 		<li><a href="#mypage" onclick="SelectLink('#mypage')" class="list-group-item">学習履歴/アカウント情報</a></li>
 
