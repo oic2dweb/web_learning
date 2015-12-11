@@ -40,7 +40,7 @@ public class AdminController extends HttpServlet {
 			request.getRequestDispatcher("/WEB-INF/view/admin.jsp").forward(request, response);
 		}
 	}
-
+	//テスト
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
 		if(session.getAttribute("adminid")!=null){
