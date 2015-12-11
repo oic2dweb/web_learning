@@ -14,7 +14,7 @@
 <title>OIC情報処理技術者試験　午前対策サイト</title>
 </head>
 <body class="container">
-		
+
 		<div class="box1 btn-info well well-lg"><h1>ITパスポート</h1></div>
 
 
@@ -23,20 +23,5 @@
 
 		<div class="box3 btn-info well well-lg"><h1>応用情報技術者</h1></div>
 
-
-
-<!--
-	<div class="row">
-		<div class="col-xs-3">
-			<a href="${pageContext.request.contextPath}/login/mainmenu?type=1" class="type_name">ITパスポート</a>
-		</div>
-		<div class="col-xs-3">
-			<a href="${pageContext.request.contextPath}/login/mainmenu?type=2" class="type_name"><div></div>基本情報技術者</a>
-		</div>
-		<div class="col-xs-3">
-			<a href="${pageContext.request.contextPath}/login/mainmenu?type=3" class="type_name">応用情報技術者</a>
-		</div>
-	</div>
-	 -->
 </body>
 </html>
