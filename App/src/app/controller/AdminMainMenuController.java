@@ -57,7 +57,7 @@ public class AdminMainMenuController extends HttpServlet {
 		//試験の種類を取得
 		HttpSession session = request.getSession();
 		int type_id = Integer.parseInt((String)session.getAttribute("type"));
-		
+
 		//既に登録されている年度でないかチェック
 		boolean unique = yearService.checkUniqueness(year_name,type_id);
 		if(unique == false){
@@ -78,7 +78,7 @@ public class AdminMainMenuController extends HttpServlet {
 				request.getRequestDispatcher("/WEB-INF/view/500error.jsp").forward(request, response);
 			}else{
 				//セッションにyear_idとyear_nameを格納し登録ページへ移動
-				int year_id = yearService.getId(year_name);
+				int year_id = yearService.getId(year_name,type_id);
 				session.setAttribute("year_id",year_id);
 				session.setAttribute("year_name",year_name);
 				session.setAttribute("qnumber", 1);	//問題番号の初期化

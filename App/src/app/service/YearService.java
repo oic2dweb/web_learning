@@ -26,8 +26,8 @@ public class YearService {
 		return yearDao.checkUniqueness(year_name,type_id);
 	}
 
-	public int getId(String nendo){
-		return yearDao.getId(nendo);
+	public int getId(String nendo,int type_id){
+		return yearDao.getId(nendo,type_id);
 	}
 
 	public void publicYear(int year_id,int num){

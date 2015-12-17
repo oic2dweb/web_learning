@@ -38,13 +38,14 @@ public class YearDaoImpl implements YearDao{
 	}
 
 	@Override
-	public int getId(String year_name){
+	public int getId(String year_name,int type_id){
 		int recordid = 0;
 
 		try(Connection conn = dataSource.getConnection();
-			PreparedStatement stmt = conn.prepareStatement("select year_id from year where year_name = ?");){
+			PreparedStatement stmt = conn.prepareStatement("select year_id from year where year_name = ? and type_id = ?");){
 			//SQL文に値をセット
 			stmt.setString(1, year_name);
+			stmt.setInt(2, type_id);
 
 			ResultSet result = stmt.executeQuery();
 			result.next();
@@ -125,6 +126,7 @@ public class YearDaoImpl implements YearDao{
 
 	@Override
 	public void publicYear(int year_id,int num) {
+
 		try(Connection conn = dataSource.getConnection();
 				PreparedStatement stmt = conn.prepareStatement("update year set flg = ? where year_id = ?");){
 			stmt.setInt(1, num);
