@@ -136,6 +136,11 @@
 			<td><label><input type="checkbox" name="subid" value="20" class="stora">技術戦略マネジメント(${count[19]})</label></td>
 			<td><label><input type="checkbox" name="subid" value="18" class="stora">システム企画(${count[17]})</label></td>
 		</tr>
+		<tr>
+			<td></td>
+			<td><label><input type="checkbox" name="subid" value="21" class="stora">ビジネスインダストリ(${count[20]})</label></td>
+			<td></td>
+		</tr>
 	</tbody>
 </table>
 
