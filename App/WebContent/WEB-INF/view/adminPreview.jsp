@@ -20,7 +20,7 @@
 	<div class="panel panel-info">
 		<div class="panel-heading">
 			<h3 class="panel-title">
-				<span id="pagenumber">${question.no}</span>/80問
+				<span id="pagenumber">${question.no}</span>/${typeQuantity}問
 			</h3>
 		</div>
 		<div class="panel-body">

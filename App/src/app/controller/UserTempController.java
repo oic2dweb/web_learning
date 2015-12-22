@@ -1,6 +1,7 @@
 package app.controller;
 
 import java.io.IOException;
+import java.net.InetAddress;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -42,25 +43,29 @@ public class UserTempController extends HttpServlet {
 		}
 
 		UserTempService usertemp = new UserTempService();
+		try{
+			int recordid = usertemp.create(user);
+			usertemp.setUrl(recordid);
+			String parameter = usertemp.getUrl(recordid);
+			InetAddress addr = InetAddress.getLocalHost();
+			String url = "http://"+addr.getHostAddress()+":8080"+ request.getContextPath() + "/userupdatecommit?id="+parameter;
 
-		int recordid = usertemp.create(user);
-		usertemp.setUrl(recordid);
-		String parameter = usertemp.getUrl(recordid);
-		String url = "http://localhost:8080"+ request.getContextPath() + "/userupdatecommit?id="+parameter;
-		UserService userservice = new UserService();
-		User userinfo= userservice.getUser((long)id);
+			UserService userservice = new UserService();
+			User userinfo= userservice.getUser((long)id);
 
-		Thread th =new Thread(new Runnable() {
+			Thread th =new Thread(new Runnable() {
 
-			@Override
-			public void run() {
-				MailService mail = new MailService();
-				mail.send(userinfo.getEmail(), "下記のURLをクリックすることで変更が完了されます\n"+url);
+				@Override
+				public void run() {
+					MailService mail = new MailService();
+					mail.send(userinfo.getEmail(), "下記のURLをクリックすることで変更が完了されます\n"+url);
 
-			}
-		});
-		th.start();
+				}
+			});
+			th.start();
+		}catch(Exception e){
 
+		}
 
 		response.sendRedirect(request.getContextPath()+"/login/userupdatesendmail");
 	}

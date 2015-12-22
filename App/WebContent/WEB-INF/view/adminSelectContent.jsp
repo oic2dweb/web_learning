@@ -20,6 +20,6 @@
 		<div class="box2 btn-info well well-lg"><h1>基本情報技術者</h1></div>
 
 
-		<div class="box3 btn-info well well-lg"><h1>応用情報技術</h1></div>
+		<div class="box3 btn-info well well-lg"><h1>応用情報技術者</h1></div>
 </body>
 </html>
