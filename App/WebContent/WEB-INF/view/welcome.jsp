@@ -42,7 +42,7 @@
         </div>
       </div>
       <div class="controls">
-        <button type="submit" class="login btn btn-primary">ログイン</button>
+        <button type="submit" class="login btn btn-primary" id="login_btn">ログイン</button>
       </div>
     </form>
     <a href="${pageContext.request.contextPath}/register" id="register" class="btn link">新規登録</a>

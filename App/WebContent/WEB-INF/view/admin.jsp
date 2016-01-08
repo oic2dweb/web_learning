@@ -41,7 +41,7 @@
         </div>
       </div>
       <div class="controls">
-        <button type="submit" class="login btn btn-primary">ログイン</button>
+        <button type="submit" class="login btn btn-primary" id="login_btn">ログイン</button>
       </div>
     </form>
     <div>${error}</div>

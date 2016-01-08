@@ -10,11 +10,20 @@
 <script src="${pageContext.request.contextPath}/js/bootstrap.min.js"></script>
 
 <link href="${pageContext.request.contextPath}/css/bootstrap.min.css" rel="stylesheet">
+<link href="${pageContext.request.contextPath}/css/panel.css" rel="stylesheet">
 <title>OIC基本情報技術者試験　午前対策サイト</title>
 </head>
-<body>
-<p id=state></p>
+<body class="container">
+<div class="panel panel-default">
+		<div class="panel-heading">
+			<h3 class="panel-title">登録変更受付</h3>
+		</div>
+		<div class="panel-body">
+			<p id=state></p>
+		</div>
+	
+</div>
 
-<a href = "${pageContext.request.contextPath}/welcome">戻る</a>
+<a href = "${pageContext.request.contextPath}/welcome" class="btn">戻る</a>
 </body>
 </html>

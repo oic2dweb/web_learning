@@ -144,7 +144,7 @@
 	</tbody>
 </table>
 
-<input type="submit" value="出題開始" class="btn btn-primary btn-lg sessionstrclr">
+<input type="submit" value="出題開始" class="btn btn-primary btn-lg sessionstrclr" id="bunya_submit">
 
 </form>
 </div>
