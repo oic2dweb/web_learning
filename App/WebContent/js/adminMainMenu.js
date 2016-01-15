@@ -2,7 +2,7 @@ $(document).ready(function(){
 	if(sessionStorage.getItem("admnselectpage")!=null){
 		SelectLink(sessionStorage.getItem("admnselectpage"));
 	}else{
-		SelectLink("#main");
+		SelectLink("#touroku");
 	}
 
 	//時期でその他が選ばれたとき以外は時期入力を隠す
@@ -42,7 +42,7 @@ $(document).ready(function(){
 });
 
 function SelectLink(id){
-	$('#main').hide();
+	//$('#main').hide();
 	$('#touroku').hide();
 	$('#henkou').hide();
 	$('#hozonchu').hide();

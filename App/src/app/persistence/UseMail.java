@@ -23,9 +23,11 @@ public class UseMail {
 
 			//認証するかどうか
 			pro.put("mail.smpt.auth", "true");
+			//pro.put("mail.smpt.auth", "false");
 
 			//ポート番号の指定
 			pro.put("mail.smtp.port", "587");
+			//pro.put("mail.smtp.port", "25");
 
 			//STARTTLSの暗号化をするかどうか
 			pro.put("mail.smtp.starttls.enable", "true");

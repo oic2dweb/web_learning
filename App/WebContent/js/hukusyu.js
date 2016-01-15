@@ -20,6 +20,7 @@ $(document).ready(function(){
 	$(document).on('click', '.btns', function(){
 		//alert("aaa");
 		var selectId = {"id":$(this).attr('name')};
+
 		//alert(selectNo);
 		var request = $.ajax({
 			type:"POST",
@@ -34,6 +35,7 @@ $(document).ready(function(){
 		});
 	});
 	function sethuku(data){
+
 		$("#hukuall").html("");
 		$("#hukuall").append("<tr class='info'><th>NO</th><th>論点</th><th>出題年度</th><th>復習解除</th></tr>");
 		for(var i=0; i<data.question.length; i++){

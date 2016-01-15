@@ -20,7 +20,7 @@
 		<div class="panel-body">
 			<div id="message">
 				<div class="form-group">
-					<form action="#" method="post">
+
 						<label class="control-label">登録された連絡用メールアドレス(半角英数字)</label>
 						<div class="row">
 							<div class="col-xs-6">
@@ -29,7 +29,7 @@
 						</div>
  						メールにてお知らせします<br>
  						<button id="submit" class="btn btn-primary">送信</button>
-					</form>
+
 				</div>
 			</div>
 		</div>

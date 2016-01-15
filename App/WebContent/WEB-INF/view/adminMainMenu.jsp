@@ -31,7 +31,7 @@
 	<div  class="col-xs-3">
 		<div class="panel panel-info">
 		<ul class="nav nav-pills nav-stacked list-group">
-			<li><a href="#main" onclick="SelectLink('#main')" class="list-group-item">メインメニュー</a></li>
+			<!-- <li><a href="#main" onclick="SelectLink('#main')" class="list-group-item">メインメニュー</a></li> -->
 			<li><a href="#touroku" onclick="SelectLink('#touroku')" class="list-group-item">問題登録</a></li>
 			<li><a href="#henkou" onclick="SelectLink('#henkou')" class="list-group-item">問題変更</a></li>
 			<li><a href="#hozonchu" onclick="SelectLink('#hozonchu')" class="list-group-item">保存中作成物</a></li>
