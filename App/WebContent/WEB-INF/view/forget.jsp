@@ -10,6 +10,7 @@
 <script src="${pageContext.request.contextPath}/js/bootstrap.min.js"></script>
 
 <link href="${pageContext.request.contextPath}/css/bootstrap.min.css" rel="stylesheet">
+<link href="${pageContext.request.contextPath}/css/panel.css" rel="stylesheet">
 <title>OIC情報処理技術者試験　午前対策サイト</title>
 </head>
 <body class="container">

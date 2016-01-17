@@ -16,6 +16,7 @@
 <link href="${pageContext.request.contextPath}/css/title.css" rel="stylesheet">
 <link href="${pageContext.request.contextPath}/css/registerForm.css" rel="stylesheet">
 <link href="${pageContext.request.contextPath}/css/validationEngine.jquery.css" rel="stylesheet">
+<link href="${pageContext.request.contextPath}/css/panel.css" rel="stylesheet">
 
 <title>OIC情報処理技術者試験　午前対策サイト</title>
 
