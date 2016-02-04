@@ -85,6 +85,29 @@
           <p><span class="red">※必須</span></p>
         </div>
       </div>
+
+      <div class="control-group row">
+      	<div class="col-sm-3">
+        	<label class="control-label" for="question">秘密の質問</label>
+        </div>
+        <div class="controls col-sm-3">
+          <select id="question" name="question" class="validate[required] form-control" data-prompt-position="centerRight:140,0">
+            <option value="">秘密の質問を選択</option><c:forEach var="question" items="${secret}"><option value="${question.key}">${question.value}</option></c:forEach>
+          </select>
+          <p><span class="red">※必須</span></p>
+        </div>
+      </div>
+      <div class="control-group row">
+      	<div class="col-sm-3">
+        	<label class="control-label" for="answer">秘密の質問の答え</label>
+        </div>
+        <div class="controls col-sm-6">
+          <input type="text" name="answer" id="answer" class="validate[required,maxSize[50]] text-input form-control" data-prompt-position="centerRight:40,0">
+          <input type="hidden" value="0" class="submitCount">
+          <p><span class="red">※必須</span></p>
+        </div>
+      </div>
+
       <div class="control-group row">
       	<div class="col-sm-3">
         	<label class="control-label" for="password">パスワード</label>
@@ -109,9 +132,9 @@
         	<label class="control-label" for="email">連絡用メールアドレス</label>
         </div>
         <div class="controls col-sm-6">
-          <input type="email" name="email" id="email" class="validate[required,maxSize[36],custom[email],funcCall[checkUniqueEmail]] text-input form-control" data-prompt-position="centerRight:40,0">
+          <input type="email" name="email" id="email" class="validate[required,maxSize[36],custom[oic],funcCall[checkUniqueEmail]] text-input form-control" data-prompt-position="centerRight:40,0">
           <input type="hidden" value="0" class="submitCount">
-          <p><span class="red">※必須</span>（半角英数字）<span class="formcaption"><br>※ご利用されているメールアドレス等なるべく忘れにくいものを設定してください。</span></p>
+          <p><span class="red">※必須</span>（半角英数字）<span class="formcaption"><br>※@oic.jpのメールアドレスを入力してください</span></p>
         </div>
       </div>
       <div class="control-group row">

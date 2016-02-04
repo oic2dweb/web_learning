@@ -9,7 +9,16 @@ public class User {
 	private String password;
 	private String email;
 	private int class_id;
+	private int secret_id;
+	private String secret_text;
+	private String url;
 
+	public String getUrl() {
+		return url;
+	}
+	public void setUrl(String url) {
+		this.url = url;
+	}
 	/**
 	 * idを取得します。
 	 * @return id
@@ -112,5 +121,33 @@ public class User {
 	@Override
 	public String toString(){
 		return this.name + " " + this.id + " " + this.student_id;
+	}
+	/**
+	 * secret_idを取得します。
+	 * @return secret_id
+	 */
+	public int getSecret_id() {
+	    return secret_id;
+	}
+	/**
+	 * secret_idを設定します。
+	 * @param secret_id secret_id
+	 */
+	public void setSecret_id(int secret_id) {
+	    this.secret_id = secret_id;
+	}
+	/**
+	 * secret_textを取得します。
+	 * @return secret_text
+	 */
+	public String getSecret_text() {
+	    return secret_text;
+	}
+	/**
+	 * secret_textを設定します。
+	 * @param secret_text secret_text
+	 */
+	public void setSecret_text(String secret_text) {
+	    this.secret_text = secret_text;
 	}
 }

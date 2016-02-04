@@ -41,6 +41,9 @@
 			<h2 class="text-center">OIC　${type_name}試験　午前対策サイト</h2>
 		</div>
 	</div>
+	<div class="row">
+
+	</div>
 <div class="row">
 <div  class="col-xs-3">
 	<div class="panel panel-info">
