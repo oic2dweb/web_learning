@@ -16,7 +16,6 @@ import app.model.User;
 import app.persistence.HashMd5;
 import app.persistence.UseMail;
 import app.service.ClassService;
-import app.service.SecretQuestionService;
 import app.service.TempRegisterService;
 
 //pushのテスト
@@ -27,7 +26,6 @@ import app.service.TempRegisterService;
 public class RegisterController extends HttpServlet {
 
 	private ClassService classService = new ClassService();
-	private SecretQuestionService secretQuestionService = new SecretQuestionService();
 	private TempRegisterService tempRegisterService = new TempRegisterService();
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -41,9 +39,7 @@ public class RegisterController extends HttpServlet {
 			request.setAttribute("nowclass", nowclass);
 		}
 
-		//秘密の質問一覧をDBから取得
-		Map<Integer,String> secret = secretQuestionService.getQuestion();
-		request.setAttribute("secret", secret);
+		
 
 		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/view/registerForm.jsp");
 		rd.forward(request, response);

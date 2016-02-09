@@ -15,6 +15,7 @@ import app.service.QuestionCatService;
 import app.service.QuestionMainClassService;
 import app.service.QuestionService;
 import app.service.QuestionSubClassService;
+import app.service.SecretQuestionService;
 import app.service.YearService;
 
 
@@ -26,6 +27,7 @@ import app.service.YearService;
 public class BootListener implements ServletContextListener {
 	private QuestionService questionService = new QuestionService();
 	private QuestionSubClassService questionSubClassService = new QuestionSubClassService();
+	private SecretQuestionService secretQuestionService = new SecretQuestionService();
     /**
      * Default constructor.
      */
@@ -78,6 +80,10 @@ public class BootListener implements ServletContextListener {
         
         Map<Integer,String> year3 = yearService.getYear(1,3);
         app.setAttribute("year3",year3 );
+        
+        //秘密の質問一覧をDBから取得
+        Map<Integer,String> secret = secretQuestionService.getQuestion();
+        app.setAttribute("secret", secret);
 
         //question_catテーブルのcat_name一覧を取得
         QuestionCatService questionCatService = new QuestionCatService();
