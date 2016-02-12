@@ -24,7 +24,10 @@ $(document).ready(function(){
 	$('#nendobetu').click(function(){
 		$('#nendoquestion').html("");
 	});
-
+	$("#kaishi").submit(function(){
+		var starttime = $.now();
+		sessionStorage.setItem("starttime",starttime);
+	})
 
 });
 function SelectLink(id){

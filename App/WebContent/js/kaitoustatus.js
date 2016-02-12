@@ -10,4 +10,24 @@ $(document).ready(function(){
 			$("#kaitoustatus").append("<tr>"+"<td><a href='"+ CONTEXT_PATH + "login/fukushu?pagenumber=" + pagenumber + "' class='no'>"+i+"</td>"+ "<td>"+answer.uans+"</td>"+"</tr>");
 		}
 	}
+	$(function(){
+		var limittime = 9000
+		var starttime = sessionStorage.getItem("starttime");
+		var time = ($.now()-starttime)/1000;
+		if(time<limittime){
+			$('.timer').attr("data-seconds-left",limittime-time);
+		}
+		if(time>limittime){
+			$('.endtimer').html("00:00:00");
+		}
+
+		$('.timer').startTimer({
+			onComplete: function(){
+				alert("試験時間をオーバーしました。\n実際の試験では終了になりますので注意してください。");
+
+			}
+
+		});
+
+	});
 });

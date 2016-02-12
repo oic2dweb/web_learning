@@ -13,21 +13,27 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 <script src="${pageContext.request.contextPath}/js/bootstrap.min.js"></script>
 <script src="${pageContext.request.contextPath}/js/config.js"></script>
+<script src="${pageContext.request.contextPath}/js/jquery.simple.timer.js"></script>
 <script src="${pageContext.request.contextPath}/js/mondai.js"></script>
+
+
 
 
 <title>OIC情報処理技術者試験　午前対策サイト</title>
 </head>
-<body class="container">
+<body class="container">		
 	<div class="panel panel-info">
 		<div class="panel-heading">
 			<h3 class="panel-title">
 				<span id="pagenumber"></span>/${fn:length(question)}問
 				<input type="hidden" id="allque" value="${fn:length(question)}">
 				<input type="checkbox" id="hukusyu"/><label>復習</label>
+				<span class='timer pull-right' data-seconds-left="0"></span>
+				<span class='endtimer pull-right'></span>
+				
 			</h3>
-
 		</div>
+		
 		<div class="panel-body">
 			<div id="question"></div>
 		</div>
@@ -50,6 +56,6 @@
 		<div id="kaisetu"></div>
 	</div>
 	<a href="${pageContext.request.contextPath}/login/mainmenu" class="btn btn-link">メインメニューへ</a>
-
+	
 </body>
 </html>

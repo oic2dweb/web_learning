@@ -4,3 +4,19 @@
 	width: 100%;
 	height:100%
 }
+.days {
+  float: left;
+  margin-right: 4px;
+}
+.hours {
+  float: left;
+}
+.minutes {
+  float: left;
+}
+.seconds {
+  float: left;
+}
+.clearDiv {
+  clear: left;
+}
