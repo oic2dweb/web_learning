@@ -32,23 +32,42 @@ public class ForgetAjax extends HttpServlet {
 		PrintWriter out = response.getWriter();
 
 		String email = request.getParameter("email");
+		int secret_id = Integer.parseInt(request.getParameter("secret_id"));
+		String secret_text = request.getParameter("secret_text");
+
 		User user = new User();
 		ProjectY py = new ProjectY();
 
 
-		boolean flg = userDao.emailCheck(email);
-		String json ="{\"flg\":\"true\"}";
+		
+		py.setStr(secret_text);
+
+		boolean flg = userDao.emailCheck(email,secret_id,py.getStr());
+
+		String json ="{\"flg\":\""+flg+"\"}";
+		
 		if(flg){
 			py.setRandPass();
 			String pass = py.getRandPass();
 			String text ="仮パスワード発行\n\n仮パスワードは"+ pass +"です。\n\nこのパスワードはあくまでも仮のものです。\n初回ログイン時に必ず本パスワードへの変更をお願い致します。";
-			
+
 			py.setStr(pass);
 			user.setEmail(email);
 			user.setPassword(py.getStr());
 			userDao.setTempPassword(user);
-			boolean sendflg = mail.send(email, text);
-			json = "{\"flg\":\""+sendflg+"\"}";
+			Thread th =new Thread(new Runnable() {
+
+				@Override
+				public void run() {
+					// TODO 自動生成されたメソッド・スタブ
+					mail.send(email, text);
+					
+
+				}
+
+			});
+			th.start();
+
 		}
 		out.print(json);
 

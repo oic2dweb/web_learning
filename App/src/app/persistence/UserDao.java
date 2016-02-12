@@ -8,7 +8,7 @@ public interface UserDao {
 	public boolean create(User user);
 	public boolean loginCheck(String email, String password);
 	public boolean studentIdCheck(String value);
-	public boolean emailCheck(String value);
+	public boolean emailCheck(String email,int secret_id,String secret_text);
 	public int getId(String email);
 	public User getUser(Long id);
 	public boolean update(UserTemp user);

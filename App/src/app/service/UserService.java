@@ -19,8 +19,8 @@ public class UserService {
 	public boolean student_idCheck(String email){
 		return userDao.studentIdCheck(email);
 	}
-	public boolean emailCheck(String email){
-		return userDao.emailCheck(email);
+	public boolean emailCheck(String email,int secret_id,String secret_text){
+		return userDao.emailCheck(email,secret_id,secret_text);
 	}
 	public boolean loginCheck(String student_id, String password){
 		return userDao.loginCheck(student_id, password);

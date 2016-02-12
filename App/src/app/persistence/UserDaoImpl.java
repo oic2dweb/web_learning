@@ -126,15 +126,17 @@ public class UserDaoImpl implements UserDao {
 		}
 	}
 	@Override
-	public boolean emailCheck(String value) {
+	public boolean emailCheck(String email,int secret_id,String secret_text) {
 
 		int flag = 0;
 			//DBとの接続
 		try(Connection conn = dataSource.getConnection();
 			//SQL文を用意
-			PreparedStatement stmt = conn.prepareStatement("SELECT COUNT(*) FROM users WHERE email = ?");){
+			PreparedStatement stmt = conn.prepareStatement("SELECT COUNT(*) FROM users WHERE email = ? and secret_id = ? and secret_text = md5(?)");){
 			//SQL文に値をセット
-			stmt.setString(1, value);
+			stmt.setString(1, email);
+			stmt.setInt(2, secret_id);
+			stmt.setString(3, secret_text);
 			//実行結果の参照情報を格納するResultSet型の変数を用意する
 			ResultSet rs = stmt.executeQuery();
 			//もしレコード数が１以上だったら、trueを返す
@@ -239,7 +241,7 @@ public class UserDaoImpl implements UserDao {
 		}
 
 	}
-	
+
 		@Override
 	public String getName(int id) {
 		String name="";
