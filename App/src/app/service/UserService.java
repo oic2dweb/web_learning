@@ -1,5 +1,7 @@
 package app.service;
 
+import java.util.ArrayList;
+
 import app.model.User;
 import app.model.UserTemp;
 import app.persistence.UserDao;
@@ -42,5 +44,8 @@ public class UserService {
 	}
 	public boolean setTempPassword(User user){
 		return userDao.setTempPassword(user);
+	}
+	public ArrayList<User> getClassList(int class_id){
+		return userDao.getClassList(class_id);
 	}
 }

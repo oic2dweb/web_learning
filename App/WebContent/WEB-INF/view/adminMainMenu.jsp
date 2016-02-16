@@ -35,6 +35,7 @@
 			<li><a href="#touroku" onclick="SelectLink('#touroku')" class="list-group-item">問題登録</a></li>
 			<li><a href="#henkou" onclick="SelectLink('#henkou')" class="list-group-item">問題変更</a></li>
 			<li><a href="#hozonchu" onclick="SelectLink('#hozonchu')" class="list-group-item">保存中作成物</a></li>
+			<li><a href="#classlist" onclick="SelectLink('#classlist')" class="list-group-item">生徒一覧</a></li>
 		</ul>
 		</div>
 	</div>
@@ -106,6 +107,35 @@
 					</c:forEach>
 				</tbody>
 			</table>
+		</div>
+		<div id="classlist">
+		<h2>生徒一覧</h2>
+		<form id="seclass" method="get" action="${pageContext.request.contextPath}/eb430180f1006fb41dd1e4eb4cdb508d/login/mainmenu">
+			<div class="form-group">
+				<select id="class" name="class" class="form-control"  onChange="this.form.submit()">
+            		<option value="">クラスを選択</option><c:forEach var="classes" items="${classes}"><option value="${classes.key}" <c:if test="${classes.key==nowclass}">selected</c:if>>${classes.value}</option></c:forEach>
+				</select>
+			</div>
+		</form>
+
+		<table class="table table-striped table-hover table-bordered">
+		<thead>
+			<tr class="info">
+				<th>学籍番号</th><th>名前</th><th>かな</th><th>平均点(過去10回)</th><th>最終回答日</th>
+			</tr>
+		</thead>
+		<tbody id="classlist">
+			<c:forEach var="std" items="${students}" varStatus="status">
+				<tr>
+					<td><c:out value="${std.student_id}"></c:out></td>
+					<td><c:out value="${std.name}"></c:out></td>
+					<td><c:out value="${std.kana}"></c:out></td>
+					<td><c:out value="${ave[status.index]}"></c:out></td>
+					<td><c:out value="${date[status.index]}"></c:out></td>
+				</tr>
+			</c:forEach>
+		</tbody>
+		</table>
 		</div>
 	</div>
 </div>

@@ -61,18 +61,19 @@ public class User {
 	public void setKana(String kana) {
 	    this.kana = kana;
 	}
+	
 	/**
 	 * student_idを取得します。
 	 * @return student_id
 	 */
-	public String getStudentId() {
+	public String getStudent_id() {
 	    return student_id;
 	}
 	/**
 	 * student_idを設定します。
 	 * @param student_id student_id
 	 */
-	public void setStudentId(String student_id) {
+	public void setStudent_id(String student_id) {
 	    this.student_id = student_id;
 	}
 	/**

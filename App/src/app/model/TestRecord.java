@@ -4,7 +4,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class TestRecord {
-	
+
 	private Long id;
 	private Date date;
 	private String dateString;
@@ -12,7 +12,21 @@ public class TestRecord {
 	private Integer correctCount;
 	private Integer percentage;
 	private User user;
-	
+	private int score;
+	private int user_id;
+
+	public int getUser_id() {
+		return user_id;
+	}
+	public void setUser_id(int user_id) {
+		this.user_id = user_id;
+	}
+	public int getScore() {
+		return score;
+	}
+	public void setScore(int score) {
+		this.score = score;
+	}
 	public User getUser() {
 		return user;
 	}
@@ -58,7 +72,7 @@ public class TestRecord {
 	public void setPercentage(Integer percentage) {
 		this.percentage = percentage;
 	}
-	
+
 	@Override
 	public String toString(){
 		return "id: " + id + "\n"

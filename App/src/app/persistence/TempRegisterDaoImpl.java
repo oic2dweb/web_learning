@@ -20,7 +20,7 @@ public class TempRegisterDaoImpl implements TempRegisterDao{
 				//SQL文に値をセット
 				stmt.setString(1, user.getName());
 				stmt.setString(2, user.getKana());
-				stmt.setString(3, user.getStudentId());
+				stmt.setString(3, user.getStudent_id());
 				stmt.setString(4, user.getPassword());
 				stmt.setString(5, user.getEmail());
 				stmt.setInt(6, user.getClassId());
@@ -48,7 +48,7 @@ public class TempRegisterDaoImpl implements TempRegisterDao{
 				user = new User();
 				user.setName(result.getString("name"));
 				user.setKana(result.getString("kana"));
-				user.setStudentId(result.getString("student_id"));
+				user.setStudent_id(result.getString("student_id"));
 				user.setPassword(result.getString("password"));
 				user.setEmail(result.getString("email"));
 				user.setClassId(result.getInt("class_id"));

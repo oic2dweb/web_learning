@@ -18,7 +18,7 @@
 			</tr>
 			<tr>
 			<th>ユーザーID</th>
-			<td>{{mypage.user.studentId}}</td>
+			<td>{{mypage.user.student_id}}</td>
 			</tr>
 			<tr>
 			<th>連絡用メールアドレス</th>

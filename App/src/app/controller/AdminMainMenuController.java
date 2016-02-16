@@ -2,6 +2,10 @@ package app.controller;
 
 import java.io.File;
 import java.io.IOException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
@@ -15,10 +19,14 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import app.model.QuestionType;
+import app.model.User;
 import app.model.Year;
 import app.persistence.QuestionDao;
 import app.persistence.QuestionDaoImpl;
+import app.service.ClassService;
 import app.service.QuestionTypeService;
+import app.service.TestRecordsService;
+import app.service.UserService;
 import app.service.YearService;
 
 /**
@@ -30,6 +38,9 @@ public class AdminMainMenuController extends HttpServlet {
 
 	private YearService yearService = new YearService();
 	private QuestionTypeService questionTypeService = new QuestionTypeService();
+	private ClassService classService = new ClassService();
+	private UserService userService = new UserService();
+	private TestRecordsService trService = new TestRecordsService();
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
@@ -134,6 +145,39 @@ public class AdminMainMenuController extends HttpServlet {
 		}
 		//問題数をセッションに格納
 		session.setAttribute("quantity", quantity);
+
+		//クラスのIDをkeyとしてクラス名を取得
+				Map<Integer,String> classes = classService.getClasses();
+				request.setAttribute("classes", classes);
+				String nowclass = request.getParameter("class");
+				if(nowclass!=null&&!nowclass.equals("")){
+					request.setAttribute("nowclass", nowclass);
+					//選択されたクラスの生徒情報を取得
+					ArrayList<User> students = userService.getClassList(Integer.parseInt(nowclass));
+					request.setAttribute("students", students);
+					//生徒ごとの平均点と最終ログイン日を取得
+					ArrayList<Integer> ave = new ArrayList<Integer>();
+					Date d = new Date(0);
+					ArrayList<String> date = new ArrayList<String>();
+					//Date型をStringに変換するためのフォーマット
+					DateFormat df1 = new SimpleDateFormat("yyyy-MM-dd");
+					for(int i = 0; i < students.size(); i++){
+						//Long型のuser_idをintにキャスト
+						Integer u_id = new Integer(((User)students.get(i)).getId().toString());
+						int user_id = u_id.intValue();
+						ave.add(trService.Average(user_id));
+						if((d.compareTo(trService.lastAnswer(user_id))) != 0){
+							String sDate = df1.format(trService.lastAnswer(user_id));
+							date.add(sDate);
+						}else{
+							date.add("回答なし");
+						}
+					}
+					request.setAttribute("ave", ave);
+					request.setAttribute("date", date);
+				}else{
+					request.setAttribute("nowclass", "-1");
+				}
 
 		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/view/adminMainMenu.jsp");
 		rd.forward(request, response);

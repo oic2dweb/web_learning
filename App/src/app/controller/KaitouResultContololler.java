@@ -32,8 +32,9 @@ public class KaitouResultContololler extends HttpServlet {
 
 		HttpSession session = request.getSession();
 		int userid = (int) session.getAttribute("userid");//ユーザidの取得
+		int score = Integer.parseInt(request.getParameter("score"));//得点を取得
 		TestRecordsDao trDao = new TestRecordsDaoImpl();
-		int record_id = trDao.getId(userid);	//TestRecordsテーブルにuserIdを保存して、オートインクリメントの値を取得
+		int record_id = trDao.getId(userid,score);	//TestRecordsテーブルにuserIdを保存して、オートインクリメントの値を取得
 
 		@SuppressWarnings("unchecked")
 		ArrayList<Question> questionList = (ArrayList<Question>)session.getAttribute("question");

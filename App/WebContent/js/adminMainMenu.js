@@ -36,8 +36,8 @@ $(document).ready(function(){
 		var result = confirm("本当に削除してもよろしいでしょうか？");
 		if(!result){
 			return false;
-		}	
-		
+		}
+
 	});
 });
 
@@ -46,6 +46,7 @@ function SelectLink(id){
 	$('#touroku').hide();
 	$('#henkou').hide();
 	$('#hozonchu').hide();
+	$('#classlist').hide();
 	$(id).show();
 	sessionStorage.setItem("admnselectpage",id);
 }

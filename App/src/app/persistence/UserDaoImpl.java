@@ -3,6 +3,7 @@ package app.persistence;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
 
 import javax.sql.DataSource;
 
@@ -51,7 +52,7 @@ public class UserDaoImpl implements UserDao {
 			//SQL文に値をセット
 			stmt.setString(1, user.getName());
 			stmt.setString(2, user.getKana());
-			stmt.setString(3, user.getStudentId());
+			stmt.setString(3, user.getStudent_id());
 			stmt.setString(4, user.getPassword());
 			stmt.setString(5, user.getEmail());
 			stmt.setInt(6, user.getClassId());
@@ -179,7 +180,7 @@ public class UserDaoImpl implements UserDao {
 				user.setId(rs.getLong(1));
 				user.setName(rs.getString(2));
 				user.setKana(rs.getString(3));
-				user.setStudentId(rs.getString(4));
+				user.setStudent_id(rs.getString(4));
 				user.setPassword(rs.getString(5));
 				user.setEmail(rs.getString(6));
 			}
@@ -277,5 +278,29 @@ public class UserDaoImpl implements UserDao {
 					return false;
 				}
 
+	}
+	@Override
+	public ArrayList<User> getClassList(int class_id){
+		User user = new User();
+		ArrayList<User> users = new ArrayList<User>();
+		//DBとの接続
+		try(Connection conn = dataSource.getConnection();
+			//SQL文を用意
+			PreparedStatement stmt = conn.prepareStatement("SELECT id, name, kana, student_id FROM users WHERE class_id = ?");){
+			stmt.setInt(1, class_id);
+			ResultSet rs = stmt.executeQuery();
+			while(rs.next()){
+				user = new User();
+				user.setId(rs.getLong("id"));
+				user.setName(rs.getString("name"));
+				user.setKana(rs.getString("kana"));
+				user.setStudent_id(rs.getString("student_id"));
+				users.add(user);
+			}
+
+		}catch(Exception e){
+
+		}
+		return users;
 	}
 }

@@ -39,8 +39,6 @@ public class RegisterController extends HttpServlet {
 			request.setAttribute("nowclass", nowclass);
 		}
 
-		
-
 		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/view/registerForm.jsp");
 		rd.forward(request, response);
 	}
@@ -67,7 +65,7 @@ public class RegisterController extends HttpServlet {
 		User user = new User();
 		user.setName(name);
 		user.setKana(kana);
-		user.setStudentId(student_id);
+		user.setStudent_id(student_id);
 		user.setPassword(py.getStr());
 		user.setEmail(email);
 		user.setClassId(class_id);
@@ -78,8 +76,18 @@ public class RegisterController extends HttpServlet {
 		InetAddress addr = InetAddress.getLocalHost();
 		//String url = "http://"+addr.getHostAddress()+":8080"+request.getContextPath()+"/registerCommit?id="+hash;
 		String url = "http://localhost:8080"+request.getContextPath()+"/registerCommit?id="+hash;
-		UseMail mail = new UseMail();
-		mail.send(email, "下記のURLをクリックすることで登録が完了されます\n"+url);
+		
+		Thread th =new Thread(new Runnable() {
+
+			@Override
+			public void run() {
+				UseMail mail = new UseMail();
+				mail.send(email, "下記のURLをクリックすることで登録が完了されます\n"+url);
+
+			}
+		});
+		th.start();
+		
 
 		boolean flg = tempRegisterService.create(user);
 		/*
