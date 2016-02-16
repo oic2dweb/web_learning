@@ -112,28 +112,37 @@ $(document).ready(function(){
 	
 	//タグ挿入ボタン
 	$(".insert_tag").click(function(){
-		if($(this).attr('class').split(' ')[2]=='insert_tag'){
-			InsertTag($(this).attr("name"));
-			$(this).addClass('close_tag');
-			$(this).removeClass('insert_tag');
+		
+		if($('textarea[name="question"]').selection().length!=0){
+			$('textarea[name="question"]').selection('insert',{text:"<"+$(this).attr("name")+">",mode:'before'});
+			$('textarea[name="question"]').selection('insert',{text:"</"+$(this).attr("name")+">",mode:'after'});
 		}else{
-			var tag = "&lt;/"+$(this).attr("name")+"&gt;"
-			for(var i=tags.length-1;0<=i;i--){
-				if(tag==tags[i]){
-					$('textarea[name="question"]').append(tags[i]);
-					delete tags[i];
+			if($(this).attr('class').split(' ')[2]=='insert_tag'){
+				InsertTag($(this).attr("name"));
+				$(this).addClass('close_tag');
+				$(this).removeClass('insert_tag');
+			}else{
+				var tag = "</"+$(this).attr("name")+">"
+				for(var i=tags.length-1;0<=i;i--){
+					if(tag==tags[i]){
+						$('textarea[name="question"]').selection('insert',{text:tags[i],mode:'before'});
+						delete tags[i];
+					}
 				}
+				$(this).addClass('insert_tag');
+				$(this).removeClass('close_tag');
 			}
-			$(this).addClass('insert_tag');
-			$(this).removeClass('close_tag');
 		}
+		
+		
 		
 	});
 	
 	//タグ閉じるボタン
 	$('.close_tags').click(function(){
 		for(var i=0;0<tags.length;i++){
-			$('textarea[name="question"]').append(tags.pop());
+			//$('textarea[name="question"]').append(tags.pop());
+			$('textarea[name="question"]').selection('insert',{text:tags.pop(),mode:'before'});
 		}
 		$('.close_tag').addClass('insert_tag');
 		$('.close_tag').removeClass('close_tag');
@@ -229,7 +238,8 @@ function InsertSub(){
 	}
 }
 function InsertTag(str){
-	var tag = "&lt;"+str+"&gt;"
-	tags.push("&lt;/"+str+"&gt;")
-	$('textarea[name="question"]').append(tag);
+	var tag = "<"+str+">"
+	tags.push("</"+str+">")
+	//$('textarea[name="question"]').append(tag);
+	$('textarea[name="question"]').selection('insert',{text:tag,mode:'before'});
 }
