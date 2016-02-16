@@ -21,7 +21,6 @@
 		</div>
 		<div class="panel-body">
 
-
 			<form action="${pageContext.request.contextPath}/eb430180f1006fb41dd1e4eb4cdb508d/login/entry" method="post" name="entry" enctype="multipart/form-data">
 				<div class="well">
 				<div class="form-inline">
@@ -53,7 +52,12 @@
 				<div class="well">
 
 					<div class="form-group">
-						<label class="control-label">問題文章</label>
+						<label class="control-label">問題文章</label>&emsp;
+						<input type="button" value="太字" name="b" class="btn btn-success insert_tag">
+						<input type="button" value="上付き文字" name="sup" class="btn btn-success insert_tag">
+						<input type="button" value="下付き文字" name="sub" class="btn btn-success insert_tag">
+						<input type="button" value="文字上の線" name='span style="text-decoration:overline"' class="btn btn-success insert_tag">
+						<input type="button" value="タグを閉じる" class="btn btn-info close_tags">
 						<textarea rows="10" cols="75" class="form-control" name="question" maxlength="700">${adminQuestion.question}</textarea>
 					</div>
 					<div class="row">

@@ -1,5 +1,6 @@
 var mainClass;
 var subClass;
+var tags = [];
 $(document).ready(function(){
 	//分類をサーバーから取ってくる処理
 	var request = $.ajax({
@@ -107,27 +108,41 @@ $(document).ready(function(){
 			}
 		}
 	});
+	
+	
+	//タグ挿入ボタン
+	$(".insert_tag").click(function(){
+		if($(this).attr('class').split(' ')[2]=='insert_tag'){
+			InsertTag($(this).attr("name"));
+			$(this).addClass('close_tag');
+			$(this).removeClass('insert_tag');
+		}else{
+			var tag = "&lt;/"+$(this).attr("name")+"&gt;"
+			for(var i=tags.length-1;0<=i;i--){
+				if(tag==tags[i]){
+					$('textarea[name="question"]').append(tags[i]);
+					delete tags[i];
+				}
+			}
+			$(this).addClass('insert_tag');
+			$(this).removeClass('close_tag');
+		}
+		
+	});
+	
+	//タグ閉じるボタン
+	$('.close_tags').click(function(){
+		for(var i=0;0<tags.length;i++){
+			$('textarea[name="question"]').append(tags.pop());
+		}
+		$('.close_tag').addClass('insert_tag');
+		$('.close_tag').removeClass('close_tag');
+	});
 
 	//解説画像が選択された時のイベント
 	$('input[name="kimg"]').change(function(){
 		$('input[name="hkimg"]').val(1);
 
-	});
-	
-	$('input[name="insert_img"]').change(function(){
-		alert($('input[name="insert_img"]').val());
-		/*
-		var request = $.ajax({
-			type:"POST",
-			url:CONTEXT_PATH+"AdminQuestionEntryAjax",
-			datatype:"json",
-			async: false,
-			success: function(data){
-				mainClass = data.mainClass;
-				subClass = data.subClass;
-			}
-			)}
-			*/
 	});
 
 	//submitボタンが押された時のイベント
@@ -213,4 +228,8 @@ function InsertSub(){
 
 	}
 }
-
+function InsertTag(str){
+	var tag = "&lt;"+str+"&gt;"
+	tags.push("&lt;/"+str+"&gt;")
+	$('textarea[name="question"]').append(tag);
+}
