@@ -74,8 +74,8 @@ public class RegisterController extends HttpServlet {
 		user.setUrl(hash);
 
 		InetAddress addr = InetAddress.getLocalHost();
-		String url = "http://"+addr.getHostAddress()+":8080"+request.getContextPath()+"/registerCommit?id="+hash;
-		//String url = "http://localhost:8080"+request.getContextPath()+"/registerCommit?id="+hash;
+		//String url = "http://"+addr.getHostAddress()+":8080"+request.getContextPath()+"/registerCommit?id="+hash;
+		String url = "http://localhost:8080"+request.getContextPath()+"/registerCommit?id="+hash;
 
 		Thread th =new Thread(new Runnable() {
 

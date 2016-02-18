@@ -48,8 +48,8 @@ public class UserTempController extends HttpServlet {
 			usertemp.setUrl(recordid);
 			String parameter = usertemp.getUrl(recordid);
 			InetAddress addr = InetAddress.getLocalHost();
-			String url = "http://"+addr.getHostAddress()+":8080"+ request.getContextPath() + "/userupdatecommit?id="+parameter;
-			//String url = "http://localhost:8080"+ request.getContextPath() + "/userupdatecommit?id="+parameter;
+			//String url = "http://"+addr.getHostAddress()+":8080"+ request.getContextPath() + "/userupdatecommit?id="+parameter;
+			String url = "http://localhost:8080"+ request.getContextPath() + "/userupdatecommit?id="+parameter;
 
 			UserService userservice = new UserService();
 			User userinfo= userservice.getUser((long)id);
