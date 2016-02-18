@@ -1,6 +1,8 @@
 var mainClass;
 var subClass;
 var tags = [];
+var tags_k = [];
+var forcus_out ="";
 $(document).ready(function(){
 	//分類をサーバーから取ってくる処理
 	var request = $.ajax({
@@ -43,7 +45,7 @@ $(document).ready(function(){
 		$('textarea[name="question"]').html(txt.replace(/@@img1@@/g,""));
 		$('textarea[name="question"]').append('@@img1@@');
 	});
-		
+
 	$('input[name="qimg2"]').change(function(){
 		var txt = $('textarea[name="question"]').html();
 		$('textarea[name="question"]').html(txt.replace(/@@img2@@/g,""));
@@ -92,7 +94,7 @@ $(document).ready(function(){
 			if(name!=null){
 				$('input[name="qimg'+(i+1)+'"]').removeAttr("disabled");
 				count++;
-				
+
 			}else{
 				$('input[name="qimg'+(i+1)+'"]').attr("disabled","disabled");
 			}
@@ -108,14 +110,14 @@ $(document).ready(function(){
 			}
 		}
 	});
-	
-	
+
+
 	//タグ挿入ボタン
 	$(".insert_tag").click(function(){
-		
+
 		if($('textarea[name="question"]').selection().length!=0){
 			$('textarea[name="question"]').selection('insert',{text:"<"+$(this).attr("name")+">",mode:'before'});
-			$('textarea[name="question"]').selection('insert',{text:"</"+$(this).attr("name")+">",mode:'after'});
+			$('textarea[name="question"]').selection('insert',{text:"</"+$(this).attr("name").replace(/\s.*/,'')+">",mode:'after'});
 		}else{
 			if($(this).attr('class').split(' ')[2]=='insert_tag'){
 				InsertTag($(this).attr("name"));
@@ -125,6 +127,9 @@ $(document).ready(function(){
 				var tag = "</"+$(this).attr("name")+">"
 				for(var i=tags.length-1;0<=i;i--){
 					if(tag==tags[i]){
+
+						tags[i] = tags[i].replace(/\s.*/,'>');
+
 						$('textarea[name="question"]').selection('insert',{text:tags[i],mode:'before'});
 						delete tags[i];
 					}
@@ -133,11 +138,11 @@ $(document).ready(function(){
 				$(this).removeClass('close_tag');
 			}
 		}
-		
-		
-		
+
+
+
 	});
-	
+
 	//タグ閉じるボタン
 	$('.close_tags').click(function(){
 		for(var i=0;0<tags.length;i++){
@@ -146,6 +151,77 @@ $(document).ready(function(){
 		}
 		$('.close_tag').addClass('insert_tag');
 		$('.close_tag').removeClass('close_tag');
+	});
+
+	//タグ挿入ボタン3
+	$(".insert_tag3").click(function(){
+
+		if($('textarea[name="kaisetu"]').selection().length!=0){
+			$('textarea[name="kaisetu"]').selection('insert',{text:"<"+$(this).attr("name")+">",mode:'before'});
+			$('textarea[name="kaisetu"]').selection('insert',{text:"</"+$(this).attr("name")+">",mode:'after'});
+		}else{
+			if($(this).attr('class').split(' ')[2]=='insert_tag3'){
+				var tag = "<"+$(this).attr("name")+">"
+				tags_k.push("</"+$(this).attr("name")+">")
+
+				$('textarea[name="kaisetu"]').selection('insert',{text:tag,mode:'before'});
+				$(this).addClass('close_tag3');
+				$(this).removeClass('insert_tag3');
+			}else{
+				var tag = "</"+$(this).attr("name")+">"
+				for(var i=tags_k.length-1;0<=i;i--){
+					if(tag==tags_k[i]){
+
+						tags_k[i] = tags_k[i].replace(/\s.*/,'>');
+
+						$('textarea[name="kaisetu"]').selection('insert',{text:tags_k[i],mode:'before'});
+						delete tags_k[i];
+					}
+				}
+				$(this).addClass('insert_tag3');
+				$(this).removeClass('close_tag3');
+			}
+		}
+
+
+
+	});
+
+	//タグ閉じるボタン3
+	$('.close_tags3').click(function(){
+		for(var i=0;0<tags_k.length;i++){
+
+			$('textarea[name="kaisetu"]').selection('insert',{text:tags_k.pop(),mode:'before'});
+		}
+		$('.close_tag3').addClass('insert_tag3');
+		$('.close_tag3').removeClass('close_tag3');
+	});
+
+
+	//タグ挿入ボタン2
+	$(".insert_tag2").click(function(){
+		//alert($(':focus').attr('name'));
+		$('textarea[name="'+forcus_out+'"]').selection('insert',{text:"<"+$(this).attr("name")+">",mode:'before'});
+		$('textarea[name="'+forcus_out+'"]').selection('insert',{text:"</"+$(this).attr("name")+">",mode:'after'});
+
+
+
+
+	});
+
+	//タグ閉じるボタン2
+	$('.close_tags2').click(function(){
+		for(var i=0;0<tags.length;i++){
+
+			$('textarea[class="gtag"]').selection('insert',{text:tags.pop(),mode:'before'});
+		}
+		$('.close_tag2').addClass('insert_tag2');
+		$('.close_tag2').removeClass('close_tag2');
+	});
+
+	//フォーカスアウトイベント
+	$('.gtag').blur(function(){
+		forcus_out = $(this).attr('name');
 	});
 
 	//解説画像が選択された時のイベント
@@ -163,7 +239,7 @@ $(document).ready(function(){
 				return false;
 			}
 		}
-		
+
 		if($('input[name="submitname"]').attr('value')!='onetimesave'&&$('input[name="submitname"]').attr('value')!='back'&&$('input[name="submitname"]').attr('value')!='list'){
 			if($('input[name="ronten"]').val()==""){
 				$('#message').html('<font color="red">論点の文章が入力されていません</font>');

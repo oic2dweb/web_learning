@@ -53,7 +53,7 @@
 				<div class="well">
 
 					<div class="form-group">
-						<label class="control-label">問題文章</label>&emsp;
+						<label class="control-label">問題文章</label>&emsp;&emsp;
 						<input type="button" value="太字" name="b" class="btn btn-success insert_tag">
 						<input type="button" value="上付き文字" name="sup" class="btn btn-success insert_tag">
 						<input type="button" value="下付き文字" name="sub" class="btn btn-success insert_tag">
@@ -86,7 +86,12 @@
 					<input type="hidden" name="qimgcnt" value="0">
 				</div>
 				<div class="well">
-					<label class="control-label">回答</label>
+					<label class="control-label">回答</label>&emsp;&emsp;
+						<input type="button" value="太字" name="b" class="btn btn-success insert_tag2">
+						<input type="button" value="上付き文字" name="sup" class="btn btn-success insert_tag2">
+						<input type="button" value="下付き文字" name="sub" class="btn btn-success insert_tag2">
+						<input type="button" value="文字上の線" name='span style="text-decoration:overline"' class="btn btn-success insert_tag2">
+						<!--<input type="button" value="タグを閉じる" class="btn btn-info close_tags2">  -->
 
 					<div class="row">
 						<div class="form-group">
@@ -94,7 +99,7 @@
 								<label class="control-label">ア：</label>
 							</div>
 							<div class="col-xs-11">
-								<textarea class="form-control" rows="1" cols="75" name="ans1" maxlength="150">${adminQuestion.ans1}</textarea>
+								<textarea class="form-control gtag" rows="1" cols="75" name="ans1" maxlength="150">${adminQuestion.ans1}</textarea>
 							</div>
 
 						</div>
@@ -112,7 +117,7 @@
 								<label class="control-label">イ：</label>
 							</div>
 							<div class="col-xs-11">
-								<textarea class="form-control" rows="1" cols="75" name="ans2" maxlength="150">${adminQuestion.ans2}</textarea>
+								<textarea class="form-control gtag" rows="1" cols="75" name="ans2" maxlength="150">${adminQuestion.ans2}</textarea>
 							</div>
 						</div>
 					</div>
@@ -129,7 +134,7 @@
 								<label class="control-label">ウ：</label>
 							</div>
 							<div class="col-xs-11">
-								<textarea class="form-control" rows="1" cols="75" name="ans3" maxlength="150">${adminQuestion.ans3}</textarea>
+								<textarea class="form-control gtag" rows="1" cols="75" name="ans3" maxlength="150">${adminQuestion.ans3}</textarea>
 							</div>
 						</div>
 					</div>
@@ -145,7 +150,7 @@
 								<label class="control-label">エ：</label>
 							</div>
 							<div class="col-xs-11">
-								<textarea class="form-control" rows="1" cols="75" name="ans4" maxlength="150">${adminQuestion.ans4}</textarea>
+								<textarea class="form-control gtag" rows="1" cols="75" name="ans4" maxlength="150">${adminQuestion.ans4}</textarea>
 							</div>
 						</div>
 					</div>
@@ -169,7 +174,12 @@
 				</div>
 				<div class="well">
 					<div class="form-group">
-						<label class="control-label">解説</label>
+						<label class="control-label">解説</label>&emsp;&emsp;
+						<input type="button" value="太字" name="b" class="btn btn-success insert_tag3">
+						<input type="button" value="上付き文字" name="sup" class="btn btn-success insert_tag3">
+						<input type="button" value="下付き文字" name="sub" class="btn btn-success insert_tag3">
+						<input type="button" value="文字上の線" name='span style="text-decoration:overline"' class="btn btn-success insert_tag3">
+						<input type="button" value="タグを閉じる" class="btn btn-info close_tags3">
 						<textarea rows="10" class="form-control" cols="75" name="kaisetu" maxlength="900">${adminQuestion.kaisetu}</textarea>
 					</div>
 					<label class="control-label">解説画像</label>

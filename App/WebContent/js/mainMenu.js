@@ -1,9 +1,12 @@
 $(document).ready(function(){
 
 	if(sessionStorage.getItem("selectpage")!=null){
+		
 		SelectLink(sessionStorage.getItem("selectpage"));
+		
 	}else{
 		SelectLink("#bunya");
+		
 	}
 
 	$('#select_class').submit(function(){
@@ -27,14 +30,17 @@ $(document).ready(function(){
 	$("#kaishi").submit(function(){
 		var starttime = $.now();
 		sessionStorage.setItem("starttime",starttime);
-	})
+	});
 
 });
 function SelectLink(id){
+	
 	$('#bunya').hide();
 	$('#nendo').hide();
 	$('#mogi').hide();
 	$('#hukusyu').hide();
+	
 	$(id).show();
+	
 	sessionStorage.setItem("selectpage",id);
 }
