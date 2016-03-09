@@ -21,7 +21,7 @@
 
 <title>OIC情報処理技術者試験　午前対策サイト</title>
 </head>
-<body class="container">		
+<body class="container">
 	<div class="panel panel-info">
 		<div class="panel-heading">
 			<h3 class="panel-title">
@@ -30,32 +30,32 @@
 				<input type="checkbox" id="hukusyu"/><label>復習</label>
 				<span class='timer pull-right' data-seconds-left="0"></span>
 				<span class='endtimer pull-right'></span>
-				
+
 			</h3>
 		</div>
-		
+
 		<div class="panel-body">
 			<div id="question"></div>
 		</div>
 	</div>
-	
+
 	<label class="ans"><input type="radio" name="ans" value="ア">ア：<span id="ans1"></span></label><br>
 	<label class="ans"><input type="radio" name="ans" value="イ">イ：<span id="ans2"></span></label><br>
 	<label class="ans"><input type="radio" name="ans" value="ウ">ウ：<span id="ans3"></span></label><br>
 	<label class="ans"><input type="radio" name="ans" value="エ">エ：<span id="ans4"></span></label><br><br>
-	
+
 	<input type="button" id="back" value="前の問題へ" class="btn btn-info">
 	<input type="button" id="next" value="次の問題へ" class="btn btn-info">
 
 
-	<input type="button" id="status" value="回答状況" onclick="window.location='${pageContext.request.contextPath}/login/kaitoustatus'" class="btn btn-success">
-	<input type="button" id="result" value="回答結果へ" onclick="window.location='${pageContext.request.contextPath}/login/kaitouresult'" class="btn btn-primary">
+	<input type="button" id="status" value="解答状況" onclick="window.location='${pageContext.request.contextPath}/login/kaitoustatus'" class="btn btn-success">
+	<input type="button" id="result" value="解答結果へ" onclick="window.location='${pageContext.request.contextPath}/login/kaitouresult'" class="btn btn-primary">
 	<br><br>
 	<div class="well kaisetu">
 		<h4 id="sei"></h4>
 		<div id="kaisetu"></div>
 	</div>
 	<a href="${pageContext.request.contextPath}/login/mainmenu" class="btn btn-link">メインメニューへ</a>
-	
+
 </body>
 </html>
